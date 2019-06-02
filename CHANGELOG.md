@@ -4,6 +4,22 @@ All notable changes to the latest release of this project are documented in this
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2019-05-01
+
+### Changed
+- Replaced MaterializeCSS with Bulma
+- Rewrote all Django templates
+- Rewrote Sass files
+- Rewrote part of models for blog posts and projects
+- Split database app into portfolio and blog apps
+
+### Removed
+- Removed "Events" page
+- Removed "Skills" page
+- Removed "Contact" page
+- Removed jQuery
+- Removed SendGrid
+
 ## [0.2.1] - 2019-03-30
 ### Added
 - Carbon Ads integrated **on article template only** (Yaaaay!)

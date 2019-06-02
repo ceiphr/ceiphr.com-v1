@@ -1,3 +1,8 @@
+[![Online Status](https://img.shields.io/website/https/ceiphr.com.svg?down_color=red&down_message=offline&up_message=online)](https://status.ceiphr.com/)
+[![HSTS Preload Status](https://img.shields.io/hsts/preload/ceiphr.com.svg)](https://hstspreload.org/?domain=ceiphr.com)
+[![Mozilla Observatory Status](https://img.shields.io/mozilla-observatory/grade/ceiphr.com.svg)](https://observatory.mozilla.org/analyze/ceiphr.com)
+[![License](https://img.shields.io/github/license/ceiphr/ceiphr.com.svg?color=limegreen)](https://github.com/ceiphr/ceiphr.com/blob/master/LICENSE)
+
 ## Ceiphr.com
 
 This project is the source code for my personal website. This website displays all my projects, skills, events I've attended and acts as a blog platform.
@@ -6,43 +11,24 @@ This project is the source code for my personal website. This website displays a
 
 I'm a high school student. I really wanted some way to display my achievements, projects and ideas. This is what I came up with.
 
-## TODO
-
-- [ ] Configure/ implement GitLab CI/CD
-- [ ] Add meaningful git tags to git history
-- [x] Add content security policy
-- [x] Fix X-Content-Type-Options header
-- [x] Fix X-Frame-Options (XFO) header
-- [x] Apply for HSTS preload list
-- [x] Add badges to project repository
-- [x] Add changelog to project repository
-
-## Front Page
-
-![ceiphr.com screenshot](https://cdn.ceiphr.com/gitlab/ceiphr.com/ceiphrcom.png "Ceiphr.com front page.")
-
 ## Tech/Frameworks used
 
 Python/Django
 
 - [Django](https://www.djangoproject.com/)
 - [django-pipeline](https://django-pipeline.readthedocs.io/en/latest/)
-- [SendGrid](https://sendgrid.com/)
 - [Sentry](https://sentry.io)
 - [django-otp](https://django-otp-official.readthedocs.io/en/latest/)
 - [sorl-thumbnail](https://github.com/jazzband/sorl-thumbnail)
 - [Pillow](https://python-pillow.org/)
-- [Recaptcha2](https://github.com/kbytesys/django-recaptcha2)
 - [Mistune](https://github.com/lepture/mistune)
 - [Pygments](http://pygments.org/)
-- [django-jet](https://github.com/geex-arts/django-jet)
 - [psycopg2](https://github.com/psycopg/psycopg2)
 - [gunicorn](https://gunicorn.org/)
 
 Javascript/CSS
 
-- [MaterializeCSS](https://materializecss.com/)
-- [jquery](https://jquery.com/)
+- [Bulma](https://bulma.io/)
 - [lazysizes](https://github.com/aFarkas/lazysizes)
 - [sass](https://sass-lang.com/)
 
