@@ -1,0 +1,5 @@
+# Rule 1
+User-agent: *
+Disallow: /thanks
+
+Sitemap: https://ceiphr.com/sitemap.xml

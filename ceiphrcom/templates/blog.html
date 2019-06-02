@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+{% load thumbnail %}
+{% load static %}
+<section class="feed__cover--medium">
+    <div id="rain__wrapper">
+        <div id="rain">
+            {% for drop in rain_fall %}
+            <i class="rain__drop"></i>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section class="hero is-medium is-dark is-bold">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            {% if tag %}
+            <h1 class="title">
+                Filtered Articles
+            </h1>
+            <h2 class="subtitle">
+                <div class="tags has-addons is-centered">
+                    <span class="tag">
+                        {{ tag }}
+                    </span>
+                    <a href="/blog/" class="tag is-delete" aria-label="clear {{ tag }} tag"></a>
+                </div>
+            </h2>
+            {% else %}
+            <h1 class="title">
+                {{ title }}
+            </h1>
+            <h2 class="subtitle">
+                Free to Redistribute & Remix
+            </h2>
+            {% endif %}
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container slide-on-load">
+        {% for article in articles %}
+        <div class="columns">
+            <div class="column is-offset-2-widescreen is-8-widescreen">
+                <a href="/blog/{{ article.slug }}/" aria-label="{{ article.title }}">
+                    <div class="box on-hover feed__article">
+                        <div class="feed__body">
+                            <div class="feed__info">
+                                <p class="title is-4">{{ article.title }}</p>
+                                <p class="subtitle is-6">{{ article.published }} — {{ article.read_time }}
+                                    {% if article.read_time > 1 %}mins{% else %}min{% endif %}</p>
+                                <p class="summary">{{ article.summary }}</p>
+                            </div>
+                        </div>
+                        <figure class="feed__image">
+                            <picture>
+                                {% thumbnail article.image "600x300" format="WEBP" as webp %}
+                                <source data-srcset="{{ webp.url }}" type="image/webp">
+                                {% endthumbnail %}
+                                {% thumbnail article.image "600x300" format="JPEG" as jpeg %}
+                                <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
+                                {% endthumbnail %}
+                                {% thumbnail article.image "150x75" format="JPEG" as jpeg %}
+                                <source srcset="{{ jpeg.url }}" type="image/jpeg">
+                                {% endthumbnail %}
+                                <img class="lazyload blur-up" alt="{{ article.title }}">
+                            </picture>
+                        </figure>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}

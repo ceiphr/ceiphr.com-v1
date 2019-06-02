@@ -1,0 +1,12 @@
+/* TEAM */
+	Web Developer: Ari Birnbaum
+	Contact: contact [at] ceiphr.com
+	Twitter: @ceiphr
+	From: United States
+
+/* SITE */
+	Last update: 3/31/2019
+	Doctype: HTML
+    Language: English
+    Frameworks: Django, MaterializeCSS
+	IDE: Visual Studio Code

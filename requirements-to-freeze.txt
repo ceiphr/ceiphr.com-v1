@@ -1,0 +1,14 @@
+Django
+django-pipeline
+django-otp
+django-csp
+django-htmlmin
+mistune
+mistune_contrib
+Pygments
+qrcode
+sorl-thumbnail
+Pillow
+sentry-sdk
+gunicorn
+psycopg2-binary

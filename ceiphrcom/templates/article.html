@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% load thumbnail %}
+{% load markdownify %}
+<article>
+    <div class="article__cover-image">
+        <picture>
+            {% thumbnail article.image "1800x900" format="WEBP" as webp %}
+            <source data-srcset="{{ webp.url }}" type="image/webp" media="(min-width: 1024px)">
+            {% endthumbnail %}
+            {% thumbnail article.image "1800x900" format="JPEG" as jpeg %}
+            <source data-srcset="{{ jpeg.url }}" type="image/jpeg" media="(min-width: 1024px)">
+            {% endthumbnail %}
+            {% thumbnail article.image "900x450" format="WEBP" as webp %}
+            <source data-srcset="{{ webp.url }}" type="image/webp" media="(max-width: 1024px)">
+            {% endthumbnail %}
+            {% thumbnail article.image "900x450" format="JPEG" as jpeg %}
+            <source data-srcset="{{ jpeg.url }}" type="image/jpeg" media="(max-width: 1024px)">
+            {% endthumbnail %}
+            {% thumbnail article.image "300x150" format="JPEG" as jpeg %}
+            <source srcset="{{ jpeg.url }}" type="image/jpeg">
+            {% endthumbnail %}
+            <img class="lazyload blur-up--cover" alt="{{ title }}">
+        </picture>
+    </div>
+    <section class="hero is-medium is-dark is-bold">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">
+                    {{ title }}
+                </h1>
+                <h2 class="subtitle">
+                    Ari Birnbaum — {{ article.published }}
+                </h2>
+            </div>
+        </div>
+    </section>
+    <section class="container slide-on-load">
+        <div class="columns is-centered article__body is-desktop box">
+            <div class="column is-8-desktop is-medium">
+                <div class="article__contents">
+                    {{ article.body | markdown | safe }}
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-content">
+                        <p class="title is-6">Written By</p>
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image avatar">
+                                    <picture>
+                                        {% thumbnail avatar "128x128" format="WEBP" as webp %}
+                                        <source data-srcset="{{ webp.url }}" type="image/webp">
+                                        {% endthumbnail %}
+                                        {% thumbnail avatar "128x128" format="JPEG" as jpeg %}
+                                        <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
+                                        {% endthumbnail %}
+                                        {% thumbnail avatar "32x32" format="JPEG" as jpeg %}
+                                        <source srcset="{{ jpeg.url }}" type="image/jpeg">
+                                        {% endthumbnail %}
+                                        <img class="lazyload blur-up is-rounded" alt="Ari Birnbaum">
+                                    </picture>
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">Ari Birnbaum</p>
+                                <p class="subtitle is-5"><a href="mailto:contact@ceiphr.com">contact@ceiphr.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            This article is licensed under <a
+                                href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+                                    class="cc__icon icon is-small" alt="creative commons" src="{% static 'svg/cc.svg' %}" />
+                                Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>.
+                            You may redistribute this article if you follow the terms of the license.
+                            <br>
+                            <hr>
+                            <div class="article__info">
+                                <div class="article__pub">
+                                    Published on <time datetime="{{ article.published }}">{{ article.published }}</time>
+                                    {% if article.published != article.modified %}
+                                    <br>
+                                    <i>Last modified on <time
+                                            datetime="{{ article.modified }}">{{ article.modified }}</time></i>
+                                    {% else %}
+                                    <br>
+                                    <i>Article unmodified since published</i>
+                                    {% endif %}
+                                    <br>
+                                </div>
+                                <div class="article__tags tags is-pulled-right-desktop">
+                                    {% for tag in tags %}
+                                    <a href="/blog/?tag={{ tag.name }}"><span class="tag">{{ tag.name }}</span></a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-2-desktop">
+                <div class="sidebar__wrapper">
+                    <div class="sidebar__widgets">
+                        <div class="referral side_widget box on-hover">
+                            <a href="https://m.do.co/c/b95c2a8a5568" aria-label="digital ocean" rel="noopener">
+                                <div class="referral__logo">
+                                    <img src="{% static 'svg/do.svg' %}" alt="digital ocean" />
+                                </div>
+                                <p class="referral__content">
+                                    This website is hosted on Digital Ocean. Use my referral link for a discount.
+                                </p>
+                            </a>
+                        </div>
+                        {% if not debug %}
+                        <script async type="text/javascript" nonce="{{ request.csp_nonce }}"
+                            src="//cdn.carbonads.com/carbon.js?serve=CK7I62QM&placement=ceiphrcom"
+                            id="_carbonads_js"></script>
+                        {% endif %}
+                    </div>
+                    <div class="share__wrapper">
+                        <a href="http://www.facebook.com/sharer.php?u=https://{{ request.get_host }}{{ request.get_full_path }}"
+                            target="_blank" rel="noreferrer" aria-label="facebook" class="button"><img src="{% static 'svg/facebook.svg' %}" alt="facebook" /></a>
+                        <a href="https://twitter.com/share?url=https://{{ request.get_host }}{{ request.get_full_path }}&amp;text={{ article.title }}&amp;hashtags={% for tag in tags %}{{ tag.name }}, {% endfor %}"
+                            target="_blank" rel="noreferrer" aria-label="twitter" class="button"><img src="{% static 'svg/twitter.svg' %}" alt="twitter" /></a>
+                        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://{{ request.get_host }}{{ request.get_full_path }}"
+                            target="_blank" rel="noreferrer" aria-label="linkedin" class="button"><img src="{% static 'svg/linkedin.svg' %}" alt="linkedin" /></a>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section class="container recs slide-on-load">
+        <div class="columns is-desktop">
+            {% for post in recs|slice:":3" %}
+            <div class="column">
+                <a href="/blog/{{ post.slug }}/" aria-label="{{ post.title }}">
+                    <div class="card on-hover">
+                        <div class="card-image">
+                            <figure class="image">
+                                <picture>
+                                    {% thumbnail post.image "600x300" format="WEBP" as webp %}
+                                    <source data-srcset="{{ webp.url }}" type="image/webp">
+                                    {% endthumbnail %}
+                                    {% thumbnail post.image "600x300" format="JPEG" as jpeg %}
+                                    <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
+                                    {% endthumbnail %}
+                                    {% thumbnail post.image "150x75" format="JPEG" as jpeg %}
+                                    <source srcset="{{ jpeg.url }}" type="image/jpeg">
+                                    {% endthumbnail %}
+                                    <img class="lazyload blur-up" alt="{{ post.title }}">
+                                </picture>
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <p class="title is-4">{{ post.title }}</p>
+                                <p class="subtitle is-6">{{ post.published }} — {{ post.read_time }}
+                                    {% if post.read_time > 1 %}mins{% else %}min{% endif %}</p>
+                                <p class="summary">{{ post.summary }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</article>
+{% if article.latex_support %}
+<script type="text/javascript" async nonce="{{ request.csp_nonce }}"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+{% endif %}
+<style type="text/css">
+    @media print {
+
+        nav,
+        .article__cover-image,
+        .card .media,
+        .card .title,
+        .sidebar__wrapper,
+        #carbonads,
+        .recs,
+        .cc__icon,
+        .tags,
+        footer {
+            display: none !important;
+        }
+    }
+</style>
+{% endblock content %}

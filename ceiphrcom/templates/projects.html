@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+{% load thumbnail %}
+{% load static %}
+{% load markdownify %}
+<section class="feed__cover--medium">
+    <div id="rain__wrapper">
+        <div id="rain">
+            {% for drop in rain_fall %}
+            <i class="rain__drop"></i>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section class="hero is-medium is-dark is-bold">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">
+                {{ title }}
+            </h1>
+            <h2 class="subtitle">
+                Open Source & Free to Use
+            </h2>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container slide-on-load">
+        {% for project in projects %}
+        <div class="columns">
+            <div class="column is-offset-2-widescreen is-8-widescreen">
+                <a href="{{ project.link }}" target="_blank" rel="noreferrer" aria-label="{{ project.title }}">
+                    <div class="box on-hover feed__article">
+                        <div class="feed__body">
+                            <div class="feed__info">
+                                <p class="title is-4">{{ project.title }}</p>
+                                <p class="subtitle is-6">
+                                    {% if project.active %}
+                                    {{ project.start_date }} — Present
+                                    {% else %}
+                                    {{ project.start_date }} — {{ project.end_date }}
+                                    {% endif %}
+                                </p>
+                                <p class="summary">
+                                    {{ project.summary }}
+                                    <div class="badges">
+                                        {{ project.badges | markdown | safe }}
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                        <figure class="feed__image">
+                            <picture>
+                                {% thumbnail project.image "600x300" format="WEBP" as webp %}
+                                <source data-srcset="{{ webp.url }}" type="image/webp">
+                                {% endthumbnail %}
+                                {% thumbnail project.image "600x300" format="JPEG" as jpeg %}
+                                <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
+                                {% endthumbnail %}
+                                {% thumbnail project.image "150x75" format="JPEG" as jpeg %}
+                                <source srcset="{{ jpeg.url }}" type="image/jpeg">
+                                {% endthumbnail %}
+                                <img class="lazyload blur-up" alt="{{ project.title }}">
+                            </picture>
+                        </figure>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}
