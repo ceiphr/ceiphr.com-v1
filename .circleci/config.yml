@@ -6,7 +6,7 @@ version: 2.1
 
 orbs:
   codecov: codecov/codecov@1.0.5
-
+  
 jobs:
   build:
     docker:
@@ -62,10 +62,10 @@ jobs:
             . venv/bin/activate
             coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
             coverage report
-            coverage html
+            coverage xml
 
       - codecov/upload:
-          file: {{ coverage_report_filepath }}
+          file: coverage.xml
 
       # - store_artifacts:
       #     path: htmlcov
