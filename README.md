@@ -1,7 +1,10 @@
 [![CircleCI](https://img.shields.io/circleci/build/gh/ceiphr/ceiphr.com.svg)](https://circleci.com/gh/ceiphr/ceiphr.com)
+[![CodeCov](https://img.shields.io/codecov/c/gh/ceiphr/ceiphr.com.svg)](https://codecov.io/gh/ceiphr/ceiphr.com)
+[![Libraries.io](https://img.shields.io/librariesio/github/ceiphr/ceiphr.com.svg)](https://libraries.io/github/ceiphr/ceiphr.com)
 [![HSTS Preload Status](https://img.shields.io/hsts/preload/ceiphr.com.svg)](https://hstspreload.org/?domain=ceiphr.com)
 [![Mozilla Observatory Status](https://img.shields.io/mozilla-observatory/grade/ceiphr.com.svg)](https://observatory.mozilla.org/analyze/ceiphr.com)
-[![License](https://img.shields.io/github/license/ceiphr/ceiphr.com.svg?color=limegreen)](https://github.com/ceiphr/ceiphr.com/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/ceiphr/ceiphr.com.svg)](https://github.com/ceiphr/ceiphr.com/blob/master/LICENSE)
+
 
 ## Ceiphr.com
 
@@ -17,14 +20,8 @@ Python/Django
 
 - [Django](https://www.djangoproject.com/)
 - [django-pipeline](https://django-pipeline.readthedocs.io/en/latest/)
-- [Sentry](https://sentry.io)
 - [django-otp](https://django-otp-official.readthedocs.io/en/latest/)
 - [sorl-thumbnail](https://github.com/jazzband/sorl-thumbnail)
-- [Pillow](https://python-pillow.org/)
-- [Mistune](https://github.com/lepture/mistune)
-- [Pygments](http://pygments.org/)
-- [psycopg2](https://github.com/psycopg/psycopg2)
-- [gunicorn](https://gunicorn.org/)
 
 Javascript/CSS
 
@@ -32,10 +29,6 @@ Javascript/CSS
 - [lazysizes](https://github.com/aFarkas/lazysizes)
 - [sass](https://sass-lang.com/)
 
-Fonts
-
-- [Material Design Icons](https://material.io/)
-- [IBM Plex](https://www.ibm.com/plex/)
 
 ## License
 

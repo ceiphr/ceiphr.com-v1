@@ -1,0 +1,17 @@
+{
+  "name": "ceiphr_assets",
+  "version": "1.0.0",
+  "description": "Assets for ceiphr.com front end.",
+  "main": "index.js",
+  "dependencies": {
+    "@ibm/plex": "^2.0.0",
+    "bulma": "^0.7.5",
+    "lazysizes": "^5.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ceiphr",
+  "license": "GPL-3.0"
+}
