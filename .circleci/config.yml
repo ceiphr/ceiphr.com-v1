@@ -56,7 +56,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            coverage run python ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
+            coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
             coverage report
             coverage html
 
