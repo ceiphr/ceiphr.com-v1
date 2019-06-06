@@ -56,7 +56,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            pipenv run python ceiphr_proj/manage.py test
+            pipenv run python ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
 
       - store_artifacts:
           path: test-reports
