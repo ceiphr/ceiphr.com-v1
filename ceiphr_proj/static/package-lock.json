@@ -1,0 +1,21 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "@ibm/plex": {
+      "version": "1.4.1",
+      "resolved": "https://registry.npmjs.org/@ibm/plex/-/plex-1.4.1.tgz",
+      "integrity": "sha512-Sq6TBdApZV+y4kOstaVoGy2wIxboJnyzwESMcaRbC9+kMO/5Z0sxapQmQb0foKyLVRRsmn5LEA5LeVsncFsLwA=="
+    },
+    "bulma": {
+      "version": "0.7.5",
+      "resolved": "https://registry.npmjs.org/bulma/-/bulma-0.7.5.tgz",
+      "integrity": "sha512-cX98TIn0I6sKba/DhW0FBjtaDpxTelU166pf7ICXpCCuplHWyu6C9LYZmL5PEsnePIeJaiorsTEzzNk3Tsm1hw=="
+    },
+    "lazysizes": {
+      "version": "5.0.0",
+      "resolved": "https://registry.npmjs.org/lazysizes/-/lazysizes-5.0.0.tgz",
+      "integrity": "sha512-igrN2RCmK7YBjy6w4PfKk+lfi52VrniM0jxChsCGBs8hGNv6P1RPCvMnl4kTuWIzwnTBfPlK8krxu6Mppc9fgA=="
+    }
+  }
+}

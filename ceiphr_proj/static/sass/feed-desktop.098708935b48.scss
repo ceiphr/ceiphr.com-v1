@@ -1,0 +1,47 @@
+@import "feed";
+
+.feed__cover--large {
+  height: 52rem;
+}
+
+.feed__cover--medium {
+  height: 34rem;
+}
+
+.feed__article {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+
+  .feed__body,
+  .feed__image {
+    display: block;
+  }
+
+  .feed__body {
+    width: 100%;
+  }
+
+  .feed__info {
+    padding: 1.25rem;
+    .summary {
+      margin-top: 1em;
+    }
+  }
+
+  .feed__image {
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 256px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 512px;
+    }
+  }
+}

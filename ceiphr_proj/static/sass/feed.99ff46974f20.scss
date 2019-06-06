@@ -1,0 +1,29 @@
+@import "base";
+
+.feed__cover--medium,
+.feed__cover--large {
+  // background: $info;
+  background: linear-gradient(270deg, #29323c, #485563);
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.tag:not(body).is-delete::after,
+.tag:not(body).is-delete::before {
+  color: $dark;
+}
+
+.badges {
+  p {
+    padding-top: 20px;
+  }
+
+  img {
+    padding-right: 0.5em;
+
+    &:nth-last-child(1) {
+      padding-right: 0;
+    }
+  }
+}

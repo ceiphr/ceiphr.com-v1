@@ -1,0 +1,134 @@
+@import "article";
+
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+  .article__cover-image {
+    height: 512px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .article__cover-image {
+    height: 312px;
+  }
+}
+
+.columns {
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.recs {
+  margin-top: 2em;
+  padding: 0 1.25rem 0 1.25rem;
+  padding-bottom: 48px;
+  .card {
+    a {
+      color: $dark;
+    }
+
+    .image {
+      height: 256px;
+      img {
+        height: 256px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.sidebar__widgets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @media screen and (max-width: 769px) {
+    margin-bottom: 24px;
+  }
+
+  .side_widget,
+  #carbonads {
+    height: 140px;
+    font-size: 12px;
+    display: block;
+  }
+
+  .side_widget {
+    @media screen and (min-width: 769px) and (max-width: 1023px) {
+      width: 48%;
+    }
+
+    @media screen and (max-width: 769px) {
+      width: 100%;
+    }
+  }
+}
+
+.article__tags {
+  margin-top: 0.5em;
+}
+
+.share__wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  .button {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+  }
+
+  img {
+    height: 32px;
+  }
+}
+
+.referral a {
+  display: flex;
+  color: $dark;
+
+  .referral__logo {
+    margin-right: 1em;
+    img {
+      min-height: 100px;
+      min-width: 100px;
+    }
+  }
+}
+
+#carbonads {
+  width: 100%;
+
+  & span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+
+  .carbon-img img {
+    display: block;
+  }
+
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+    color: $dark;
+  }
+
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+}

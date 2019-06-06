@@ -1,0 +1,18 @@
+@import "base";
+
+.feed__cover--medium,
+.feed__cover--large {
+  // background: $info;
+  background: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.badges p {
+  padding-top: 20px;
+}
+
+.tag {
+  height: 25px !important;
+}
