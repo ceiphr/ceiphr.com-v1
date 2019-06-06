@@ -1,4 +1,5 @@
 coverage
+codecov
 Django
 django-pipeline
 django-otp

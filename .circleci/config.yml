@@ -2,7 +2,11 @@
 #
 # Check https://circleci.com/docs/2.0/language-python/ for more details
 #
-version: 2
+version: 2.1
+
+orbs:
+  codecov: codecov/codecov@1.0.2
+
 jobs:
   build:
     docker:
@@ -59,9 +63,12 @@ jobs:
             coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
             coverage report
             coverage html
-      - store_artifacts:
-          path: htmlcov
+
+      - codecov/upload:
+          file: htmlcov
+
+      # - store_artifacts:
+      #     path: htmlcov
           
       - store_test_results:
                 path: test-results
-

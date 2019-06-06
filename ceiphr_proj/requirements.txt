@@ -1,7 +1,8 @@
+beautifulsoup4==4.7.1
 certifi==2019.3.9
 chardet==3.0.4
-coverage==4.5.3
 codecov==2.0.15
+coverage==4.5.3
 Django==2.2.1
 django-csp==3.5
 django-htmlmin==0.11.0
@@ -13,6 +14,7 @@ idna==2.8
 mistune==0.8.4
 mistune-contrib==0.1
 Pillow==6.0.0
+pkg-resources==0.0.0
 psycopg2-binary==2.8.2
 Pygments==2.4.1
 pytz==2019.1

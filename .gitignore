@@ -245,7 +245,5 @@ typings/
 pyvenv.cfg
 pip-selfcheck.json
 
-ceiphrcom/ceiphrcom/env_config.py
-ceiphrcom/static/
-blog/migrations/
-portfolio/migrations/
+ceiphr_proj/ceiphr/env_config.py
+ceiphr_proj/static/
