@@ -59,10 +59,8 @@ jobs:
             coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
             coverage report
             coverage html
-
       - store_artifacts:
-          path: test-reports
-          destination: test-reports
+          path: htmlcov
           
       - store_test_results:
                 path: test-results
