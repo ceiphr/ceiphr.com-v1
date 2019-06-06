@@ -56,7 +56,9 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            pipenv run python ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
+            pipenv coverage run python ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
+            pipenv coverage report
+            pipenv coverage html
 
       - store_artifacts:
           path: test-reports
