@@ -3,9 +3,12 @@ version: '3'
 services:
   db:
     image: postgres
-  web:
+  django:
     build: .
-    command: python ceiphr_proj/manage.py runserver 0.0.0.0:8000 --settings=ceiphr.settings.production
+    command: >
+      bash -c '
+      python ceiphr_proj/manage.py collectstatic --no-input &&
+      python ceiphr_proj/manage.py runserver 0.0.0.0:8000 --settings=ceiphr.settings.development'
     volumes:
       - .:/ceiphrcom
     ports:
@@ -15,7 +18,10 @@ services:
   migration:
     build: .
     image: app
-    command: python ceiphr_proj/manage.py migrate
+    command: >
+      bash -c '
+        python ceiphr_proj/manage.py makemigrations &&
+        python ceiphr_proj/manage.py migrate'
     volumes:
       - .:/ceiphrcom
     links:

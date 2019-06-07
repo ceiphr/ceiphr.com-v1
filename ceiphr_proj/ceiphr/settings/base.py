@@ -230,17 +230,11 @@ PIPELINE = {
 
 # Sass compiler for coverting scss files to post-processed css
 
+PIPELINE['SASS_BINARY'] = os.path.join(BASE_DIR, 'node_modules/node-sass/bin/node-sass')
+
 PIPELINE['COMPILERS'] = (
     'pipeline.compilers.sass.SASSCompiler',
 )
-
-PIPELINE['SASS_BINARY'] = os.path.join(BASE_DIR, 'node_modules/sass/sass.js')
-
-# Custom css and js compressors
-
-PIPELINE['CSS_COMPRESSOR'] = 'pipeline.compressors.yuglify.YuglifyCompressor'
-
-PIPELINE['JS_COMPRESSOR'] = 'pipeline.compressors.yuglify.YuglifyCompressor'
 
 # Media files
 

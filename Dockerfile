@@ -6,5 +6,3 @@ COPY requirements.txt /ceiphrcom/
 RUN pip install -U pip
 RUN pip install -r requirements.txt
 COPY . /ceiphrcom/
-# TODO
-# RUN python /ceiphrcom/ceiphr_proj/manage.py collectstatic --noinput

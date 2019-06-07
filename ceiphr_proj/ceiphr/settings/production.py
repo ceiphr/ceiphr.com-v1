@@ -36,29 +36,29 @@ DATABASES = {
 
 # Sentry error logging sdk
 
-# sentry_sdk.init(
-#     dsn= env_config.sentry_dsn ,
-#     integrations=[DjangoIntegration()]
-# )
+sentry_sdk.init(
+    dsn= env_config.sentry_dsn ,
+    integrations=[DjangoIntegration()]
+)
 
 # Production config security hardening
 
-# SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = True
 
-# SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
-# CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
-# SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
 
-# SECURE_BROWSER_XSS_FILTER = True
+SECURE_BROWSER_XSS_FILTER = True
 
-# SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_PRELOAD = True
 
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-# X_FRAME_OPTIONS = 'DENY'
+X_FRAME_OPTIONS = 'DENY'
 
 # One year strict transport security expiration
 
-# SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_SECONDS = 31536000
