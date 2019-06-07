@@ -3,7 +3,9 @@ import os
 import ceiphr.settings.env_config as env_config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Base Directory has "/../" appended because creating a settings 
+# folder caused the base directory to be "ceiphr" instead of "ceiphr_proj."
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__ + '/../')))
 
 SECRET_KEY = env_config.secret_key
 
