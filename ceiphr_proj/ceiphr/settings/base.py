@@ -234,6 +234,8 @@ PIPELINE['COMPILERS'] = (
     'pipeline.compilers.sass.SASSCompiler',
 )
 
+PIPELINE['SASS_BINARY'] = os.path.join(BASE_DIR, 'node_modules/sass/sass.js')
+
 # Custom css and js compressors
 
 PIPELINE['CSS_COMPRESSOR'] = 'pipeline.compressors.yuglify.YuglifyCompressor'
