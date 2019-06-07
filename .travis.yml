@@ -1,6 +1,9 @@
 language: python
 python: "3.6"
 
+virtualenv:
+  system_site_packages: true
+
 sudo: false
 
 services:
@@ -10,9 +13,8 @@ services:
 install:
 # - docker-compose pull
 # - docker-compose build
-- python -m venv venv
-- . venv/bin/activate
-- pip install -r requirements.txt
+# - pip install -r requirements.txt
+# - pip install .
 
 postgres:
   adapter: postgresql
