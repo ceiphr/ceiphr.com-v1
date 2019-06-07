@@ -9,7 +9,7 @@ SECRET_KEY = env_config.secret_key
 
 ADMIN_ENABLED = True
 
-ALLOWED_HOSTS = ['ceiphr.com', 'staging.ceiphr.com', '127.0.0.1', '104.248.5.8']
+ALLOWED_HOSTS = ['ceiphr.com', 'staging.ceiphr.com', '127.0.0.1', '0.0.0.0']
 
 # Generic Settings
 
