@@ -8,9 +8,8 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'circle_test',
-        'USER': 'root',
-        # 'PASSWORD': env_config.postgres_PW,
+        'NAME': 'travis_ci_test',
+        'USER': 'postgres',
         'HOST': 'localhost',
         'PORT': '',
     }

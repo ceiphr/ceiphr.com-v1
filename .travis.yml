@@ -1,0 +1,28 @@
+language: python
+sudo: false
+
+services:
+- docker
+- postgresql
+
+install:
+# - docker-compose pull
+# - docker-compose build
+- python3 -m venv venv
+- . venv/bin/activate
+- pip install -r requirements.txt
+
+postgres:
+  adapter: postgresql
+  database: travis_ci_test
+  username: postgres
+
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+
+script:
+  - . venv/bin/activate
+  - coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
+
+after_success:
+- codecov
