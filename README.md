@@ -1,10 +1,9 @@
 [![CircleCI](https://img.shields.io/circleci/build/gh/ceiphr/ceiphr.com.svg)](https://circleci.com/gh/ceiphr/ceiphr.com)
 [![CodeCov](https://img.shields.io/codecov/c/gh/ceiphr/ceiphr.com.svg)](https://codecov.io/gh/ceiphr/ceiphr.com)
-[![Libraries.io](https://img.shields.io/librariesio/github/ceiphr/ceiphr.com.svg)](https://libraries.io/github/ceiphr/ceiphr.com)
-[![HSTS Preload Status](https://img.shields.io/hsts/preload/ceiphr.com.svg)](https://hstspreload.org/?domain=ceiphr.com)
-[![Mozilla Observatory Status](https://img.shields.io/mozilla-observatory/grade/ceiphr.com.svg)](https://observatory.mozilla.org/analyze/ceiphr.com)
 [![License](https://img.shields.io/github/license/ceiphr/ceiphr.com.svg)](https://github.com/ceiphr/ceiphr.com/blob/master/LICENSE)
-
+<!-- [![HSTS Preload Status](https://img.shields.io/hsts/preload/ceiphr.com.svg)](https://hstspreload.org/?domain=ceiphr.com) -->
+<!-- [![Mozilla Observatory Status](https://img.shields.io/mozilla-observatory/grade/ceiphr.com.svg)](https://observatory.mozilla.org/analyze/ceiphr.com) -->
+<!-- [![Libraries.io](https://img.shields.io/librariesio/github/ceiphr/ceiphr.com.svg)](https://libraries.io/github/ceiphr/ceiphr.com) -->
 
 ## Ceiphr.com
 
