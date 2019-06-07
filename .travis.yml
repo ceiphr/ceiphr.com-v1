@@ -10,8 +10,6 @@ services:
 # install:
 # - docker-compose pull
 # - docker-compose build
-# - pip install -r requirements.txt
-# - pip install .
 
 postgres:
   adapter: postgresql
