@@ -10,7 +10,7 @@ services:
 - docker
 - postgresql
 
-install:
+# install:
 # - docker-compose pull
 # - docker-compose build
 # - pip install -r requirements.txt
@@ -25,7 +25,6 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 
 script:
-  - . venv/bin/activate
   - coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
 
 after_success:
