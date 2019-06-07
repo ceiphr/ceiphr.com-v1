@@ -1,5 +1,9 @@
 @import "article";
 
+/**********************************
+Mobile Vs. Tablet Tweaks
+**********************************/
+
 @media screen and (min-width: 769px) and (max-width: 1023px) {
   .article__cover-image {
     height: 26em;
@@ -12,12 +16,22 @@
   }
 }
 
+/**********************************
+Article Body
+**********************************/
+
 .columns {
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
 }
 
+// Article Information Footer
+.article__tags {
+  margin-top: 0.5em;
+}
+
+// Recommendations
 .recs {
   margin-top: 2em;
   padding: 0 1.25rem 0 1.25rem;
@@ -38,6 +52,7 @@
   }
 }
 
+// Sidebar
 .sidebar__widgets {
   display: flex;
   flex-wrap: wrap;
@@ -60,10 +75,6 @@
       width: 100%;
     }
   }
-}
-
-.article__tags {
-  margin-top: 0.5em;
 }
 
 .share__wrapper {
@@ -96,6 +107,7 @@
   }
 }
 
+// Carbon Ads
 #carbonads {
   & span {
     position: relative;

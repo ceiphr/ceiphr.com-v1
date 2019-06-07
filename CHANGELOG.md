@@ -1,4 +1,5 @@
 # Ceiphr.com Changelog
+
 All notable changes to the latest release of this project are documented in this post.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
@@ -7,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.2] - 2019-05-01
 
 ### Changed
+
+- Rebased from Gitlab to Github
 - Replaced MaterializeCSS with Bulma
 - Rewrote all Django templates
 - Rewrote Sass files
@@ -14,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Split database app into portfolio and blog apps
 
 ### Removed
+
 - Removed "Events" page
 - Removed "Skills" page
 - Removed "Contact" page
@@ -21,7 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed SendGrid
 
 ## [0.2.1] - 2019-03-30
+
 ### Added
+
 - Carbon Ads integrated **on article template only** (Yaaaay!)
 - Digital Ocean spaces CDN added under the `cdn` subdomain (i.e. [cdn.ceiphr.com](https://cdn.ceiphr.com))
 - Article images are now interactive
@@ -32,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Sitemap.xml generation system
 
 ### Changed
+
 - All fonts changed to the superior IBM Plex
 - Integrated header image into the sites main header
 - Skills now have categories
@@ -42,13 +49,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All link text is now light-blue
 
 ### Removed
+
 - Removed "Events" from front page
 
 ### Security
+
 - Reduced SSL session caching time
 
 ## [0.2.0] - 2019-03-30
+
 ### Added
+
 - Front page with a mixed feed from projects/blog/events tabs
 - Blogging system added with markdown and syntax highlighting support
 - "Changelog" tab dedicated to changes made to all of my side projects
@@ -57,6 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Sitemap.xml generation system
 
 ### Changed
+
 - All images are now optimized using the WebP image format
 - All images have a fallback JPEG version (for Apple devices)
 - Rain/title cover is centered properly
@@ -69,8 +81,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README credits updated for new resources
 
 ### Removed
+
 - Confidence system in skills
 
 ### Security
+
 - Admin panel hidden with hashed URL
 - Admin login requires TOTP

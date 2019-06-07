@@ -1,7 +1,7 @@
 @import "article";
 
 /**********************************
-Article Body
+On-load Animations
 **********************************/
 
 .slide-on-load {
@@ -19,11 +19,27 @@ Article Body
   }
 }
 
+/**********************************
+Article Header
+**********************************/
+
 .article__cover-image {
   height: 512px;
 }
 
+/**********************************
+Article Body
+**********************************/
+
 article {
+  .article__body {
+    padding: 1em;
+    margin: 1em 0 1em 0;
+    background: $white;
+  }
+
+  // Article Information Footer
+
   .article__info {
     display: flex;
     justify-content: space-between;
@@ -36,19 +52,16 @@ article {
     }
   }
 
-  .article__body {
-    padding: 1em;
-    margin: 1em 0 1em 0;
-    background: $white;
-  }
-
+  // Recommendations
   .recs {
     margin-top: 2em;
     padding-bottom: 48px;
+
     .card {
       a {
         color: $dark;
       }
+
       .card-image {
         overflow: hidden;
         img {
@@ -60,10 +73,37 @@ article {
   }
 }
 
-/*
-Carbon Ads
-*/
+// Sidebar
+.sidebar__wrapper {
+  position: -webkit-sticky;
+  position: sticky;
 
+  top: 0;
+  padding-top: 1.5em;
+
+  .sidebar__widgets {
+    margin-bottom: 24px;
+  }
+
+  .side_widget {
+    font-size: 12px;
+  }
+
+  a {
+    color: $dark;
+  }
+}
+
+.share__wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    height: 24px;
+  }
+}
+
+// Carbon Ads
 #carbonads {
   width: 100%;
 }
@@ -75,6 +115,7 @@ Carbon Ads
 
 .carbon-img {
   display: block;
+
   img {
     width: 100% !important;
     max-width: 100% !important;
@@ -95,32 +136,4 @@ Carbon Ads
   font-size: 8px;
   letter-spacing: 1px;
   line-height: 1;
-}
-
-.sidebar__wrapper {
-  position: -webkit-sticky;
-  position: sticky;  
-  
-  top: 0;
-  padding-top: 1.5em;
-
-  .sidebar__widgets {
-    margin-bottom: 24px;
-  }
-
-  .side_widget {
-    font-size: 12px;
-  }
-
-  a {
-    color: $dark;
-  }
-}
-
-.share__wrapper {
-  display: flex;
-  justify-content: space-between;
-  img {
-    height: 24px;
-  }
 }

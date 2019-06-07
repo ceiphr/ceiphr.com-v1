@@ -1,5 +1,9 @@
 @import "base";
 
+/**********************************
+Feed Header
+**********************************/
+
 .feed__cover--medium,
 .feed__cover--large {
   // background: $info;
@@ -17,6 +21,10 @@
 .tag:not(body).is-delete::before {
   color: $dark;
 }
+
+/**********************************
+Feed Content
+**********************************/
 
 .badges {
   p {

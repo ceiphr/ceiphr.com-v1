@@ -1,4 +1,7 @@
-// Rain animation
+/**********************************
+Rain container
+**********************************/
+
 #rain__wrapper {
   height: 100%;
   width: 100%;
@@ -23,6 +26,10 @@
   position: absolute;
   overflow: hidden;
 }
+
+/**********************************
+Rain drop rendering
+**********************************/
 
 .rain__drop {
   background: white;
