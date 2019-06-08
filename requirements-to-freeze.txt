@@ -12,5 +12,3 @@ qrcode
 sorl-thumbnail
 Pillow
 sentry-sdk
-gunicorn
-psycopg2-binary

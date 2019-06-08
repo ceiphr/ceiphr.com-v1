@@ -230,8 +230,6 @@ PIPELINE = {
 
 # Sass compiler for coverting scss files to post-processed css
 
-PIPELINE['SASS_BINARY'] = os.path.join(BASE_DIR, 'node_modules/node-sass/bin/node-sass')
-
 PIPELINE['COMPILERS'] = (
     'pipeline.compilers.sass.SASSCompiler',
 )
