@@ -7,10 +7,6 @@ services:
   - docker
   - postgresql
 
-before_install:
-  - docker -v
-  - docker login -u="$DOCKER_USERNAME" --password-stdin
-
 install:
   - docker-compose up -d
 
@@ -24,6 +20,12 @@ before_script:
 
 script:
   - docker-compose exec django sh -c "coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci"
+
+deploy:
+  provider: script
+  script: bash .docker_push
+  on:
+    branch: master
 
 after_success:
   - codecov
