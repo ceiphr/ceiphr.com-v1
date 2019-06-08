@@ -11,5 +11,4 @@ Pygments
 qrcode
 sorl-thumbnail
 Pillow
-psycopg2
 sentry-sdk
