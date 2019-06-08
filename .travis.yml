@@ -4,18 +4,15 @@ python: "3.6"
 sudo: false
 
 services:
-- docker
-- postgresql
+  - docker
+  - postgresql
 
-# before_install:
-#   - docker-compose build -t ceiphr/ceiphr.com .
-#   - docker run -d -p 127.0.0.1:80:4567 ceiphr/ceiphr.com /bin/sh -c "cd /root/ceiphr.com; bundle exec foreman start;"
-#   - docker ps -a
-#   - docker run ceiphr/ceiphr.com /bin/sh -c "cd /root/ceiphr.com; bundle exec rake test"
+before_install:
+  - docker -v
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 
 install:
-- docker-compose build
-- docker-compose up
+  - docker-compose up -d
 
 postgres:
   adapter: postgresql
@@ -26,7 +23,7 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 
 script:
-  - coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
+  - docker-compose exec django sh -c "coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci"
 
 after_success:
-- codecov
+  - codecov
