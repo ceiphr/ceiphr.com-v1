@@ -14,8 +14,8 @@ services:
 #   - docker run ceiphr/ceiphr.com /bin/sh -c "cd /root/ceiphr.com; bundle exec rake test"
 
 install:
-- docker-compose pull
 - docker-compose build
+- docker-compose up
 
 postgres:
   adapter: postgresql
