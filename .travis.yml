@@ -9,7 +9,7 @@ services:
 
 before_install:
   - docker -v
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker login -u="$DOCKER_USERNAME" --password-stdin
 
 install:
   - docker-compose up -d
