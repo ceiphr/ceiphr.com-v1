@@ -20,8 +20,9 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 
 script:
+  # TODO https://docs.codecov.io/docs/testing-with-docker
   - ci_env=`bash <(curl -s https://codecov.io/env)`
-  - docker-compose exec -e $ci_env django sh -c "coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci"
+  - docker-compose exec django sh -e ci_env=$ci_env -c "coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci"
 
 deploy:
   provider: script
