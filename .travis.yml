@@ -28,4 +28,4 @@ deploy:
     branch: master
 
 after_success:
-  - codecov
+  - docker-compose exec django sh -c "codecov"

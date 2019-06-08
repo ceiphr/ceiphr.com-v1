@@ -3,7 +3,10 @@ version: '3'
 services:
   db:
     image: postgres
+
   django:
+    container_name: ceiphr.com
+    image: ceiphr/ceiphr.com
     build: .
     command: python3 /ceiphrcom/ceiphr_proj/manage.py runserver 0.0.0.0:8000 --settings=ceiphr.settings.development
     volumes:
@@ -12,9 +15,10 @@ services:
       - "8000:8000"
     depends_on:
       - migration
+
   migration:
     build: .
-    image: app
+    image: ceiphr/ceiphr.com
     command: >
       /bin/sh -c '
         python3 /ceiphrcom/ceiphr_proj/manage.py makemigrations &&
