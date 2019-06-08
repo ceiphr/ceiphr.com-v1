@@ -8,6 +8,7 @@ RUN apk add --update \
     nodejs \
     nodejs-npm \
     py-pip \
+    postgresql-dev \
     jpeg-dev \
     zlib-dev \
   && python3 -m pip install virtualenv \
