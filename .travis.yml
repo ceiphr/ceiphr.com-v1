@@ -20,7 +20,7 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 
 script:
-  - coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
+  - docker-compose exec django sh -c "coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci"
 
 deploy:
   provider: script
@@ -29,4 +29,4 @@ deploy:
     branch: master
 
 after_success:
-  - codecov
+  - docker-compose exec django sh -c "codecov"
