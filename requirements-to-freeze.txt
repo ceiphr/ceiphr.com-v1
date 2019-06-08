@@ -8,6 +8,7 @@ django-htmlmin
 mistune
 mistune_contrib
 Pygments
+psycopg2-binary
 qrcode
 sorl-thumbnail
 Pillow
