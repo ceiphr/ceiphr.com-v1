@@ -7,6 +7,7 @@ services:
   - docker
   - postgresql
 
+# Ensuring docker build works
 install:
   - docker-compose up -d
 
@@ -19,7 +20,7 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 
 script:
-  - docker-compose exec django sh -c "coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci"
+  - coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
 
 deploy:
   provider: script
@@ -28,4 +29,4 @@ deploy:
     branch: master
 
 after_success:
-  - docker-compose exec django sh -c "codecov"
+  - codecov
