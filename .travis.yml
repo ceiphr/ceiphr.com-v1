@@ -7,15 +7,15 @@ services:
 - docker
 - postgresql
 
-before_install:
-  - docker-compose build -t ceiphr/ceiphr.com .
-  - docker run -d -p 127.0.0.1:80:4567 ceiphr/ceiphr.com /bin/sh -c "cd /root/ceiphr.com; bundle exec foreman start;"
-  - docker ps -a
-  - docker run ceiphr/ceiphr.com /bin/sh -c "cd /root/ceiphr.com; bundle exec rake test"
+# before_install:
+#   - docker-compose build -t ceiphr/ceiphr.com .
+#   - docker run -d -p 127.0.0.1:80:4567 ceiphr/ceiphr.com /bin/sh -c "cd /root/ceiphr.com; bundle exec foreman start;"
+#   - docker ps -a
+#   - docker run ceiphr/ceiphr.com /bin/sh -c "cd /root/ceiphr.com; bundle exec rake test"
 
-# install:
-# - docker-compose pull
-# - docker-compose build
+install:
+- docker-compose pull
+- docker-compose build
 
 postgres:
   adapter: postgresql
