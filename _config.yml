@@ -1,2 +1,4 @@
 gems:
   - jekyll-redirect-from
+  
+redirect_to: https://ceiphr.com
