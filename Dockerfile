@@ -20,7 +20,7 @@ ENV LIBRARY_PATH=/lib:/usr/lib
 # Create project directory and copy requirements
 RUN mkdir /ceiphrcom
 WORKDIR /ceiphrcom
-COPY requirements.txt /ceiphrcom/
+COPY requirements/requirements.txt /ceiphrcom/
 
 # Install node modules
 RUN npm config set user 0
