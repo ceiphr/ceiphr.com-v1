@@ -3,6 +3,8 @@ import datetime
 
 from .models import Profile, Project
 
+# TODO Write tests for portfolio logic
+
 class ProjectModelTests(TestCase):
 
     def test_start_date_before_end_date(self):

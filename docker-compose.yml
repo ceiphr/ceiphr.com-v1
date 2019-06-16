@@ -8,24 +8,14 @@ services:
     container_name: ceiphr.com
     image: ceiphr/ceiphr.com
     build: .
-    command: python3 /ceiphrcom/ceiphr_proj/manage.py runserver 0.0.0.0:8000 --settings=ceiphr.settings.development
-    volumes:
-      - .:/ceiphrcom
-    ports:
-      - "8000:8000"
-    depends_on:
-      - migration
-
-  migration:
-    build: .
-    image: ceiphr/ceiphr.com
     command: >
       /bin/sh -c '
+        python3 /ceiphrcom/ceiphr_proj/manage.py runserver 0.0.0.0:8000 --settings=ceiphr.settings.development &&
         python3 /ceiphrcom/ceiphr_proj/manage.py makemigrations &&
         python3 /ceiphrcom/ceiphr_proj/manage.py migrate'
     volumes:
       - .:/ceiphrcom
-    links:
-      - db
+    ports:
+      - "8000:8000"
     depends_on:
       - db

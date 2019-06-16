@@ -6,12 +6,16 @@ from django.utils.text import slugify
 from sorl.thumbnail import ImageField
 import datetime, math
 
+
 class Tag(models.Model):
     name = models.CharField(default="", max_length=50)
+
     class Meta:
-        ordering = ['name']
+        ordering = ["name"]
+
     def __str__(self):
         return self.name
+
 
 class Article(models.Model):
     title = models.CharField(default="", max_length=255)
@@ -24,17 +28,17 @@ class Article(models.Model):
     body = models.TextField(default="", max_length=20000)
     read_time = models.IntegerField(default=0)
 
-    image = ImageField(upload_to='articles/%Y/%m/%d')
+    image = ImageField(upload_to="articles/%Y/%m/%d")
 
-    modified = models.DateField(default=datetime.date.today) 
-    published = models.DateField(default=datetime.date.today) 
+    modified = models.DateField(default=datetime.date.today)
+    published = models.DateField(default=datetime.date.today)
 
     tags = models.ManyToManyField(Tag)
 
     def save(self, *args, **kwargs):
-        wpm = 265 # Average amount of words read per minute
-        wl = 5 # Average word length
-        time = len(self.body)//(wpm * 5)
+        wpm = 265  # Average amount of words read per minute
+        wl = 5  # Average word length
+        time = len(self.body) // (wpm * 5)
 
         if time == 0:
             self.read_time = 1
@@ -43,13 +47,13 @@ class Article(models.Model):
 
         if not self.id:
             self.slug = slugify(self.title)
-        super(Article, self).save(*args, **kwargs) 
+        super(Article, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return "/blog/%s" % self.slug
 
     class Meta:
-        ordering = ['-published']
+        ordering = ["-published"]
 
     def __str__(self):
         return self.title
