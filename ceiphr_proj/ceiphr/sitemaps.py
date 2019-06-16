@@ -3,6 +3,7 @@ from django.contrib.sitemaps import Sitemap
 
 from blog.models import Article
 
+
 # Static pages
 class StaticViewSitemap(Sitemap):
     changefreq = 'daily'
@@ -13,6 +14,7 @@ class StaticViewSitemap(Sitemap):
 
     def location(self, item):
         return reverse(item)
+
 
 # Blog pages
 class BlogSitemap(Sitemap):

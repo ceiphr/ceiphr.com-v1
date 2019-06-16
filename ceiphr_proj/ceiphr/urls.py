@@ -23,13 +23,15 @@ from django_otp.admin import OTPAdminSite
 from .sitemaps import BlogSitemap, StaticViewSitemap
 from .feeds import RssSiteNewsFeed, AtomSiteNewsFeed
 
-from blog.views import GetArticle, GetLargeFeed, GetFeed, handler404, handler500
+from blog.views import GetArticle, \
+    GetLargeFeed, GetFeed, handler404, handler500
 from portfolio.views import GetProjects
 
 import ceiphr.settings.env_config as env_config
 from django.conf import settings
 
 # Django 404 and 500 error catcher
+# TODO Fix the way this is implemented
 handler404 = "blog.views.handler404"
 handler500 = "blog.views.handler500"
 
@@ -67,7 +69,8 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += [path("admin", admin.site.urls)]
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
 
     # Admin site details
     admin.site.site_header = "Ceiphr Dashboard: Development"

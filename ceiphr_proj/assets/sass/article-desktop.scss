@@ -5,18 +5,19 @@ On-load Animations
 **********************************/
 
 .slide-on-load {
-  animation: slide_on_load 1s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+    animation: slide_on_load 1s cubic-bezier(0.79, 0.14, 0.15, 0.86);
 
-  @keyframes slide_on_load {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
+    @keyframes slide_on_load {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0px);
+        }
     }
-    100% {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-  }
 }
 
 /**********************************
@@ -24,7 +25,7 @@ Article Header
 **********************************/
 
 .article__cover-image {
-  height: 512px;
+    height: 512px;
 }
 
 /**********************************
@@ -32,108 +33,112 @@ Article Body
 **********************************/
 
 article {
-  .article__body {
-    padding: 1em;
-    margin: 1em 0 1em 0;
-    background: $white;
-  }
-
-  // Article Information Footer
-
-  .article__info {
-    display: flex;
-    justify-content: space-between;
-    .article__pub,
-    .article__tag {
-      display: block;
+    .article__body {
+        padding: 1em;
+        margin: 1em 0 1em 0;
+        background: $white;
     }
-    .article__tags {
-      margin: 0.5em 0 0.5em 0;
-    }
-  }
 
-  // Recommendations
-  .recs {
-    margin-top: 2em;
-    padding-bottom: 48px;
+    // Article Information Footer
 
-    .card {
-      a {
-        color: $dark;
-      }
+    .article__info {
+        display: flex;
+        justify-content: space-between;
 
-      .card-image {
-        overflow: hidden;
-        img {
-          object-fit: cover;
-          height: auto;
+        .article__pub,
+        .article__tag {
+            display: block;
         }
-      }
+
+        .article__tags {
+            margin: 0.5em 0 0.5em 0;
+        }
     }
-  }
+
+    // Recommendations
+    .recs {
+        margin-top: 2em;
+        padding-bottom: 48px;
+
+        .card {
+            a {
+                color: $dark;
+            }
+
+            .card-image {
+                overflow: hidden;
+
+                img {
+                    object-fit: cover;
+                    height: auto;
+                }
+            }
+        }
+    }
 }
 
 // Sidebar
 .sidebar__wrapper {
-  position: -webkit-sticky;
-  position: sticky;
+    position: -webkit-sticky;
+    position: sticky;
 
-  top: 0;
-  padding-top: 1.5em;
+    top: 0;
+    padding-top: 1.5em;
 
-  .sidebar__widgets {
-    margin-bottom: 24px;
-  }
+    .sidebar__widgets {
+        margin-bottom: 24px;
+    }
 
-  .side_widget {
-    font-size: 12px;
-  }
+    .side_widget {
+        font-size: 12px;
+    }
 
-  a {
-    color: $dark;
-  }
+    a {
+        color: $dark;
+    }
 }
 
 .share__wrapper {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 
-  img {
-    height: 24px;
-  }
+    img {
+        height: 24px;
+    }
 }
 
 // Carbon Ads
 #carbonads {
-  width: 100%;
+    width: 100%;
 }
 
 #carbonads span {
-  display: block;
-  overflow: hidden;
+    display: block;
+    overflow: hidden;
 }
 
 .carbon-img {
-  display: block;
+    display: block;
 
-  img {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-  margin-bottom: 8px;
-  line-height: 1;
+    img {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    margin-bottom: 8px;
+    line-height: 1;
 }
 
 .carbon-text {
-  margin-bottom: 8px;
-  display: block;
-  color: #637381;
+    margin-bottom: 8px;
+    display: block;
+    color: #637381;
 }
 
 .carbon-poweredby {
-  text-transform: uppercase;
-  display: block;
-  font-size: 8px;
-  letter-spacing: 1px;
-  line-height: 1;
+    text-transform: uppercase;
+    display: block;
+    font-size: 8px;
+    letter-spacing: 1px;
+    line-height: 1;
 }

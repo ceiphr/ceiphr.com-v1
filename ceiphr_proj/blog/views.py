@@ -3,13 +3,13 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from django.http import HttpResponse, HttpResponseRedirect, Http404
-from csp.decorators import csp_update
+from django.http import Http404
 from sentry_sdk import capture_message, last_event_id
 
 from .models import Article
 from django.conf import settings
 from portfolio.models import Profile
+
 
 # Error catching with full page - 404
 def handler404(request, exception, template_name="prompt.html"):
@@ -85,7 +85,8 @@ class GetArticle(TemplateView):
                 "article": Article.objects.get(slug=slug),
                 "is_article": True,
                 "tags": Article.objects.get(slug=slug).tags.all(),
-                "recs": Article.objects.exclude(public=False).exclude(slug=slug),
+                "recs": Article.objects.exclude(public=False)
+                .exclude(slug=slug),
                 "title": Article.objects.get(slug=slug).title,
                 "avatar": Profile.objects.first().logo,
                 "resume_url": Profile.objects.first().resume_url,
@@ -107,7 +108,8 @@ class GetFeed(TemplateView):
         context = {
             "is_feed": True,
             "rain_fall": range(20),
-            "desc": "Articles about computer science and technology from Ari Birnbaum.",
+            "desc": "Articles about computer science \
+                and technology from Ari Birnbaum.",
             "avatar": Profile.objects.first().logo,
             "resume_url": Profile.objects.first().resume_url,
             "favicon": Profile.objects.first().favicon,
@@ -117,10 +119,12 @@ class GetFeed(TemplateView):
         if tag:
             context["tag"] = tag
             context["title"] = tag
-            context["articles"] = Article.objects.filter(tags__name=tag).exclude(
-                public=False
-            )
-            if not Article.objects.filter(tags__name=tag).exclude(public=False):
+            context["articles"] = Article.objects \
+                .filter(tags__name=tag) \
+                .exclude(public=False)
+
+            if not Article.objects \
+                    .filter(tags__name=tag).exclude(public=False):
                 raise Http404
         else:
             context["title"] = "All Articles"

@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils.text import slugify
 from sorl.thumbnail import ImageField
-import datetime, math
+import datetime
 
 
 class Tag(models.Model):
@@ -38,7 +38,7 @@ class Article(models.Model):
     def save(self, *args, **kwargs):
         wpm = 265  # Average amount of words read per minute
         wl = 5  # Average word length
-        time = len(self.body) // (wpm * 5)
+        time = len(self.body) // (wpm * wl)
 
         if time == 0:
             self.read_time = 1

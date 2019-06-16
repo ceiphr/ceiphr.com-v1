@@ -40,17 +40,17 @@
                         </div>
                         <figure class="feed__image">
                             <picture>
-                                    {% thumbnail article.image "600x300" format="WEBP" as webp %}
-                                    <source data-srcset="{{ webp.url }}" type="image/webp">
-                                    {% endthumbnail %}
-                                    {% thumbnail article.image "600x300" format="JPEG" as jpeg %}
-                                    <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
-                                    {% endthumbnail %}
-                                    {% thumbnail article.image "150x75" format="JPEG" as jpeg %}
-                                    <source srcset="{{ jpeg.url }}" type="image/jpeg">
-                                    {% endthumbnail %}
-                                    <img class="lazyload blur-up" alt="{{ article.title }}">
-                                </picture>
+                                {% thumbnail article.image "600x300" format="WEBP" as webp %}
+                                <source data-srcset="{{ webp.url }}" type="image/webp">
+                                {% endthumbnail %}
+                                {% thumbnail article.image "600x300" format="JPEG" as jpeg %}
+                                <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
+                                {% endthumbnail %}
+                                {% thumbnail article.image "150x75" format="JPEG" as jpeg %}
+                                <source srcset="{{ jpeg.url }}" type="image/jpeg">
+                                {% endthumbnail %}
+                                <img class="lazyload blur-up" alt="{{ article.title }}">
+                            </picture>
                         </figure>
                     </div>
                 </a>

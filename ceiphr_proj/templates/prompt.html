@@ -20,8 +20,12 @@
             </h2>
             {% if sentry_event_id %}
             <script>
-                Sentry.init({ dsn: 'https://64705ba551e4407cb6cc1cf33e6336d8@sentry.io/1429770' });
-                Sentry.showReportDialog({ eventId: '{{ sentry_event_id }}' })
+                Sentry.init({
+                    dsn: 'https://64705ba551e4407cb6cc1cf33e6336d8@sentry.io/1429770'
+                });
+                Sentry.showReportDialog({
+                    eventId: '{{ sentry_event_id }}'
+                })
             </script>
             {% endif %}
         </div>

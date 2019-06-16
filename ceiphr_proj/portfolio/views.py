@@ -14,7 +14,8 @@ class GetProjects(TemplateView):
             "is_feed": True,
             "rain_fall": range(20),
             "title": "My Projects",
-            "desc": "Personal side projects pertaining to computer science and technology from Ari Birnbaum.",
+            "desc": "Personal side projects pertaining to computer \
+                science and technology from Ari Birnbaum.",
             "avatar": Profile.objects.first().logo,
             "resume_url": Profile.objects.first().resume_url,
             "favicon": Profile.objects.first().favicon,

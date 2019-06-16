@@ -72,7 +72,8 @@
                         <div class="content">
                             This article is licensed under <a
                                 href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
-                                    class="cc__icon icon is-small" alt="creative commons" src="{% static 'svg/cc.svg' %}" />
+                                    class="cc__icon icon is-small" alt="creative commons"
+                                    src="{% static 'svg/cc.svg' %}" />
                                 Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>.
                             You may redistribute this article if you follow the terms of the license.
                             <br>
@@ -115,17 +116,20 @@
                         </div>
                         {% if not debug %}
                         <script async type="text/javascript" nonce="{{ request.csp_nonce }}"
-                            src="//cdn.carbonads.com/carbon.js?serve=CK7I62QM&placement=ceiphrcom"
-                            id="_carbonads_js"></script>
+                            src="//cdn.carbonads.com/carbon.js?serve=CK7I62QM&placement=ceiphrcom" id="_carbonads_js">
+                        </script>
                         {% endif %}
                     </div>
                     <div class="share__wrapper">
                         <a href="http://www.facebook.com/sharer.php?u=https://{{ request.get_host }}{{ request.get_full_path }}"
-                            target="_blank" rel="noreferrer" aria-label="facebook" class="button"><img src="{% static 'svg/facebook.svg' %}" alt="facebook" /></a>
+                            target="_blank" rel="noreferrer" aria-label="facebook" class="button"><img
+                                src="{% static 'svg/facebook.svg' %}" alt="facebook" /></a>
                         <a href="https://twitter.com/share?url=https://{{ request.get_host }}{{ request.get_full_path }}&amp;text={{ article.title }}&amp;hashtags={% for tag in tags %}{{ tag.name }}, {% endfor %}"
-                            target="_blank" rel="noreferrer" aria-label="twitter" class="button"><img src="{% static 'svg/twitter.svg' %}" alt="twitter" /></a>
+                            target="_blank" rel="noreferrer" aria-label="twitter" class="button"><img
+                                src="{% static 'svg/twitter.svg' %}" alt="twitter" /></a>
                         <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://{{ request.get_host }}{{ request.get_full_path }}"
-                            target="_blank" rel="noreferrer" aria-label="linkedin" class="button"><img src="{% static 'svg/linkedin.svg' %}" alt="linkedin" /></a>
+                            target="_blank" rel="noreferrer" aria-label="linkedin" class="button"><img
+                                src="{% static 'svg/linkedin.svg' %}" alt="linkedin" /></a>
                     </div>
                 </div>
             </div>
