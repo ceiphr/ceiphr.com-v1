@@ -2,15 +2,15 @@ FROM gliderlabs/alpine:latest
 
 # Install alpine packages
 RUN apk add --update \
-    python3 \
-    python3-dev \
-    build-base \
-    nodejs \
-    nodejs-npm \
-    py-pip \
-    postgresql-dev \
-    jpeg-dev \
-    zlib-dev \
+  python3 \
+  python3-dev \
+  build-base \
+  nodejs \
+  nodejs-npm \
+  py-pip \
+  postgresql-dev \
+  jpeg-dev \
+  zlib-dev \
   && python3 -m pip install virtualenv \
   && python3 -m pip install --upgrade pip setuptools \
   && rm -rf /var/cache/apk/*

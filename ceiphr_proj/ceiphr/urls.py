@@ -23,17 +23,11 @@ from django_otp.admin import OTPAdminSite
 from .sitemaps import BlogSitemap, StaticViewSitemap
 from .feeds import RssSiteNewsFeed, AtomSiteNewsFeed
 
-from blog.views import GetArticle, \
-    GetLargeFeed, GetFeed, handler404, handler500
+from blog.views import GetArticle, GetLargeFeed, GetFeed
 from portfolio.views import GetProjects
 
 import ceiphr.settings.env_config as env_config
 from django.conf import settings
-
-# Django 404 and 500 error catcher
-# TODO Fix the way this is implemented
-handler404 = "blog.views.handler404"
-handler500 = "blog.views.handler500"
 
 # Static URL redirects
 favicon_view = RedirectView.as_view(url="/img/favicon.ico", permanent=True)
@@ -45,30 +39,53 @@ keybase_view = RedirectView.as_view(url="/keybase.txt", permanent=True)
 sitemaps = {"static": StaticViewSitemap, "blog": BlogSitemap}
 
 urlpatterns = [
+    # Static contents for SEO
     path("favicon.ico", favicon_view),
     path("robots.txt", robots_view),
     path("humans.txt", humans_view),
     path("keybase.txt", keybase_view),
-    path("", GetLargeFeed.as_view(template_name="index.html"), name="FrontPage"),
-    path("blog/", GetFeed.as_view(template_name="blog.html"), name="Blog"),
-    path("blog/?tag=<tag>", GetFeed.as_view(template_name="blog.html")),
-    path("blog/<slug>/", GetArticle.as_view(template_name="article.html")),
+
+    # RSS/Atom Feeds
+    path("rss.xml", RssSiteNewsFeed()),
+    path("rss20.xml", RssSiteNewsFeed()),
+    path("atom.xml", AtomSiteNewsFeed()),
+
+    # Website Overview URL
+    path("",
+         GetLargeFeed.as_view(template_name="index.html"),
+         name="FrontPage"),
+
+    # Blog URLs
     path(
-        "projects/", GetProjects.as_view(template_name="projects.html"), name="Projects"
-    ),
+        "blog/",
+        GetFeed.as_view(template_name="blog/blog.html"),
+        name="Blog"),
+
+    path(
+        "blog/?tag=<tag>",
+        GetFeed.as_view(template_name="blog/blog.html")),
+
+    path(
+        "blog/<slug>/",
+        GetArticle.as_view(template_name="blog/article.html")),
+
+    # Portfolio URLs
+    path(
+        "projects/",
+        GetProjects.as_view(template_name="portfolio/projects.html"),
+        name="Projects"),
+
+    # SEO Sitemap URL
     path(
         "sitemap.xml",
         sitemap,
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),
-    path("rss.xml", RssSiteNewsFeed()),
-    path("rss20.xml", RssSiteNewsFeed()),
-    path("atom.xml", AtomSiteNewsFeed()),
 ]
 
 if settings.DEBUG:
-    urlpatterns += [path("admin", admin.site.urls)]
+    urlpatterns += [path("admin/", admin.site.urls)]
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
 
@@ -83,4 +100,3 @@ else:
     # Admin site details
     admin.site.site_header = "Ceiphr Dashboard: Production"
     admin.site.site_title = "Ceiphr: Production"
-

@@ -5,8 +5,8 @@
 	From: United States
 
 /* SITE */
-	Last update: 3/31/2019
+	Last update: 6/16/2019
 	Doctype: HTML
     Language: English
-    Frameworks: Django, MaterializeCSS
+    Frameworks: Django, Bulma
 	IDE: Visual Studio Code

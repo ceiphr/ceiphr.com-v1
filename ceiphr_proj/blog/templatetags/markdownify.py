@@ -7,6 +7,7 @@ import re
 
 register = template.Library()
 
+
 class Renderer(mistune.Renderer):
     # Code Highlighting
     def block_code(self, code, lang):
@@ -17,7 +18,8 @@ class Renderer(mistune.Renderer):
         formatter = HtmlFormatter()
         return highlight(code, lexer, formatter)
 
-@register.filter 
+
+@register.filter
 def markdown(value):
     renderer = Renderer()
     markdown = mistune.Markdown(renderer=renderer)

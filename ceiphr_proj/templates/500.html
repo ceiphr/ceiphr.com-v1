@@ -1,24 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="prompt-background">
-    <div id="rain__wrapper">
-        <div id="rain">
-            {% for drop in rain_fall %}
-            <i class="rain__drop"></i>
-            {% endfor %}
-        </div>
-    </div>
-</section>
 <section class="hero is-dark is-fullheight-with-navbar">
     <div class="hero-body prompt">
         <div class="container has-text-centered">
             <h1 class="title">
-                {{ prompt }}
+                500 — Internal Error
             </h1>
             <h2 class="subtitle">
                 <a href="/" class="button">Return to safety</a>
             </h2>
-            {% if sentry_event_id %}
             <script>
                 Sentry.init({
                     dsn: 'https://64705ba551e4407cb6cc1cf33e6336d8@sentry.io/1429770'
@@ -27,7 +17,6 @@
                     eventId: '{{ sentry_event_id }}'
                 })
             </script>
-            {% endif %}
         </div>
     </div>
 </section>

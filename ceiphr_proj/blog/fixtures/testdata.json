@@ -1,5 +1,4 @@
-[
-    {
+[{
         "model": "blog.tag",
         "pk": 1,
         "fields": {

@@ -1,0 +1,25 @@
+Django
+sentry-sdk
+
+# CI/CD
+coverage
+codecov
+
+# Django Apps
+django-pipeline
+django-otp
+django-csp
+django-htmlmin
+
+# Image Processing
+sorl-thumbnail
+Pillow
+
+# Markdown/Syntax Highlighting
+mistune
+mistune_contrib
+Pygments
+
+# PostgreSQL
+psycopg2-binary
+qrcode

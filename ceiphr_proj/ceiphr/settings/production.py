@@ -32,12 +32,11 @@ DATABASES = {
 
 
 # Security for production server use.
-# See https://docs.djangoproject.com/en/2.0/ref/middleware/#module-django.middleware.security for details.
 
 # Sentry error logging sdk
 
 sentry_sdk.init(
-    dsn= env_config.sentry_dsn ,
+    dsn=env_config.sentry_dsn,
     integrations=[DjangoIntegration()]
 )
 
