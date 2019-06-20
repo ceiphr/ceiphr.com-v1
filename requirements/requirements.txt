@@ -5,6 +5,7 @@ codecov==2.0.15
 coverage==4.5.3
 Django==2.2.2
 django-csp==3.5
+django-debug-toolbar==1.11
 django-htmlmin==0.11.0
 django-otp==0.6.0
 django-pipeline==1.6.14

@@ -7,6 +7,7 @@ codecov
 
 # Django Apps
 django-pipeline
+django-debug-toolbar
 django-otp
 django-csp
 django-htmlmin

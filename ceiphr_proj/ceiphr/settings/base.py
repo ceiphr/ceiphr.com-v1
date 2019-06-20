@@ -3,14 +3,9 @@ import os
 import ceiphr.settings.env_config as env_config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-
-# Base Directory has "/../" appended because creating a settings
-# folder caused the base directory to be "ceiphr" instead of "ceiphr_proj."
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__ + "/../")))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 SECRET_KEY = env_config.secret_key
-
-DEBUG = True
 
 ADMIN_ENABLED = True
 
@@ -172,12 +167,12 @@ PIPELINE = {
     # Convert stylesheet assets into post-processed static content
     "STYLESHEETS": {
         "feed-mobile": {
-            "source_filenames": ("sass/feed-mobile.scss"),
+            "source_filenames": ("sass/feed-mobile.scss",),
             "output_filename": "css/feed-mobile.css",
             "extra_context": {"media": "screen and (max-width: 769px)"},
         },
         "feed-desktop": {
-            "source_filenames": ("sass/feed-desktop.scss"),
+            "source_filenames": ("sass/feed-desktop.scss",),
             "output_filename": "css/feed-desktop.css",
             "extra_context": {"media": "screen and (min-width: 769px)"},
         },
