@@ -6,8 +6,8 @@ Feed Header
 
 .feed__cover--medium,
 .feed__cover--large {
-    // background: $info;
-    background: linear-gradient(270deg, #29323c, #485563);
+    background: radial-gradient(circle, #485563, #485563 1px, #29323c 1px, #29323c);
+    background-size: 32px 32px;
     width: 100%;
     position: absolute;
     top: 0;
@@ -26,16 +26,17 @@ Feed Header
 Feed Content
 **********************************/
 
-.badges {
-    p {
-        padding-top: 20px;
-    }
+.subtitle.article__detail,
+.stats {
+    font-family: $family-code;
+}
 
-    img {
-        padding-right: 0.5em;
+.stats .icon {
+    position: relative;
+    top: 2px;
+    margin-right: 4px;
 
-        &:nth-last-child(1) {
-            padding-right: 0;
-        }
+    &:not(:nth-child(1)) {
+        margin-left: 14px;
     }
 }

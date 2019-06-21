@@ -1,7 +1,8 @@
 from django.views.generic import TemplateView
 from django.conf import settings
 
-from .models import Profile, Project
+from .models import Profile
+from .services import get_repos
 
 
 class GetProjects(TemplateView):
@@ -9,7 +10,7 @@ class GetProjects(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = {
-            "projects": Project.objects.all(),
+            "projects": get_repos(),
             "is_feed": True,
             "title": "My Projects",
             "desc": "Personal side projects pertaining to computer \

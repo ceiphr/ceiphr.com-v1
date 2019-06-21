@@ -23,7 +23,6 @@ class GetLargeFeed(TemplateView):
             "favicon": Profile.objects.first().favicon,
             "debug": settings.DEBUG,
         }
-
         return context
 
 

@@ -27,46 +27,34 @@
 <section class="section">
     <div class="container slide-on-load">
         {% for project in projects %}
+        {% if forloop.first or not forloop.counter|divisibleby:2 %}
         <div class="columns">
-            <div class="column is-offset-2-widescreen is-8-widescreen">
-                <a href="{{ project.link }}" target="_blank" rel="noreferrer" aria-label="{{ project.title }}">
+            <div class="column is-offset-2-widescreen is-4-widescreen">
+        {% elif forloop.counter|divisibleby:2 %}
+            <div class="column is-4-widescreen">
+        {% endif %}
+                <a href="{{ project.html_url }}" target="_blank" rel="noreferrer" aria-label="{{ project.name }}">
                     <div class="box on-hover feed__article">
                         <div class="feed__body">
                             <div class="feed__info">
-                                <p class="title is-4">{{ project.title }}</p>
+                                <p class="title is-4">{{ project.name }}</p>
                                 <p class="subtitle is-6">
-                                    {% if project.active %}
-                                    {{ project.start_date }} — Present
-                                    {% else %}
-                                    {{ project.start_date }} — {{ project.end_date }}
-                                    {% endif %}
+                                    {{ project.description }}
                                 </p>
-                                <p class="summary">
-                                    {{ project.summary }}
-                                    <div class="badges">
-                                        {{ project.badges | markdown | safe }}
-                                    </div>
+                                <p class="stats">
+                                    <img class="icon is-small" src="{% static "svg/lang.svg" %}" alt="language"/>{{ project.language }}  
+                                    <img class="icon is-small" src="{% static "svg/star.svg" %}" alt="stars"/>{{ project.stargazers_count }} 
+                                    <img class="icon is-small" src="{% static "svg/fork.svg" %}" alt="language"/>{{ project.forks_count }}
+                                    <img class="icon is-small" src="{% static "svg/license.svg" %}" alt="language"/>{{ project.license.spdx_id }}
                                 </p>
                             </div>
                         </div>
-                        <figure class="feed__image">
-                            <picture>
-                                {% thumbnail project.image "600x300" format="WEBP" as webp %}
-                                <source data-srcset="{{ webp.url }}" type="image/webp">
-                                {% endthumbnail %}
-                                {% thumbnail project.image "600x300" format="JPEG" as jpeg %}
-                                <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
-                                {% endthumbnail %}
-                                {% thumbnail project.image "150x75" format="JPEG" as jpeg %}
-                                <source srcset="{{ jpeg.url }}" type="image/jpeg">
-                                {% endthumbnail %}
-                                <img class="lazyload blur-up" alt="{{ project.title }}">
-                            </picture>
-                        </figure>
                     </div>
                 </a>
             </div>
+        {% if forloop.last or forloop.counter|divisibleby:2 %}
         </div>
+        {% endif %}
         {% endfor %}
     </div>
 </section>

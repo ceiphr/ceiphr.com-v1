@@ -43,60 +43,51 @@
                     {{ article.body | markdown | safe }}
                 </div>
                 <br>
-                <div class="card">
-                    <div class="card-content">
-                        <p class="title is-6">Written By</p>
-                        <div class="media">
-                            <div class="media-left">
-                                <figure class="image avatar">
-                                    <picture>
-                                        {% thumbnail avatar "128x128" format="WEBP" as webp %}
-                                        <source data-srcset="{{ webp.url }}" type="image/webp">
-                                        {% endthumbnail %}
-                                        {% thumbnail avatar "128x128" format="JPEG" as jpeg %}
-                                        <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
-                                        {% endthumbnail %}
-                                        {% thumbnail avatar "32x32" format="JPEG" as jpeg %}
-                                        <source srcset="{{ jpeg.url }}" type="image/jpeg">
-                                        {% endthumbnail %}
-                                        <img class="lazyload blur-up is-rounded" alt="Ari Birnbaum">
-                                    </picture>
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <p class="title is-4">Ari Birnbaum</p>
-                                <p class="subtitle is-5"><a href="mailto:contact@ceiphr.com">contact@ceiphr.com</a></p>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            This article is licensed under <a
-                                href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
-                                    class="cc__icon icon is-small" alt="creative commons"
-                                    src="{% static 'svg/cc.svg' %}" />
-                                Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>.
-                            You may redistribute this article if you follow the terms of the license.
+                <p class="title is-6">Written By</p>
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image avatar">
+                            <picture>
+                                {% thumbnail avatar "64x64" format="WEBP" as webp %}
+                                <source srcset="{{ webp.url }}" type="image/webp">
+                                {% endthumbnail %}
+                                {% thumbnail avatar "64x64" format="JPEG" as jpeg %}
+                                <source srcset="{{ jpeg.url }}" type="image/jpeg">
+                                {% endthumbnail %}
+                                <img class="is-rounded" alt="Ari Birnbaum">
+                            </picture>
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4">Ari Birnbaum</p>
+                        <p class="subtitle is-5"><a href="mailto:contact@ceiphr.com">contact@ceiphr.com</a></p>
+                    </div>
+                </div>
+                <div class="content">
+                    <br>
+                    This article is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+                            class="cc__icon icon is-small" alt="creative commons" src="{% static 'svg/cc.svg' %}" />
+                        Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>.
+                    You may redistribute this article if you follow the terms of the license.
+                    <br>
+                    <hr>
+                    <div class="article__info">
+                        <div class="article__pub">
+                            Published on <time datetime="{{ article.published }}">{{ article.published }}</time>
+                            {% if article.published != article.modified %}
                             <br>
-                            <hr>
-                            <div class="article__info">
-                                <div class="article__pub">
-                                    Published on <time datetime="{{ article.published }}">{{ article.published }}</time>
-                                    {% if article.published != article.modified %}
-                                    <br>
-                                    <i>Last modified on <time
-                                            datetime="{{ article.modified }}">{{ article.modified }}</time></i>
-                                    {% else %}
-                                    <br>
-                                    <i>Article unmodified since published</i>
-                                    {% endif %}
-                                    <br>
-                                </div>
-                                <div class="article__tags tags is-pulled-right-desktop">
-                                    {% for tag in tags %}
-                                    <a href="/blog/?tag={{ tag.name }}"><span class="tag">{{ tag.name }}</span></a>
-                                    {% endfor %}
-                                </div>
-                            </div>
+                            <i>Last modified on <time
+                                    datetime="{{ article.modified }}">{{ article.modified }}</time></i>
+                            {% else %}
+                            <br>
+                            <i>Article unmodified since published</i>
+                            {% endif %}
+                            <br>
+                        </div>
+                        <div class="article__tags tags is-pulled-right-desktop">
+                            {% for tag in tags %}
+                            <a href="/blog/?tag={{ tag.name }}"><span class="tag">{{ tag.name }}</span></a>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
