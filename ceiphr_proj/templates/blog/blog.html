@@ -47,7 +47,7 @@
                         <div class="feed__body">
                             <div class="feed__info">
                                 <p class="title is-4">{{ article.title }}</p>
-                                <p class="subtitle is-6">{{ article.published }} — {{ article.read_time }}
+                                <p class="subtitle is-6 article__detail">{{ article.published }} — {{ article.read_time }}
                                     {% if article.read_time > 1 %}mins{% else %}min{% endif %}</p>
                                 <p class="summary">{{ article.summary }}</p>
                             </div>

@@ -30,7 +30,7 @@
                 <h1 class="title">
                     {{ title }}
                 </h1>
-                <h2 class="subtitle">
+                <h2 class="subtitle article__detail">
                     Ari Birnbaum — {{ article.published }}
                 </h2>
             </div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="media-content">
                         <p class="title is-4">Ari Birnbaum</p>
-                        <p class="subtitle is-5"><a href="mailto:contact@ceiphr.com">contact@ceiphr.com</a></p>
+                        <p class="subtitle is-5 article__detail"><a href="mailto:contact@ceiphr.com">contact@ceiphr.com</a></p>
                     </div>
                 </div>
                 <div class="content">
@@ -150,7 +150,7 @@
                         <div class="card-content">
                             <div class="content">
                                 <p class="title is-4">{{ post.title }}</p>
-                                <p class="subtitle is-6">{{ post.published }} — {{ post.read_time }}
+                                <p class="subtitle is-6 article__detail">{{ post.published }} — {{ post.read_time }}
                                     {% if post.read_time > 1 %}mins{% else %}min{% endif %}</p>
                                 <p class="summary">{{ post.summary }}</p>
                             </div>

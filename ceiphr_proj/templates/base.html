@@ -93,35 +93,44 @@
     <meta name="twitter:card" content="summary_large_image">
     <script nonce="{{ request.csp_nonce }}" type="application/ld+json">
         {
-          "@context": "https://schema.org",
-          "@type": "Article",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "{{ request.scheme }}://{{ request.get_host }}{{ request.get_full_path }}"
-          },
-          "headline": "{{ title }}",
-          "image": [
-            {% thumbnail contents.image "1920x960" format="JPEG" as jpeg %}
-            "{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}"
-            {% endthumbnail %}
-           ],
-          "datePublished": "{{ article.published }}",
-          "dateModified": "{{ article.modified }}",
-          "author": {
-            "@type": "Person",
-            "name": "Ari Birnbaum"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Ceiphr",
-            "logo": {
-              "@type": "ImageObject",
-              {% thumbnail logo "196x196" format="JPEG" as jpeg %}
-              "url": "https://{{ request.get_host }}{{ jpeg.url }}"
-              {% endthumbnail %}
-            }
-          },
-          "description": "{{ article.summary }}"
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "{{ request.scheme }}://{{ request.get_host }}{{ request.get_full_path }}"
+            },
+            "headline": "{{ title }}",
+            "image": [{
+                    % thumbnail contents.image "1920x960"
+                    format = "JPEG"
+                    as jpeg %
+                }
+                "{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}" {
+                    % endthumbnail %
+                }
+            ],
+            "datePublished": "{{ article.published }}",
+            "dateModified": "{{ article.modified }}",
+            "author": {
+                "@type": "Person",
+                "name": "Ari Birnbaum"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Ceiphr",
+                "logo": {
+                    "@type": "ImageObject",
+                    {
+                        % thumbnail logo "196x196"
+                        format = "JPEG"
+                        as jpeg %
+                    }
+                    "url": "https://{{ request.get_host }}{{ jpeg.url }}" {
+                        % endthumbnail %
+                    }
+                }
+            },
+            "description": "{{ article.summary }}"
         }
     </script>
     {% else %}
@@ -139,30 +148,51 @@
     <meta name="twitter:card" content="summary">
     <script nonce="{{ request.csp_nonce }}" type="application/ld+json">
         {
-        "@context": "http://schema.org",
-         "@type": "Organization",
-         "name": "Ceiphr",
-         "url": "https://ceiphr.com",
-         "slogan": "Aspiring Web Developer",
-         "sameAs": [
-           "https://twitter.com/ceiphr",
-           "https://www.instagram.com/ceiphr/?hl=en",
-           "https://gitlab.com/ceiphr",
-           "https://github.com/ceiphr",
-           "https://keybase.io/ceiphr",
-           "https://twitter.com/ceiphr",
-           "https://www.linkedin.com/in/ceiphr/"
-          ],
-          "logo": {
-            "@type": "ImageObject",
-            {% thumbnail avatar "1200x1200" format="JPEG" as jpeg %}"url": "https://{{ request.get_host }}{{ jpeg.url }}"{% endthumbnail %}
-          }
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "name": "Ceiphr",
+            "url": "https://ceiphr.com",
+            "slogan": "Aspiring Web Developer",
+            "sameAs": [
+                "https://twitter.com/ceiphr",
+                "https://www.instagram.com/ceiphr/?hl=en",
+                "https://gitlab.com/ceiphr",
+                "https://github.com/ceiphr",
+                "https://keybase.io/ceiphr",
+                "https://twitter.com/ceiphr",
+                "https://www.linkedin.com/in/ceiphr/"
+            ],
+            "logo": {
+                "@type": "ImageObject",
+                {
+                    % thumbnail avatar "1200x1200"
+                    format = "JPEG"
+                    as jpeg %
+                }
+                "url": "https://{{ request.get_host }}{{ jpeg.url }}" {
+                    % endthumbnail %
+                }
+            }
         }
     </script>
     {% endif %}
 </head>
 
 <body>
+    <div class="columns grid-lines">
+        <div class="column">
+        </div>
+        <div class="column">
+        </div>
+        <div class="column">
+        </div>
+        <div class="column">
+        </div>
+        <div class="column">
+        </div>
+        <div class="column">
+        </div>
+    </div>
     <nav class="navbar container" id="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
@@ -219,7 +249,9 @@
             };
             o = f.createElement('script'),
                 m = f.getElementsByTagName('script')[0];
-            o.async = 1; o.src = t; o.id = 'fathom-script';
+            o.async = 1;
+            o.src = t;
+            o.id = 'fathom-script';
             m.parentNode.insertBefore(o, m)
         })(document, window, '//stats.ceiphr.com/tracker.js', 'fathom');
         fathom('set', 'siteId', 'MCJMJ');

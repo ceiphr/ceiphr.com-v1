@@ -73,6 +73,7 @@ body {
 }
 
 body {
+    position: relative;
     color: $dark;
     font-family: $family-sans-serif;
     max-width: 100vw;
@@ -218,6 +219,22 @@ Navigaton
     }
 }
 
+.grid-lines {
+    position: absolute;
+    overflow: hidden;
+
+    top: 0;
+    bottom: -2em;
+    left: 0;
+    right: 0;
+
+    .column {
+        border-style: solid;
+        border-width: 0 1px 0 0;
+        border-color: rgb(219, 219, 219);
+    }
+}
+
 /**********************************
 Text Formatting
 **********************************/
@@ -258,6 +275,11 @@ footer a {
     height: 100vh;
     position: absolute;
     top: 0;
+}
+
+.article__detail,
+.stats {
+    font-family: $family-code;
 }
 
 .prompt {
