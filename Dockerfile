@@ -38,4 +38,7 @@ RUN python3 -m pip install -r requirements.txt
 
 # Collect static files
 COPY . /ceiphrcom/
-RUN python3 /ceiphrcom/ceiphr_proj/manage.py collectstatic --noinput
+
+# Entrypoint
+RUN chmod a+x entrypoint.sh
+ENTRYPOINT ["sh", "/ceiphrcom/entrypoint.sh"]

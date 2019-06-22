@@ -2,8 +2,6 @@ import os
 
 from .base import *
 
-DEBUG = True
-
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]

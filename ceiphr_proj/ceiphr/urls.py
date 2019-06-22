@@ -13,21 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+import os
 from django.urls import path
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
 from django.contrib.sitemaps.views import sitemap
 from django_otp.admin import OTPAdminSite
+from django.conf import settings
 
 from .sitemaps import BlogSitemap, StaticViewSitemap
 from .feeds import RssSiteNewsFeed, AtomSiteNewsFeed
 
 from blog.views import GetArticle, GetLargeFeed, GetFeed
 from portfolio.views import GetProjects
-
-import ceiphr.settings.env_config as env_config
-from django.conf import settings
 
 # Static URL redirects
 favicon_view = RedirectView.as_view(url="/img/favicon.ico", permanent=True)
@@ -94,7 +93,7 @@ if settings.DEBUG:
     admin.site.site_title = "Ceiphr: Development"
 
 else:
-    urlpatterns += [path(env_config.admin_URL + "/admin/", admin.site.urls)]
+    urlpatterns += [path(os.environ['ADMIN_URL'] + "/admin/", admin.site.urls)]
     admin.site.__class__ = OTPAdminSite
 
     # Admin site details

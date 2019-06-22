@@ -1,10 +1,7 @@
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-import ceiphr.settings.env_config as env_config
 from .base import *
-
-DEBUG = False
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -36,7 +33,7 @@ DATABASES = {
 # Sentry error logging sdk
 
 sentry_sdk.init(
-    dsn=env_config.sentry_dsn,
+    dsn="https://64705ba551e4407cb6cc1cf33e6336d8@sentry.io/1429770",
     integrations=[DjangoIntegration()]
 )
 

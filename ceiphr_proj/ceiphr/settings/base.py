@@ -1,15 +1,15 @@
 import os
 
-import ceiphr.settings.env_config as env_config
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
-SECRET_KEY = env_config.secret_key
+SECRET_KEY = os.environ['SECRET_KEY']
 
-ADMIN_ENABLED = True
+DEBUG = os.environ['DEBUG']
 
-ALLOWED_HOSTS = ["0.0.0.0"]
+ADMIN_ENABLED = os.environ['ADMIN_ENABLED']
+
+ALLOWED_HOSTS = ['0.0.0.0']
 
 # Generic Settings
 

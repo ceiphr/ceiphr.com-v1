@@ -10,7 +10,6 @@ services:
 # Ensuring docker build works
 install:
   - docker-compose up -d
-  - pip install -r requirements/requirements.txt
 
 postgres:
   adapter: postgresql
@@ -23,8 +22,7 @@ before_script:
 script:
   # TODO Set up codecov within docker container
   # https://docs.codecov.io/docs/testing-with-docker
-  # - docker-compose exec django sh -e ci_env="bash <(curl -s https://codecov.io/env)" -c "coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci"
-  - coverage run ceiphr_proj/manage.py test --settings=ceiphr.settings.ci
+  - docker-compose exec django sh -e ci_env="bash <(curl -s https://codecov.io/env)" -c "coverage run ceiphr_proj/manage.py test"
 
 deploy:
   provider: script
@@ -33,5 +31,4 @@ deploy:
     branch: master
 
 after_success:
-  # - bash <(curl -s https://codecov.io/bash)
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
