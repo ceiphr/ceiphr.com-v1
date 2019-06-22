@@ -2,15 +2,10 @@
 {% block content %}
 {% load thumbnail %}
 {% load static %}
+{% load pipeline %}
 {% load markdownify %}
 <section class="feed__cover--medium">
-    <div id="rain__wrapper">
-        <div id="rain">
-            {% for drop in rain_fall %}
-            <i class="rain__drop"></i>
-            {% endfor %}
-        </div>
-    </div>
+    <canvas></canvas>
 </section>
 <section class="hero is-medium is-dark is-bold">
     <div class="hero-body">
@@ -58,4 +53,5 @@
         {% endfor %}
     </div>
 </section>
+{% javascript 'fluid' %}
 {% endblock content %}

@@ -25,7 +25,7 @@ COPY requirements/requirements.txt /ceiphrcom/
 # Install node modules
 RUN npm config set user 0
 RUN npm config set unsafe-perm true
-RUN npm install -g sass yuglify
+RUN npm install -g sass yuglify babel-cli
 
 # Creating a virtual environment for project dependencies
 ENV VIRTUAL_ENV=/opt/venv

@@ -28,7 +28,6 @@ CSP_IMG_SRC = (
     "https://*.ceiphr.com",
     "https://*.buysellads.net",
     "https://ad.doubleclick.net",
-    "https://img.shields.io",
 )
 
 CSP_STYLE_SRC = "'self' 'unsafe-inline'"
@@ -195,21 +194,28 @@ PIPELINE = {
             "source_filenames": (
                 "node_modules/lazysizes/lazysizes.js",
                 "node_modules/lazysizes/plugins/blur-up/ls.blur-up.js",
+                "js/nav.js",
             ),
             "output_filename": "js/onload.js",
             "extra_context": {"defer": True},
         },
-        "nav": {
-            "source_filenames": ("js/nav.js",),
-            "output_filename": "js/mobile-nav.js",
+        "fluid": {
+            "source_filenames": ("js/WebGL-Fluid-Simulation/script.es6",),
+            "output_filename": "js/fluid.js",
             "extra_context": {"defer": True},
         },
     },
 }
 
+PIPELINE['JS_COMPRESSOR'] = 'pipeline.compressors.NoopCompressor'
+PIPELINE['CSS_COMPRESSOR'] = 'pipeline.compressors.yuglify.YuglifyCompressor'
+
 # Sass compiler for coverting scss files to post-processed css
 
-PIPELINE["COMPILERS"] = ("pipeline.compilers.sass.SASSCompiler",)
+PIPELINE["COMPILERS"] = (
+    "pipeline.compilers.sass.SASSCompiler",
+    "pipeline.compilers.es6.ES6Compiler",
+)
 
 # Media files
 

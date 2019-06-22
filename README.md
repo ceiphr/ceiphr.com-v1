@@ -24,6 +24,7 @@ Javascript/CSS
 - [Bulma](https://bulma.io/)
 - [lazysizes](https://github.com/aFarkas/lazysizes)
 - [sass](https://sass-lang.com/)
+- [WebGL Fluid Simulation](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation)
 
 ## License
 
