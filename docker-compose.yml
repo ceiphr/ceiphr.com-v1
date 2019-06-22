@@ -7,13 +7,11 @@ services:
   django:
     container_name: ceiphr.com
     image: ceiphr/ceiphr.com
-    env_file:
-      - .env
     environment:
       - DEBUG=1
       - ADMIN_ENABLED=1
     build: .
-    command: python3 /ceiphrcom/ceiphr_proj/manage.py runserver 0.0.0.0:8000 --settings=ceiphr.settings.development
+    command: python3 /ceiphrcom/ceiphr_proj/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/ceiphrcom
     ports:

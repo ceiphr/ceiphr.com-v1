@@ -3,11 +3,11 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.getenv('SECRET_KEY', default="SuperSecret")
 
-DEBUG = os.environ['DEBUG']
+DEBUG = os.getenv('DEBUG', default=1)
 
-ADMIN_ENABLED = os.environ['ADMIN_ENABLED']
+ADMIN_ENABLED = os.getenv('ADMIN_ENABLED', default=1)
 
 ALLOWED_HOSTS = ['0.0.0.0']
 
