@@ -12,9 +12,8 @@ services:
       - media_volume:/usr/src/app/media
       - /etc/letsencrypt/:/etc/letsencrypt/
     ports:
-      - 1337:80
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     depends_on:
       - web
 
@@ -41,7 +40,7 @@ services:
     env_file: .env
     command: gunicorn ceiphr.wsgi:application --bind 0.0.0.0:8000
     expose:
-    - 8000
+      - 8000
     ports:
       - "8000:8000"
     volumes:
