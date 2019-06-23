@@ -1,9 +1,34 @@
 version: "3.3"
 
 services:
+
+  nginx:
+    image: nginx:mainline-alpine
+    restart: unless-stopped
+    volumes:
+      - ./nginx-conf:/etc/nginx/conf.d
+      - web-root:/var/www/html
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+    ports:
+      - "80:80"
+      - "443:443"
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/html
+    depends_on:
+      - nginx
+    command: certonly --webroot --webroot-path=/var/www/html \
+      --email contact@ceiphr.com --agree-tos --no-eff-email --staging -d staging.ceiphr.com  #-d www.example.com
+
   db:
     image: postgres
-    restart: always
+    restart: unless-stopped
     environment:
       - POSTGRES_DB=db
       - POSTGRES_USER=postgres
@@ -13,19 +38,9 @@ services:
     volumes:
       - ./postgres/data:/var/lib/postgresql/data
 
-  nginx:
-    image: "nginx"
-    restart: always
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./staticfiles:/static
-      - ./mediafiles:/media
-    ports:
-      - "80:80"
-
   django:
     build: .
-    restart: always
+    restart: unless-stopped
     env_file:
       - .env
     command: gunicorn --bind 0.0.0.0:8080 ceiphr.wsgi
@@ -33,4 +48,19 @@ services:
       - "8080:8080"
     depends_on:
       - db
-      - nginx
+    networks:
+    - django-network
+
+volumes:
+  certbot-etc:
+  certbot-var:
+  web-root:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ari/ceiphr.com/ceiphr_proj/
+      o: bind
+
+networks:
+  django-network:
+    driver: bridge
