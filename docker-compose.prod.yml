@@ -34,8 +34,6 @@ services:
       - static_volume:/usr/src/app/static
       - media_volume:/usr/src/app/media
     environment: 
-      - DEBUG=0
-      - ADMIN_ENABLED=0
       - SQL_ENGINE=django.db.backends.postgresql
       - SQL_DATABASE=ceiphrcom
       - SQL_USER=postgres
