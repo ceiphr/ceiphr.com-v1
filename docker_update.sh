@@ -2,4 +2,4 @@
 
 git pull
 docker stop $(docker ps -aq)
-docker-compose -f docker-compose.prod.yml up --build -d
+docker-compose -f docker-compose.prod.yml up --build --env-file .env -d
