@@ -1,8 +1,7 @@
 # Ceiphr.com
 
 [![Build Status](https://travis-ci.com/ceiphr/ceiphr.com.svg?branch=master)](https://travis-ci.com/ceiphr/ceiphr.com)
-[![Code Coverage](https://img.shields.io/codecov/c/gh/ceiphr/ceiphr.com.svg)](https://codecov.io/gh/ceiphr/ceiphr.com)
-[![License](https://img.shields.io/github/license/ceiphr/ceiphr.com.svg)](https://github.com/ceiphr/ceiphr.com/blob/master/LICENSE)
+[![Microbadger](https://images.microbadger.com/badges/image/ceiphr/ceiphr.com.svg)](https://microbadger.com/images/ceiphr/ceiphr.com "Get your own image badge on microbadger.com")
 
 This project is the source code for my personal website. This website displays all my projects, skills, events I've attended and acts as a blog platform.
 
