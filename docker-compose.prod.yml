@@ -16,6 +16,7 @@ services:
 
   certbot:
     image: certbot/certbot
+    restart: unless-stopped
     container_name: certbot
     volumes:
       - certbot-etc:/etc/letsencrypt
@@ -24,7 +25,7 @@ services:
     depends_on:
       - nginx
     command: certonly --webroot --webroot-path=/var/www/html \
-      --email contact@ceiphr.com --agree-tos --no-eff-email --staging -d staging.ceiphr.com  #-d www.example.com
+      --email contact@ceiphr.com --agree-tos --no-eff-email -d staging.ceiphr.com  #-d www.example.com
 
   db:
     image: postgres
@@ -41,6 +42,7 @@ services:
   django:
     build: .
     restart: unless-stopped
+    container_name: ceiphrcom
     env_file:
       - .env
     command: gunicorn --bind 0.0.0.0:8080 ceiphr.wsgi
