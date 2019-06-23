@@ -1,10 +1,7 @@
 version: "3.3"
 
 services:
-  db:
-    image: postgres
-
-  django:
+  web:
     container_name: ceiphr.com
     image: ceiphr/ceiphr.com
     environment:
@@ -13,8 +10,6 @@ services:
     build: .
     command: python3 /ceiphrcom/ceiphr_proj/manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/ceiphrcom
+      - ./ceiphrcom/:/usr/src/app/
     ports:
       - "8000:8000"
-    depends_on:
-      - db

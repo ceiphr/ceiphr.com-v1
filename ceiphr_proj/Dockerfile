@@ -18,9 +18,8 @@ RUN apk add --update \
 ENV LIBRARY_PATH=/lib:/usr/lib
 
 # Create project directory and copy requirements
-RUN mkdir /ceiphrcom
-WORKDIR /ceiphrcom
-COPY requirements/requirements.txt /ceiphrcom/
+WORKDIR /usr/src/app
+COPY requirements/requirements.txt /usr/src/app/requirements.txt
 
 # Install node modules
 RUN npm config set user 0
@@ -37,8 +36,8 @@ RUN python3 -m pip install -U pip
 RUN python3 -m pip install -r requirements.txt
 
 # Collect static files
-COPY . /ceiphrcom/
+COPY . /usr/src/app/
 
 # Entrypoint
-RUN chmod a+x entrypoint.sh
-ENTRYPOINT ["sh", "/ceiphrcom/entrypoint.sh"]
+RUN chmod +x /usr/src/app/entrypoint.sh
+ENTRYPOINT ["sh", "/usr/src/app/entrypoint.sh"]

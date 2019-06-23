@@ -3,72 +3,57 @@ version: "3.3"
 services:
 
   nginx:
-    image: nginx:mainline-alpine
-    restart: unless-stopped
-    container_name: nginx
+    build: ./nginx
     volumes:
-      - ./nginx-conf:/etc/nginx/conf.d
-      - web-root:/var/www/html
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-      # - dhparam:/etc/ssl/certs
+      - static_volume:/usr/src/app/static
+      - media_volume:/usr/src/app/media
     ports:
-      - "80:80"
-      - "443:443"
-
-  certbot:
-    image: certbot/certbot
-    restart: unless-stopped
-    container_name: certbot
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-      - web-root:/var/www/html
+      - 1337:80
     depends_on:
-      - nginx
-    command: certonly --webroot --webroot-path=/var/www/html \
-      --email contact@ceiphr.com --agree-tos --no-eff-email -d staging.ceiphr.com  #-d www.example.com
+      - web
 
   db:
-    image: postgres
+    image: postgres:alpine
     restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_DB=db
+      - POSTGRES_DB=ceiphrcom
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_PASSWORD=$SQL_PASSWORD
+      - DATABASE=postgres
     ports:
       - "5432:5432"
 
-  django:
-    build: .
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile.prod
     restart: unless-stopped
     container_name: ceiphrcom
-    env_file:
-      - .env
-    command: gunicorn --bind 0.0.0.0:8080 ceiphr.wsgi
+    env_file: .env
+    expose:
+    - 8000
+    command: gunicorn ceiphr.wsgi:application --bind 0.0.0.0:8000
     ports:
-      - "8080:8080"
+      - "8000:8000"
+    volumes:
+      - ./ceiphrcom/:/usr/src/app/
+      - static_volume:/usr/src/app/static
+      - media_volume:/usr/src/app/media
+    environment: 
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DATABASE=ceiphrcom
+      - SQL_USER=postgres
+      - SQL_PASSWORD=$SQL_PASSWORD
+      - SQL_HOST=db
+      - SQL_PORT=5432
     depends_on:
       - db
-    networks:
-    - django-network
+    links:
+      - db:db
 
 volumes:
-  certbot-etc:
-  certbot-var:
-  web-root:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/ari/ceiphr.com/ceiphr_proj/
-      o: bind
-  # dhparam:
-  #   driver: local
-  #   driver_opts:
-  #     type: none
-  #     device: /home/ari/ceiphr.com/dhparam/
-  #     o: bind
-
-networks:
-  django-network:
-    driver: bridge
+  postgres_data:
+  static_volume:
+  media_volume:
