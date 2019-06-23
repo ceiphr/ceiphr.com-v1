@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 SECRET_KEY = os.getenv('SECRET_KEY', default="SuperSecret")
 
-DEBUG = os.getenv('DEBUG', default=1)
+DEBUG = os.environ.get('DEBUG', 1)
 
 ADMIN_ENABLED = os.getenv('ADMIN_ENABLED', default=1)
 
