@@ -5,11 +5,13 @@ services:
   nginx:
     image: nginx:mainline-alpine
     restart: unless-stopped
+    container_name: nginx
     volumes:
       - ./nginx-conf:/etc/nginx/conf.d
       - web-root:/var/www/html
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
+      - dhparam:/etc/ssl/certs
     ports:
       - "80:80"
       - "443:443"
@@ -61,6 +63,12 @@ volumes:
     driver_opts:
       type: none
       device: /home/ari/ceiphr.com/ceiphr_proj/
+      o: bind
+  dhparam:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ari/ceiphr.com/dhparam/
       o: bind
 
 networks:
