@@ -4,7 +4,6 @@ services:
 
   nginx:
     build: ./nginx
-    env_file: .env
     restart: unless-stopped
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
@@ -33,26 +32,15 @@ services:
       - ./ceiphr_proj/:/usr/src/app/
       - static_volume:/usr/src/app/static
       - media_volume:/usr/src/app/media
-    environment: 
-      - SQL_ENGINE=django.db.backends.postgresql
-      - SQL_DATABASE=ceiphrcom
-      - SQL_USER=postgres
-      - SQL_PASSWORD=${SQL_PASSWORD}
-      - SQL_HOST=db
-      - SQL_PORT=5432
     depends_on:
       - db
 
   db:
     image: postgres:alpine
-    env_file: .env
+    env_file: .env.db
     restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_DB=ceiphrcom
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=${SQL_PASSWORD}
     ports:
       - "5432:5432"
 

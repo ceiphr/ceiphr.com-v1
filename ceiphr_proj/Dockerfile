@@ -1,4 +1,8 @@
-FROM gliderlabs/alpine:latest
+FROM python:3.7-alpine
+
+# set environment varibles
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
 # Install alpine packages
 RUN apk add --update \
