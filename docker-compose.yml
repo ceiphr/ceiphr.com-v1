@@ -10,8 +10,8 @@ services:
     build:
       context: .
       dockerfile: ceiphr_proj/Dockerfile
-    command: python3 /ceiphrcom/ceiphr_proj/manage.py runserver 0.0.0.0:8000
+    command: python3 /usr/src/app/manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./ceiphrcom/:/usr/src/app/
+      - ./ceiphr_proj/:/usr/src/app/
     ports:
       - "8000:8000"

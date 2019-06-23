@@ -36,8 +36,8 @@ RUN python3 -m pip install -U pip
 RUN python3 -m pip install -r requirements.txt
 
 # Collect static files
-COPY . /usr/src/app/
+COPY ceiphr_proj/ /usr/src/app/
 
 # Entrypoint
-RUN chmod +x /usr/src/app/ceiphr_proj/entrypoint.prod.sh
-ENTRYPOINT ["sh", "/usr/src/app/ceiphr_proj/entrypoint.prod.sh"]
+RUN chmod +x /usr/src/app/entrypoint.prod.sh
+ENTRYPOINT ["sh", "/usr/src/app/entrypoint.prod.sh"]
