@@ -1,3 +1,4 @@
+import os
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -6,22 +7,12 @@ from .base import *
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'ceiphrcom',
-#         'USER': 'ceiphrcom',
-#         'PASSWORD': env_config.postgres_PW,
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'NAME': 'db',
         'USER': 'postgres',
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', default="password"),
         'HOST': 'db',
         'PORT': 5432,
     }

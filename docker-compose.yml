@@ -1,12 +1,20 @@
-version: '3.3'
+version: "3.3"
 
 services:
   db:
     image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+    ports:
+      - "5432:5432"
 
   django:
     container_name: ceiphr.com
     image: ceiphr/ceiphr.com
+    restart: always
     environment:
       - DEBUG=1
       - ADMIN_ENABLED=1

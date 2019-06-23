@@ -1,0 +1,36 @@
+version: "3.3"
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+
+  nginx:
+    image: "nginx"
+    restart: always
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./staticfiles:/static
+      - ./mediafiles:/media
+    ports:
+      - "80:80"
+
+  django:
+    build: .
+    restart: always
+    env_file:
+      - .env
+    command: gunicorn --bind 0.0.0.0:8080 ceiphr.wsgi
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+      - nginx

@@ -9,7 +9,7 @@ DEBUG = os.getenv('DEBUG', default=1)
 
 ADMIN_ENABLED = os.getenv('ADMIN_ENABLED', default=1)
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default=['0.0.0.0'])
 
 # Generic Settings
 
