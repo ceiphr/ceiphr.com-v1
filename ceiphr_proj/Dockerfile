@@ -39,5 +39,5 @@ RUN python3 -m pip install -r requirements.txt
 COPY . /usr/src/app/
 
 # Entrypoint
-RUN chmod +x /usr/src/app/entrypoint.sh
-ENTRYPOINT ["sh", "/usr/src/app/entrypoint.sh"]
+RUN chmod +x /usr/src/app/ceiphr_proj/entrypoint.sh
+ENTRYPOINT ["sh", "/usr/src/app/ceiphr_proj/entrypoint.sh"]
