@@ -4,6 +4,7 @@ services:
 
   nginx:
     build: ./nginx
+    env_file: .env
     restart: unless-stopped
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
@@ -20,6 +21,7 @@ services:
     build: 
       context: .
       dockerfile: ceiphr_proj/Dockerfile.prod
+    env_file: .env
     restart: unless-stopped
     container_name: ceiphrcom
     command: gunicorn ceiphr.wsgi:application --bind 0.0.0.0:8000
@@ -45,6 +47,7 @@ services:
 
   db:
     image: postgres:alpine
+    env_file: .env
     restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data/
