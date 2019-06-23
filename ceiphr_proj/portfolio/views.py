@@ -1,5 +1,4 @@
 from django.views.generic import TemplateView
-from django.conf import settings
 
 from .models import Profile
 from .services import get_repos
@@ -18,6 +17,6 @@ class GetProjects(TemplateView):
             "avatar": Profile.objects.first().logo,
             "resume_url": Profile.objects.first().resume_url,
             "favicon": Profile.objects.first().favicon,
-            "debug": settings.DEBUG,
+            "debug": os.getenv('DEBUG', default=True),
         }
         return context

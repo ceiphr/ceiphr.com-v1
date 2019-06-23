@@ -20,8 +20,8 @@ from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
 from django.contrib.sitemaps.views import sitemap
 from django_otp.admin import OTPAdminSite
-from django.conf import settings
 
+from .settings.base import MEDIA_URL, MEDIA_ROOT
 from .sitemaps import BlogSitemap, StaticViewSitemap
 from .feeds import RssSiteNewsFeed, AtomSiteNewsFeed
 
@@ -83,10 +83,9 @@ urlpatterns = [
     ),
 ]
 
-if settings.DEBUG:
+if os.getenv('DEBUG', default=True):
     urlpatterns += [path("admin/", admin.site.urls)]
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
 
     # Admin site details
     admin.site.site_header = "Ceiphr Dashboard: Development"
