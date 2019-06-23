@@ -5,11 +5,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 SECRET_KEY = os.getenv('SECRET_KEY', default="SuperSecret")
 
-DEBUG = os.environ.get('DEBUG', 1)
+DEBUG = os.getenv('DEBUG', default=True)
 
 ADMIN_ENABLED = os.getenv('ADMIN_ENABLED', default=1)
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default=['0.0.0.0', 'ceiphr.com', 'www.ceiphr.com', 'staging.ceiphr.com'])
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default=['0.0.0.0'])
 
 # Generic Settings
 
