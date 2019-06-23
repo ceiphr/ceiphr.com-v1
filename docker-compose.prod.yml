@@ -17,20 +17,6 @@ services:
     depends_on:
       - web
 
-  db:
-    image: postgres:alpine
-    env_file: .env
-    restart: unless-stopped
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_DB=ceiphrcom
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=$SQL_PASSWORD
-      - DATABASE=postgres
-    ports:
-      - "5432:5432"
-
   web:
     build: 
       context: .
@@ -51,13 +37,27 @@ services:
       - SQL_ENGINE=django.db.backends.postgresql
       - SQL_DATABASE=ceiphrcom
       - SQL_USER=postgres
-      - SQL_PASSWORD=$SQL_PASSWORD
+      - SQL_PASSWORD=${SQL_PASSWORD}
       - SQL_HOST=db
       - SQL_PORT=5432
     depends_on:
       - db
     links:
       - db:db
+
+  db:
+    image: postgres:alpine
+    env_file: .env
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=ceiphrcom
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${SQL_PASSWORD}
+      - DATABASE=postgres
+    ports:
+      - "5432:5432"
 
 volumes:
   postgres_data:

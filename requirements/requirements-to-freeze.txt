@@ -1,4 +1,5 @@
 Django
+gunicorn
 sentry-sdk
 
 # CI/CD
