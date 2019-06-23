@@ -7,7 +7,9 @@ services:
     environment:
       - DEBUG=1
       - ADMIN_ENABLED=1
-    build: .
+    build:
+      context: .
+      dockerfile: ceiphr_proj/Dockerfile
     command: python3 /ceiphrcom/ceiphr_proj/manage.py runserver 0.0.0.0:8000
     volumes:
       - ./ceiphrcom/:/usr/src/app/

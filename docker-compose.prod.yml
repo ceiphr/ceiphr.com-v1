@@ -4,13 +4,23 @@ services:
 
   nginx:
     build: ./nginx
+    restart: unless-stopped
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
       - static_volume:/usr/src/app/static
       - media_volume:/usr/src/app/media
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     ports:
       - 1337:80
+      - 80:80
+      - 443:443
     depends_on:
       - web
+
+  certbot:
+    image: certbot/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
   db:
     image: postgres:alpine
