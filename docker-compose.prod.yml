@@ -4,6 +4,7 @@ services:
 
   nginx:
     build: ./nginx
+    env_file: .env
     restart: unless-stopped
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
