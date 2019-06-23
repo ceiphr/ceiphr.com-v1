@@ -22,7 +22,7 @@ before_script:
 script:
   # TODO Set up codecov within docker container
   # https://docs.codecov.io/docs/testing-with-docker
-  - docker-compose run -d django -e ci_env="sh <(curl -s https://codecov.io/env)" -c "coverage run ceiphr_proj/manage.py test && sh <(curl -s https://codecov.io/bash)"
+  - docker-compose run -d web -e ci_env="sh <(curl -s https://codecov.io/env)" -c "coverage run ceiphr_proj/manage.py test && sh <(curl -s https://codecov.io/bash)"
 
 deploy:
   provider: script

@@ -42,8 +42,6 @@ services:
       - SQL_PORT=5432
     depends_on:
       - db
-    links:
-      - db:db
 
   db:
     image: postgres:alpine
@@ -55,7 +53,6 @@ services:
       - POSTGRES_DB=ceiphrcom
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=${SQL_PASSWORD}
-      - DATABASE=postgres
     ports:
       - "5432:5432"
 
