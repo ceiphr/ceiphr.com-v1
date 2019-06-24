@@ -1,6 +1,18 @@
 FROM python:3.7-alpine
 
-# set environment varibles
+LABEL maintainer="contact@ceiphr.com"
+
+# Labels (DEPRECATED but used for Microbadger)
+# http://label-schema.org/rc1/
+LABEL org.label-schema.schema-version="1.0"
+LABEL org.label-schema.build-date=$BUILD_DATE
+LABEL org.label-schema.name="ceiphr/ceiphr.com"
+LABEL org.label-schema.description="The portfolio and blog of Ari Birnbaum. Built with Django and Bulma."
+LABEL org.label-schema.url="https://ceiphr.com/"
+LABEL org.label-schema.vcs-url="https://github.com/ceiphr/ceiphr.com"
+LABEL org.label-schema.vcs-ref=$VCS_REF
+
+# Set environment varibles
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 

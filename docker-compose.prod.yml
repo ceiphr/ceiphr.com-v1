@@ -3,13 +3,13 @@ version: "3.3"
 services:
 
   nginx:
-    build: ./nginx
+    build: nginx:alpine
     restart: unless-stopped
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    # command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
       - static_volume:/usr/src/app/static
       - media_volume:/usr/src/app/media
-      - /etc/letsencrypt/:/etc/letsencrypt/
+      # - /etc/letsencrypt/:/etc/letsencrypt/
     ports:
       - "80:80"
       - "443:443"
@@ -37,7 +37,7 @@ services:
 
   db:
     image: postgres:alpine
-    env_file: .env.db
+    env_file: .env
     restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data/
