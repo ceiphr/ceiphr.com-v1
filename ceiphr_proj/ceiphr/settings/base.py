@@ -198,7 +198,7 @@ PIPELINE = {
             "extra_context": {"defer": True},
         },
         "fluid": {
-            "source_filenames": ("js/WebGL-Fluid-Simulation/script.es6",),
+            "source_filenames": ("js/webgl_fs.es6",),
             "output_filename": "js/fluid.js",
             "extra_context": {"defer": True},
         },
