@@ -83,7 +83,7 @@ urlpatterns = [
     ),
 ]
 
-if os.getenv('DEBUG', default=True):
+if os.environ.get('DEBUG', default=True):
     urlpatterns += [path("admin/", admin.site.urls)]
     urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
 
@@ -92,7 +92,7 @@ if os.getenv('DEBUG', default=True):
     admin.site.site_title = "Ceiphr: Development"
 
 else:
-    urlpatterns += [path(os.getenv('ADMIN_URL', default="cp") + "/admin/", admin.site.urls)]
+    urlpatterns += [path(os.environ.get('ADMIN_URL', default="cp") + "/admin/", admin.site.urls)]
     admin.site.__class__ = OTPAdminSite
 
     # Admin site details
