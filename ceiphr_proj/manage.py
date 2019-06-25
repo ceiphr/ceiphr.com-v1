@@ -2,6 +2,13 @@
 import os
 import sys
 
+from dotenv import load_dotenv
+
+import dotenv
+dotenv.load_dotenv(
+    os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
+)
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ceiphr.settings.development")
     try:

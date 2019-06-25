@@ -1,12 +1,11 @@
-version: "3.3"
+version: "3.7"
 
 services:
   web:
     container_name: ceiphr.com
     image: ceiphr/ceiphr.com
-    environment:
-      - DEBUG=1
-      - ADMIN_ENABLED=1
+    environment: 
+      SECRET_KEY: change_me
     build:
       context: .
       dockerfile: ceiphr_proj/Dockerfile

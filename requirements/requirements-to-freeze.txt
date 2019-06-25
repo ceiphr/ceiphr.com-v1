@@ -1,6 +1,7 @@
 Django
 gunicorn
 sentry-sdk
+python-dotenv
 
 # CI/CD
 coverage
@@ -12,6 +13,7 @@ django-debug-toolbar
 django-otp
 django-csp
 django-htmlmin
+boto3
 
 # Image Processing
 sorl-thumbnail

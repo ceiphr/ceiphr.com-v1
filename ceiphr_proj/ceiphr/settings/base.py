@@ -3,13 +3,13 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
-SECRET_KEY = os.getenv('SECRET_KEY', default="SuperSecret")
+SECRET_KEY = os.getenv('SECRET_KEY', default=os.urandom(32))
 
-DEBUG = os.getenv('DEBUG', default=True)
+DEBUG = int(os.getenv('DEBUG', default=1))
 
-ADMIN_ENABLED = os.getenv('ADMIN_ENABLED', default=1)
+ADMIN_ENABLED = int(os.getenv('ADMIN_ENABLED', default=1))
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default=['0.0.0.0'])
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='127.0.0.1').split(',')
 
 # Generic Settings
 
@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     "django_otp.plugins.otp_hotp",
     "django_otp.plugins.otp_static",
     "coverage",
+    "storages"
     "sorl.thumbnail",
     "pipeline",
     "portfolio",
@@ -157,8 +158,6 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "assets"),)
-
-STATIC_URL = "/static/"
 
 # Pipeline - process and compress assets for optimized use
 
