@@ -6,7 +6,7 @@ canvas.height = canvas.clientHeight;
 
 let config = {
     SIM_RESOLUTION: 128,
-    DYE_RESOLUTION: 512,
+    DYE_RESOLUTION: 256,
     DENSITY_DISSIPATION: 0.97,
     VELOCITY_DISSIPATION: 0.98,
     PRESSURE_DISSIPATION: 0.8,
@@ -20,7 +20,7 @@ let config = {
     TRANSPARENT: false,
     BLOOM: true,
     BLOOM_ITERATIONS: 8,
-    BLOOM_RESOLUTION: 256,
+    BLOOM_RESOLUTION: 128,
     BLOOM_INTENSITY: 0.8,
     BLOOM_THRESHOLD: 0.6,
     BLOOM_SOFT_KNEE: 0.7
@@ -654,7 +654,7 @@ let curl;
 let pressure;
 let bloom;
 
-let ditheringTexture = createTextureAsync('img/LDR_RGB1_0.png');
+// let ditheringTexture = createTextureAsync('img/LDR_RGB1_0.png');
 
 const clearProgram               = new GLProgram(baseVertexShader, clearShader);
 const colorProgram               = new GLProgram(baseVertexShader, colorShader);
@@ -830,7 +830,7 @@ function createTextureAsync (url) {
 }
 
 initFramebuffers();
-multipleSplats(parseInt(Math.random() * 3) + 2);
+// multipleSplats(parseInt(Math.random() * 3) + 2);
 
 let lastColorChangeTime = Date.now();
 
@@ -975,8 +975,8 @@ function render (target) {
         gl.uniform1i(program.uniforms.uTexture, density.read.attach(0));
         if (config.BLOOM) {
             gl.uniform1i(program.uniforms.uBloom, bloom.attach(1));
-            gl.uniform1i(program.uniforms.uDithering, ditheringTexture.attach(2));
-            let scale = getTextureScale(ditheringTexture, width, height);
+            // gl.uniform1i(program.uniforms.uDithering, ditheringTexture.attach(2));
+            // let scale = getTextureScale(ditheringTexture, width, height);
             gl.uniform2f(program.uniforms.ditherScale, scale.x, scale.y);
         }
     }
@@ -986,8 +986,8 @@ function render (target) {
         gl.uniform1i(program.uniforms.uTexture, density.read.attach(0));
         if (config.BLOOM) {
             gl.uniform1i(program.uniforms.uBloom, bloom.attach(1));
-            gl.uniform1i(program.uniforms.uDithering, ditheringTexture.attach(2));
-            let scale = getTextureScale(ditheringTexture, width, height);
+            // gl.uniform1i(program.uniforms.uDithering, ditheringTexture.attach(2));
+            // let scale = getTextureScale(ditheringTexture, width, height);
             gl.uniform2f(program.uniforms.ditherScale, scale.x, scale.y);
         }
     }
