@@ -83,7 +83,7 @@ urlpatterns = [
     ),
 ]
 
-if os.environ.get('DEBUG', default=True):
+if int(os.environ.get('DEBUG', default=1)):
     urlpatterns += [path("admin/", admin.site.urls)]
     urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
 
