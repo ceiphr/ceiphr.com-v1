@@ -654,7 +654,7 @@ let curl;
 let pressure;
 let bloom;
 
-let ditheringTexture = createTextureAsync('LDR_RGB1_0.png');
+let ditheringTexture = createTextureAsync('img/LDR_RGB1_0.png');
 
 const clearProgram               = new GLProgram(baseVertexShader, clearShader);
 const colorProgram               = new GLProgram(baseVertexShader, colorShader);
@@ -830,7 +830,7 @@ function createTextureAsync (url) {
 }
 
 initFramebuffers();
-multipleSplats(parseInt(Math.random() * 20) + 5);
+multipleSplats(parseInt(Math.random() * 3) + 2);
 
 let lastColorChangeTime = Date.now();
 
