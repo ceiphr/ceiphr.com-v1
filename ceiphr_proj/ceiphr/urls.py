@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
 from django.contrib.sitemaps.views import sitemap
 from django_otp.admin import OTPAdminSite
+from django.views.generic import TemplateView
 
 from .settings.base import MEDIA_URL, MEDIA_ROOT
 from .sitemaps import BlogSitemap, StaticViewSitemap
@@ -28,21 +29,15 @@ from .feeds import RssSiteNewsFeed, AtomSiteNewsFeed
 from blog.views import GetArticle, GetLargeFeed, GetFeed
 from portfolio.views import GetProjects
 
-# Static URL redirects
-favicon_view = RedirectView.as_view(url="/img/favicon.ico", permanent=True)
-robots_view = RedirectView.as_view(url="/robots.txt", permanent=True)
-humans_view = RedirectView.as_view(url="/humans.txt", permanent=True)
-keybase_view = RedirectView.as_view(url="/keybase.txt", permanent=True)
-
 # Sitemaps
 sitemaps = {"static": StaticViewSitemap, "blog": BlogSitemap}
 
 urlpatterns = [
     # Static contents for SEO
-    path("favicon.ico", favicon_view),
-    path("robots.txt", robots_view),
-    path("humans.txt", humans_view),
-    path("keybase.txt", keybase_view),
+    path("favicon.ico", TemplateView.as_view(template_name="favicon.ico")),
+    path("robots.txt", TemplateView.as_view(template_name="robots.txt")),
+    path("humans.txt", TemplateView.as_view(template_name="humans.txt")),
+    path("keybase.txt", TemplateView.as_view(template_name="keybase.txt")),
 
     # RSS/Atom Feeds
     path("rss.xml", RssSiteNewsFeed()),
