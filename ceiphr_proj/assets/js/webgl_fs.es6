@@ -654,7 +654,7 @@ let curl;
 let pressure;
 let bloom;
 
-// let ditheringTexture = createTextureAsync('img/LDR_RGB1_0.png');
+let ditheringTexture = createTextureAsync('https://cdn.ceiphr.com/assets/LDR_RGB1_0.png');
 
 const clearProgram               = new GLProgram(baseVertexShader, clearShader);
 const colorProgram               = new GLProgram(baseVertexShader, colorShader);
@@ -975,8 +975,8 @@ function render (target) {
         gl.uniform1i(program.uniforms.uTexture, density.read.attach(0));
         if (config.BLOOM) {
             gl.uniform1i(program.uniforms.uBloom, bloom.attach(1));
-            // gl.uniform1i(program.uniforms.uDithering, ditheringTexture.attach(2));
-            // let scale = getTextureScale(ditheringTexture, width, height);
+            gl.uniform1i(program.uniforms.uDithering, ditheringTexture.attach(2));
+            let scale = getTextureScale(ditheringTexture, width, height);
             gl.uniform2f(program.uniforms.ditherScale, scale.x, scale.y);
         }
     }
@@ -986,8 +986,8 @@ function render (target) {
         gl.uniform1i(program.uniforms.uTexture, density.read.attach(0));
         if (config.BLOOM) {
             gl.uniform1i(program.uniforms.uBloom, bloom.attach(1));
-            // gl.uniform1i(program.uniforms.uDithering, ditheringTexture.attach(2));
-            // let scale = getTextureScale(ditheringTexture, width, height);
+            gl.uniform1i(program.uniforms.uDithering, ditheringTexture.attach(2));
+            let scale = getTextureScale(ditheringTexture, width, height);
             gl.uniform2f(program.uniforms.ditherScale, scale.x, scale.y);
         }
     }
