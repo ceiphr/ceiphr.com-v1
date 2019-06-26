@@ -36,8 +36,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_LOCATION = 'static'
 AWS_DEFAULT_ACL = ''
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-# STATIC_ROOT = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
+STATIC_ROOT = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
 
 COMPRESS_URL = STATIC_URL = 'https://cphr.sfo2.digitaloceanspaces.com/%s/' % AWS_LOCATION
 COMPRESS_OUTPUT_DIR = 'cache'
