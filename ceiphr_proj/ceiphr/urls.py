@@ -33,10 +33,6 @@ from portfolio.views import GetProjects
 sitemaps = {"static": StaticViewSitemap, "blog": BlogSitemap}
 
 urlpatterns = [
-    # Static contents for SEO
-    path("robots.txt", TemplateView.as_view(template_name="robots.txt")),
-    path("humans.txt", TemplateView.as_view(template_name="humans.txt")),
-    path("keybase.txt", TemplateView.as_view(template_name="keybase.txt")),
 
     # RSS/Atom Feeds
     path("rss.xml", RssSiteNewsFeed()),

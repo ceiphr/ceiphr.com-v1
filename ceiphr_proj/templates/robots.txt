@@ -1,4 +1,5 @@
 # Rule 1
 User-agent: *
+Allow: /
 
-Sitemap: https://ceiphr.com/sitemap.xml
+Sitemap: https://www.ceiphr.com/sitemap.xml
