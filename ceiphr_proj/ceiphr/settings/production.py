@@ -33,7 +33,6 @@ AWS_S3_ENDPOINT_URL = 'https://sfo2.digitaloceanspaces.com'
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
-AWS_QUERYSTRING_AUTH = True
 AWS_LOCATION = 'static'
 AWS_DEFAULT_ACL = ''
 
