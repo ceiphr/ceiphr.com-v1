@@ -21,39 +21,39 @@ OTP_TOTP_ISSUER = "Ceiphr"
 
 # Content Security Policy
 
-CSP_INCLUDE_NONCE_IN = ["script-src"]
+# CSP_INCLUDE_NONCE_IN = ["script-src"]
 
-CSP_IMG_SRC = (
-    "'self'",
-    "https://*.ceiphr.com",
-    "https://*.buysellads.net",
-    "https://ad.doubleclick.net",
-)
+# CSP_IMG_SRC = (
+#     "'self'",
+#     "https://*.ceiphr.com",
+#     "https://*.buysellads.net",
+#     "https://ad.doubleclick.net",
+# )
 
-CSP_STYLE_SRC = "'self' 'unsafe-inline'"
+# CSP_STYLE_SRC = "'self' 'unsafe-inline'"
 
-CSP_SCRIPT_SRC = (
-    "'self'",
-    "https://*.ceiphr.com",
-    "https://*.carbonads.com",
-    "https://*.carbonads.net",
-    "https://cdnjs.cloudflare.com",
-    "https://sentry.io",
-)
+# CSP_SCRIPT_SRC = (
+#     "'self'",
+#     "https://*.ceiphr.com",
+#     "https://*.carbonads.com",
+#     "https://*.carbonads.net",
+#     "https://cdnjs.cloudflare.com",
+#     "https://sentry.io",
+# )
 
-CSP_FONT_SRC = ("'self' data:", "https://cdnjs.cloudflare.com")
+# CSP_FONT_SRC = ("'self' data:", "https://cdnjs.cloudflare.com")
 
-CSP_FRAME_SRC = ("'self'",)
+# CSP_FRAME_SRC = ("'self'",)
 
-CSP_CONNECT_SRC = ("'self'",)
+# CSP_CONNECT_SRC = ("'self'",)
 
-CSP_OBJECT_SRC = ("'none'",)
+# CSP_OBJECT_SRC = ("'none'",)
 
-CSP_BASE_URI = ("'none'",)
+# CSP_BASE_URI = ("'none'",)
 
-CSP_FRAME_ANCESTORS = ("'none'",)
+# CSP_FRAME_ANCESTORS = ("'none'",)
 
-CSP_FORM_ACTION = "'self'"
+# CSP_FORM_ACTION = "'self'"
 
 # Application definition
 
