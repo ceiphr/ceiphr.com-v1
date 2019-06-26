@@ -8,7 +8,7 @@ coverage
 codecov
 
 # Django Apps
-django-pipeline
+django-compressor
 django-debug-toolbar
 django-otp
 django-csp

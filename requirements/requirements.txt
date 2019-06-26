@@ -7,10 +7,10 @@ codecov==2.0.15
 coverage==4.5.3
 Django==2.2.2
 django-csp==3.5
+django-compressor==2.3
 django-debug-toolbar==2.0
 django-htmlmin==0.11.0
 django-otp==0.6.0
-django-pipeline==1.6.14
 django-storages==1.7.1
 docutils==0.14
 entrypoints==0.3

@@ -71,7 +71,7 @@ INSTALLED_APPS = [
     "django_otp.plugins.otp_static",
     # "coverage",
     "sorl.thumbnail",
-    "pipeline",
+    "compressor",
     "portfolio",
     "blog",
 ]
@@ -90,12 +90,10 @@ MIDDLEWARE = [
     "htmlmin.middleware.MarkRequestMiddleware",
 ]
 
-STATICFILES_STORAGE = "pipeline.storage.PipelineCachedStorage"
-
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    "pipeline.finders.PipelineFinder",
+    "compressor.finders.CompressorFinder",
 )
 
 ROOT_URLCONF = "ceiphr.urls"
@@ -157,54 +155,9 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "assets"),)
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-# Pipeline - process and compress assets for optimized use
-
-PIPELINE = {
-    # Convert stylesheet assets into post-processed static content
-    "STYLESHEETS": {
-        "feed-mobile": {
-            "source_filenames": ("sass/feed-mobile.scss",),
-            "output_filename": "css/feed-mobile.css",
-            "extra_context": {"media": "screen and (max-width: 769px)"},
-        },
-        "feed-desktop": {
-            "source_filenames": ("sass/feed-desktop.scss",),
-            "output_filename": "css/feed-desktop.css",
-            "extra_context": {"media": "screen and (min-width: 769px)"},
-        },
-        "article-mobile": {
-            "source_filenames":
-            ("sass/article-mobile.scss", "sass/highlight.scss"),
-            "output_filename": "css/article-mobile.css",
-            "extra_context": {"media": "screen and (max-width: 1024px)"},
-        },
-        "article-desktop": {
-            "source_filenames":
-            ("sass/article-desktop.scss", "sass/highlight.scss"),
-            "output_filename": "css/article-desktop.css",
-            "extra_context": {"media": "screen and (min-width: 1024px)"},
-        },
-    },
-    # Compress javascript assets
-    "JAVASCRIPT": {
-        "onload": {
-            "source_filenames": (
-                "node_modules/lazysizes/lazysizes.js",
-                "node_modules/lazysizes/plugins/blur-up/ls.blur-up.js",
-                "js/nav.js",
-            ),
-            "output_filename": "js/onload.js",
-            "extra_context": {"defer": True},
-        },
-    },
-}
-
-PIPELINE['CSS_COMPRESSOR'] = 'pipeline.compressors.yuglify.YuglifyCompressor'
-
-# Sass compiler for coverting scss files to post-processed css
-
-PIPELINE["COMPILERS"] = (
-    "pipeline.compilers.sass.SASSCompiler",
+COMPRESS_PRECOMPILERS = (
+    ('text/x-sass', 'sass {infile} {outfile}'),
+    ('text/x-scss', 'sass --scss {infile} {outfile}'),
 )
 
 # Media files

@@ -1,5 +1,5 @@
 {% load static %}
-{% load pipeline %}
+{% load compress %}
 {% load thumbnail %}
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
@@ -78,9 +78,12 @@
     <link rel="icon" href="{{ request.scheme }}://{{ request.get_host }}{{ png.url }}" sizes="196x196">
     {% endthumbnail %}
 
+    
     {% if is_article %}
-    {% stylesheet 'article-desktop' %}
-    {% stylesheet 'article-mobile' %}
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'sass/article-desktop.scss' %}" type="text/x-sass" nonce="{{ request.csp_nonce }}" media="screen and (min-width: 1024px)" charset="utf-8">
+    <link rel="stylesheet" href="{% static 'sass/article-mobile.scss' %}" type="text/x-sass" nonce="{{ request.csp_nonce }}" media="screen and (max-width: 1024px)" charset="utf-8">
+    {% endcompress %}
     <meta name="description" content="{{ article.summary }}" />
     <meta itemprop="name" content="{{ title }} — Ceiphr">
     <meta itemprop="description" content="{{ article.summary }}" />
@@ -125,8 +128,10 @@
         }
     </script>
     {% else %}
-    {% stylesheet 'feed-desktop' %}
-    {% stylesheet 'feed-mobile' %}
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'sass/feed-desktop.scss' %}" nonce="{{ request.csp_nonce }}" type="text/x-sass" media="screen and (min-width: 1024px)" charset="utf-8">
+    <link rel="stylesheet" href="{% static 'sass/feed-mobile.scss' %}" nonce="{{ request.csp_nonce }}" type="text/x-sass" media="screen and (max-width: 1024px)" charset="utf-8">
+    {% endcompress %}
     <meta name="description" content="{{ desc }}" />
     <meta itemprop="name" content="{{ title }} — Ceiphr">
     <meta itemprop="description" content="{{ desc }}" />
@@ -162,6 +167,9 @@
         }
     </script>
     {% endif %}
+    {% compress js inline %}
+    <script type="text/javascript" nonce="{{ request.csp_nonce }}" charset="utf-8" src="{% static 'js/nav.js' %}"></script>
+    {% endcompress %}
 </head>
 
 <body>
@@ -223,7 +231,9 @@
         </div>
     </footer>
     {% endif %}
-    {% javascript 'onload' %}
+    {% compress js %}
+    <script type="text/javascript" nonce="{{ request.csp_nonce }}" charset="utf-8" src="{% static 'node_modules/lazysizes/lazysizes.js' %}"></script>
+    <script type="text/javascript" nonce="{{ request.csp_nonce }}" charset="utf-8" src="{% static 'node_modules/lazysizes/plugins/blur-up/ls.blur-up.js' %}"></script>
     {% if not debug %}
     <script nonce="{{ request.csp_nonce }}">
         (function (f, a, t, h, o, m) {
@@ -241,6 +251,7 @@
         fathom('trackPageview');
     </script>
     {% endif %}
+    {% endcompress %}
 </body>
 
 </html>
