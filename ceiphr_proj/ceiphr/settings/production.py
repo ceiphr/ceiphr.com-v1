@@ -38,8 +38,8 @@ AWS_DEFAULT_ACL = ''
 
 STATIC_ROOT = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
 
-COMPRESS_URL = STATIC_URL = 'https://sfo2.digitaloceanspaces.com/cphr/%s/' % AWS_LOCATION
-COMPRESS_OUTPUT_DIR = 'cache'
+COMPRESS_URL = STATIC_URL = 'https://cdn.ceiphr.com/%s/' % AWS_LOCATION
+COMPRESS_OUTPUT_DIR = ''
 
 AWS_PUBLIC_MEDIA_LOCATION = '%s/media/public' % AWS_LOCATION
 AWS_PRIVATE_MEDIA_LOCATION = '%s/media/private' % AWS_LOCATION
