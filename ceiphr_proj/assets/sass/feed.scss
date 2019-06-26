@@ -6,19 +6,11 @@ Feed Header
 
 .feed__cover--medium,
 .feed__cover--large {
-    // background: radial-gradient(circle, #485563, #485563 1px, #29323c 1px, #29323c);
-    // background-size: 32px 32px;
-    background-color: black;
+    background: radial-gradient(circle, $gunmetal-light, $gunmetal-light 1px, $gunmetal 1px, $gunmetal);
+    background-size: 32px 32px;
     width: 100%;
     position: absolute;
-    top: 0;
-
-    canvas {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        overflow: hidden;
-    }    
+    top: 0;  
 }
 
 .tag:not(body).is-delete {

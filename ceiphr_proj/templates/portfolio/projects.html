@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 {% load thumbnail %}
-{% load static %}
 {% load pipeline %}
 {% load markdownify %}
+{% load static %}
 <section class="feed__cover--medium">
-    <canvas></canvas>
 </section>
 <section class="hero is-medium is-dark is-bold">
     <div class="hero-body">
@@ -53,5 +52,4 @@
         {% endfor %}
     </div>
 </section>
-{% javascript 'fluid' %}
 {% endblock content %}

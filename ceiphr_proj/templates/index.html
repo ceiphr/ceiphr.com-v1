@@ -2,9 +2,7 @@
 {% block content %}
 {% load thumbnail %}
 {% load pipeline %}
-{% load static %}
 <section class="feed__cover--large">
-    <canvas></canvas>
 </section>
 <section class="hero is-large is-dark is-bold">
     <div class="hero-body">
@@ -54,5 +52,4 @@
         {% endfor %}
     </div>
 </section>
-{% javascript 'fluid' %}
 {% endblock content %}

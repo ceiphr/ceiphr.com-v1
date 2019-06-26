@@ -9,7 +9,7 @@ DEBUG = int(os.getenv('DEBUG', default=1))
 
 ADMIN_ENABLED = int(os.getenv('ADMIN_ENABLED', default=1))
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='127.0.0.1').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='127.0.0.1,0.0.0.0').split(',')
 
 # Generic Settings
 
@@ -197,22 +197,15 @@ PIPELINE = {
             "output_filename": "js/onload.js",
             "extra_context": {"defer": True},
         },
-        "fluid": {
-            "source_filenames": ("js/webgl_fs.es6",),
-            "output_filename": "js/fluid.js",
-            "extra_context": {"defer": True},
-        },
     },
 }
 
-PIPELINE['JS_COMPRESSOR'] = 'pipeline.compressors.NoopCompressor'
 PIPELINE['CSS_COMPRESSOR'] = 'pipeline.compressors.yuglify.YuglifyCompressor'
 
 # Sass compiler for coverting scss files to post-processed css
 
 PIPELINE["COMPILERS"] = (
     "pipeline.compilers.sass.SASSCompiler",
-    "pipeline.compilers.es6.ES6Compiler",
 )
 
 # Media files

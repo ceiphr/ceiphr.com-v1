@@ -100,14 +100,10 @@
                 "@id": "{{ request.scheme }}://{{ request.get_host }}{{ request.get_full_path }}"
             },
             "headline": "{{ title }}",
-            "image": [{
-                    % thumbnail contents.image "1920x960"
-                    format = "JPEG"
-                    as jpeg %
-                }
-                "{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}" {
-                    % endthumbnail %
-                }
+            "image": [
+                {% thumbnail article.image "1920x960" format="JPEG" as jpeg %}
+                "{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}" 
+                {% endthumbnail %}
             ],
             "datePublished": "{{ article.published }}",
             "dateModified": "{{ article.modified }}",
@@ -120,14 +116,9 @@
                 "name": "Ceiphr",
                 "logo": {
                     "@type": "ImageObject",
-                    {
-                        % thumbnail logo "196x196"
-                        format = "JPEG"
-                        as jpeg %
-                    }
-                    "url": "https://{{ request.get_host }}{{ jpeg.url }}" {
-                        % endthumbnail %
-                    }
+                    {% thumbnail logo "196x196" format="JPEG" as jpeg %}
+                    "url": "{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}" 
+                    {% endthumbnail %}
                 }
             },
             "description": "{{ article.summary }}"
@@ -164,14 +155,9 @@
             ],
             "logo": {
                 "@type": "ImageObject",
-                {
-                    % thumbnail avatar "1200x1200"
-                    format = "JPEG"
-                    as jpeg %
-                }
-                "url": "https://{{ request.get_host }}{{ jpeg.url }}" {
-                    % endthumbnail %
-                }
+                {% thumbnail avatar "1200x1200" format="JPEG" as jpeg %}
+                "url": "https://{{ request.get_host }}{{ jpeg.url }}" 
+                {% endthumbnail %}
             }
         }
     </script>
