@@ -153,8 +153,6 @@ USE_TZ = True
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "assets"),)
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
 COMPRESS_PRECOMPILERS = (
     ('text/x-sass', 'sass {infile} {outfile}'),
     ('text/x-scss', 'sass --scss {infile} {outfile}'),
