@@ -257,7 +257,7 @@ footer a {
     img {
         transition-duration: 200ms;
         padding: 0.25em;
-        
+
         &:hover {
             transform: translateY(-1px);
         }
@@ -275,6 +275,12 @@ footer a {
 .article__detail,
 .stats {
     font-family: $family-code;
+}
+
+.icon.repo {
+    height: 1.2rem;
+    width: 1.2rem;
+    margin-right: 4px;
 }
 
 .stats span {
