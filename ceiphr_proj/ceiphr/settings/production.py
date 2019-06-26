@@ -4,6 +4,8 @@ from sentry_sdk.integrations.django import DjangoIntegration
 
 from .base import *
 
+INSTALLED_APPS += ['storages', ]
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -21,20 +23,20 @@ DATABASES = {
 # DigitalOcean spaces
 # https://www.digitalocean.com/community/tutorials/how-to-set-up-object-storage-with-django
 
-STATIC_URL = "/static/"
+# STATIC_URL = "/static/"
 
-# AWS_ACCESS_KEY_ID = os.environ.get('SPACES_ACCESS_KEY', 'spaces-access-key')
-# AWS_SECRET_ACCESS_KEY = os.environ.get('SPACES_SECRET_ACCESS_KEY', 'spaces-secret-access-key')
-# AWS_STORAGE_BUCKET_NAME = os.environ.get('STORAGE_BUCKET_NAME', 'storage-bucket-name')
-# AWS_S3_ENDPOINT_URL = 'https://sfo2.digitaloceanspaces.com'
-# AWS_S3_OBJECT_PARAMETERS = {
-#     'CacheControl': 'max-age=86400',
-# }
-# AWS_LOCATION = 'static'
+AWS_ACCESS_KEY_ID = os.environ.get('SPACES_ACCESS_KEY', 'spaces-access-key')
+AWS_SECRET_ACCESS_KEY = os.environ.get('SPACES_SECRET_ACCESS_KEY', 'spaces-secret-access-key')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('STORAGE_BUCKET_NAME', 'storage-bucket-name')
+AWS_S3_ENDPOINT_URL = 'https://sfo2.digitaloceanspaces.com'
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
 
-# STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
 
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Security for production server use.
 
