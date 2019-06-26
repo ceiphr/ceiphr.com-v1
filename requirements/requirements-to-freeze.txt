@@ -13,6 +13,7 @@ django-debug-toolbar
 django-otp
 django-csp
 django-htmlmin
+boto
 boto3
 
 # Image Processing
