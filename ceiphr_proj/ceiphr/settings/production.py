@@ -28,7 +28,6 @@ DATABASES = {
 AWS_ACCESS_KEY_ID = os.environ.get('SPACES_ACCESS_KEY', 'spaces-access-key')
 AWS_SECRET_ACCESS_KEY = os.environ.get('SPACES_SECRET_ACCESS_KEY', 'spaces-secret-access-key')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('STORAGE_BUCKET_NAME', 'storage-bucket-name')
-AWS_S3_REGION_NAME = 'sfo2'
 AWS_S3_ENDPOINT_URL = 'https://sfo2.digitaloceanspaces.com'
 AWS_S3_CUSTOM_DOMAIN = 'https://cdn.ceiphr.com'
 AWS_S3_OBJECT_PARAMETERS = {
@@ -37,7 +36,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_LOCATION = 'static'
 AWS_DEFAULT_ACL = ''
 
-STATIC_ROOT = COMPRESS_URL = STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
+STATIC_ROOT = COMPRESS_URL = STATIC_URL = '%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
 AWS_PUBLIC_MEDIA_LOCATION = '%s/media/public' % AWS_LOCATION
 AWS_PRIVATE_MEDIA_LOCATION = '%s/media/private' % AWS_LOCATION
 
