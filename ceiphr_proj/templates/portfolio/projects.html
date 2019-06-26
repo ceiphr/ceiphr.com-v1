@@ -36,10 +36,10 @@
                                     {{ project.description }}
                                 </p>
                                 <p class="stats">
-                                    <img class="icon is-small" src="{% static "svg/lang.svg" %}" alt="language"/>{{ project.language }}  
-                                    <img class="icon is-small" src="{% static "svg/star.svg" %}" alt="stars"/>{{ project.stargazers_count }} 
-                                    <img class="icon is-small" src="{% static "svg/fork.svg" %}" alt="language"/>{{ project.forks_count }}
-                                    <img class="icon is-small" src="{% static "svg/license.svg" %}" alt="language"/>{{ project.license.spdx_id }}
+                                    <span><img class="icon is-small" src="{% static "svg/lang.svg" %}" alt="language"/>{{ project.language }}</span>
+                                    <span><img class="icon is-small" src="{% static "svg/star.svg" %}" alt="stars"/>{{ project.stargazers_count }}</span>
+                                    <span><img class="icon is-small" src="{% static "svg/fork.svg" %}" alt="language"/>{{ project.forks_count }}</span>
+                                    <span><img class="icon is-small" src="{% static "svg/license.svg" %}" alt="language"/>{{ project.license.spdx_id }}</span>
                                 </p>
                             </div>
                         </div>
