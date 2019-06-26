@@ -26,21 +26,21 @@
     <meta name="apple-mobile-web-app-title" content="ceiphr" />
 
     {% thumbnail logo "512x512" format="PNG" as png %}
-    <link rel="apple-touch-icon" href="{{ request.scheme }}://{{ request.get_host }}{{ png.url }}">
+    <link rel="apple-touch-icon" href="{{ png.url }}">
     {% endthumbnail %}
     {% thumbnail logo "76x76" format="PNG" as png %}
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ request.scheme }}://{{ request.get_host }}{{ png.url }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ png.url }}">
     {% endthumbnail %}
     {% thumbnail logo "120x120" format="PNG" as png %}
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ request.scheme }}://{{ request.get_host }}{{ png.url }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ png.url }}">
     {% endthumbnail %}
     {% thumbnail logo "152x152" format="PNG" as png %}
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ request.scheme }}://{{ request.get_host }}{{ png.url }}">
-    <link rel="apple-touch-startup-image" href="{{ request.scheme }}://{{ request.get_host }}{{ png.url }}" />
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ png.url }}">
+    <link rel="apple-touch-startup-image" href="{{ png.url }}" />
     {% endthumbnail %}
 
     {% comment %} Facebook Meta Tags {% endcomment %}
-    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.get_full_path }}" />
+    <meta property="og:url" content="{{ request.get_full_path }}" />
     <meta property="og:site_name" content="ceiphr" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
@@ -51,13 +51,13 @@
 
     {% comment %} Tile icon for Win8 (144x144 + tile color) {% endcomment %}
     {% thumbnail logo "144x144" format="JPEG" as jpeg %}
-    <meta name="msapplication-TileImage" content="{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}">
+    <meta name="msapplication-TileImage" content="{{ jpeg.url }}">
     {% endthumbnail %}
     {% thumbnail logo "70x70" format="PNG" as png %}
-    <meta name="msapplication-square70x70logo" content="{{ request.scheme }}://{{ request.get_host }}{{ png.url }}">
+    <meta name="msapplication-square70x70logo" content="{{ png.url }}">
     {% endthumbnail %}
     {% thumbnail logo "150x150" format="PNG" as png %}
-    <meta name="msapplication-square150x150logo" content="{{ request.scheme }}://{{ request.get_host }}{{ png.url }}">
+    <meta name="msapplication-square150x150logo" content="{{ png.url }}">
     {% endthumbnail %}
     <meta name="msapplication-TileColor" content="#03a9f4">
 
@@ -66,16 +66,16 @@
 
     {% comment %} Favicon {% endcomment %}
     {% thumbnail favicon "16x16" format="PNG" as png %}
-    <link rel="icon" href="{{ request.scheme }}://{{ request.get_host }}{{ png.url }}" sizes="16x16">
+    <link rel="icon" href="{{ png.url }}" sizes="16x16">
     {% endthumbnail %}
     {% thumbnail favicon "32x32" format="PNG" as png %}
-    <link rel="icon" href="{{ request.scheme }}://{{ request.get_host }}{{ png.url }}" sizes="32x32">
+    <link rel="icon" href="{{ png.url }}" sizes="32x32">
     {% endthumbnail %}
     {% thumbnail favicon "152x152" format="PNG" as png %}
-    <link rel="icon" href="{{ request.scheme }}://{{ request.get_host }}{{ png.url }}" sizes="152x152">
+    <link rel="icon" href="{{ png.url }}" sizes="152x152">
     {% endthumbnail %}
     {% thumbnail favicon "196x196" format="PNG" as png %}
-    <link rel="icon" href="{{ request.scheme }}://{{ request.get_host }}{{ png.url }}" sizes="196x196">
+    <link rel="icon" href="{{ png.url }}" sizes="196x196">
     {% endthumbnail %}
 
     
@@ -88,8 +88,8 @@
     <meta itemprop="name" content="{{ title }} — Ceiphr">
     <meta itemprop="description" content="{{ article.summary }}" />
     {% thumbnail article.image "1200x600" format="JPEG" as jpeg %}
-    <meta itemprop="image" content="{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}">
-    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}">
+    <meta itemprop="image" content="{{ jpeg.url }}">
+    <meta property="og:image" content="{{ jpeg.url }}">
     {% endthumbnail %}
     <meta property="og:title" content="{{ title }} — Ceiphr" />
     <meta property="og:description" content="{{ article.summary }}" />
@@ -100,12 +100,12 @@
             "@type": "Article",
             "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": "{{ request.scheme }}://{{ request.get_host }}{{ request.get_full_path }}"
+                "@id": "{{ request.get_full_path }}"
             },
             "headline": "{{ title }}",
             "image": [
                 {% thumbnail article.image "1920x960" format="JPEG" as jpeg %}
-                "{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}" 
+                "{{ jpeg.url }}" 
                 {% endthumbnail %}
             ],
             "datePublished": "{{ article.published }}",
@@ -120,7 +120,7 @@
                 "logo": {
                     "@type": "ImageObject",
                     {% thumbnail logo "196x196" format="JPEG" as jpeg %}
-                    "url": "{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}" 
+                    "url": "{{ jpeg.url }}" 
                     {% endthumbnail %}
                 }
             },
