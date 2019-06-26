@@ -1,4 +1,5 @@
 import os
+import boto
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -35,6 +36,11 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_LOCATION = 'static'
 AWS_DEFAULT_ACL = ''
+
+s3 = boto.s3.S3RegionInfo(name=AWS_STORAGE_BUCKET_NAME,
+                          endpoint='https://sfo2.digitaloceanspaces.com',
+                          aws_access_key_id=AWS_ACCESS_KEY_ID,
+                          aws_secret_access_key=AWS_SECRET_ACCESS_KEY).connect()
 
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
 AWS_PUBLIC_MEDIA_LOCATION = '%s/media/public' % AWS_LOCATION
