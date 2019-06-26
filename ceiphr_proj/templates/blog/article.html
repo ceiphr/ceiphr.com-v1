@@ -113,14 +113,14 @@
                     </div>
                     <div class="share__wrapper">
                         <a href="http://www.facebook.com/sharer.php?u=https://{{ request.get_host }}{{ request.get_full_path }}"
-                            target="_blank" rel="noreferrer" aria-label="facebook" class="button"><img
-                                src="{% static 'svg/facebook.svg' %}" alt="facebook" /></a>
-                        <a href="https://twitter.com/share?url=https://{{ request.get_host }}{{ request.get_full_path }}&amp;text={{ article.title }}&amp;hashtags={% for tag in tags %}{{ tag.name }}, {% endfor %}"
-                            target="_blank" rel="noreferrer" aria-label="twitter" class="button"><img
-                                src="{% static 'svg/twitter.svg' %}" alt="twitter" /></a>
+                            target="_blank" rel="noreferrer" aria-label="Facebook" class="button"><img
+                                src="{% static 'svg/facebook-share.svg' %}" alt="Facebook" /></a>
+                        <a href="https://twitter.com/share?url=https://{{ request.get_host }}{{ request.get_full_path }}&amp;text={{ article.title|urlencode }}&amp;hashtags={% for tag in tags %}{% if not forloop.last %}{{ tag.name }}%2C%20{% else %}{{ tag.name }}{% endif %}{% endfor %}"
+                            target="_blank" rel="noreferrer" aria-label="Twitter" class="button"><img
+                                src="{% static 'svg/twitter-share.svg' %}" alt="Twitter" /></a>
                         <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://{{ request.get_host }}{{ request.get_full_path }}"
-                            target="_blank" rel="noreferrer" aria-label="linkedin" class="button"><img
-                                src="{% static 'svg/linkedin.svg' %}" alt="linkedin" /></a>
+                            target="_blank" rel="noreferrer" aria-label="LinkedIn" class="button"><img
+                                src="{% static 'svg/linkedin-share.svg' %}" alt="LinkedIn" /></a>
                     </div>
                 </div>
             </div>
@@ -168,7 +168,6 @@
 {% endif %}
 <style type="text/css">
     @media print {
-
         nav,
         .article__cover-image,
         .card .media,

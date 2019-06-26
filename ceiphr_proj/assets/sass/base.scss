@@ -253,6 +253,15 @@ blockquote strong::selection {
 footer a {
     white-space: nowrap;
     color: $dark !important;
+
+    img {
+        transition-duration: 200ms;
+        padding: 0.25em;
+        
+        &:hover {
+            transform: translateY(-1px);
+        }
+    }
 }
 
 .prompt-background {
