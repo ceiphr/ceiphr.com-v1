@@ -136,8 +136,8 @@
     <meta itemprop="name" content="{{ title }} — Ceiphr">
     <meta itemprop="description" content="{{ desc }}" />
     {% thumbnail avatar "1200x1200" format="JPEG" as jpeg %}
-    <meta itemprop="image" content="https://{{ request.get_host }}{{ jpeg.url }}">
-    <meta property="og:image" content="https://{{ request.get_host }}{{ jpeg.url }}">
+    <meta itemprop="image" content="{{ jpeg.url }}">
+    <meta property="og:image" content="{{ jpeg.url }}">
     {% endthumbnail %}
     <meta property="og:title" content="{{ title }} — Ceiphr" />
     <meta property="og:description" content="{{ desc }}" />
