@@ -236,7 +236,6 @@ code {
     background-color: white;
     border-radius: 6px;
     box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-    color: $dark;
     padding: 1.25rem;
     transition-duration: 200ms;
 
@@ -256,5 +255,21 @@ code {
 
     &:hover {
         color: $dark !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    #carbonads {
+        background-color: #282828;
+    }
+
+    #carbonads,
+    .sidebar__wrapper a {
+        color: $white-bis !important;
+    }
+
+    .carbon-poweredby:hover {
+        color: $white-bis !important;
+        opacity: 0.75;
     }
 }
