@@ -39,7 +39,8 @@ AWS_PRELOAD_METADATA = True
 
 # STATIC_ROOT = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
 
-COMPRESS_URL = STATIC_URL = 'https://cdn.ceiphr.com/%s/' % AWS_LOCATION
+# COMPRESS_URL = STATIC_URL = 'https://cdn.ceiphr.com/%s/' % AWS_LOCATION
+COMPRESS_URL = STATIC_URL = 'https://sfo2.cdn.digitaloceanspaces.com/cphr/%s/' % AWS_LOCATION
 COMPRESS_ROOT = STATIC_ROOT = os.path.join(BASE_DIR, "static")
 COMPRESS_OUTPUT_DIR = ''
 COMPRESS_ENABLED = True
