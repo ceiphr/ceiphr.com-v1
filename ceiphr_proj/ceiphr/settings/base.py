@@ -205,14 +205,12 @@ PIPELINE = {
     },
 }
 
-PIPELINE['JS_COMPRESSOR'] = 'pipeline.compressors.NoopCompressor'
 PIPELINE['CSS_COMPRESSOR'] = 'pipeline.compressors.yuglify.YuglifyCompressor'
 
 # Sass compiler for coverting scss files to post-processed css
 
 PIPELINE["COMPILERS"] = (
     "pipeline.compilers.sass.SASSCompiler",
-    "pipeline.compilers.es6.ES6Compiler",
 )
 
 # Media files
