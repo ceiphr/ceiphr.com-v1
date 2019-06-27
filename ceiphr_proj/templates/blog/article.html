@@ -65,8 +65,10 @@
                 </div>
                 <div class="content">
                     <br>
-                    This article is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
-                            class="cc__icon icon is-small" alt="creative commons" src="{% static 'svg/cc.svg' %}" />
+                    This article is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <svg class="cc__icon icon is-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+                            <path d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M8.5,14c0.328,0,0.639-0.104,0.899-0.299 l1.202,1.598C9.992,15.758,9.265,16,8.5,16C6.57,16,5,14.43,5,12.5v-1C5,9.57,6.57,8,8.5,8c0.765,0,1.492,0.242,2.101,0.701 l-1.202,1.598C9.139,10.104,8.828,10,8.5,10C7.673,10,7,10.673,7,11.5v1C7,13.327,7.673,14,8.5,14z M16.5,14 c0.328,0,0.639-0.104,0.899-0.299l1.202,1.598C17.992,15.758,17.265,16,16.5,16c-1.93,0-3.5-1.57-3.5-3.5v-1C13,9.57,14.57,8,16.5,8 c0.765,0,1.492,0.242,2.101,0.701l-1.202,1.598C17.139,10.104,16.828,10,16.5,10c-0.827,0-1.5,0.673-1.5,1.5v1 C15,13.327,15.673,14,16.5,14z"/>
+                        </svg>
                         Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>.
                     You may redistribute this article if you follow the terms of the license.
                     <br>
@@ -113,14 +115,23 @@
                     </div>
                     <div class="share__wrapper">
                         <a href="http://www.facebook.com/sharer.php?u=https://{{ request.get_host }}{{ request.get_full_path }}"
-                            target="_blank" rel="noreferrer" aria-label="Facebook" class="button"><img
-                                src="{% static 'svg/facebook-share.svg' %}" alt="Facebook" /></a>
+                            target="_blank" rel="noreferrer" aria-label="Facebook" class="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+                                <path d="M12,2C6.477,2,2,6.477,2,12c0,5.013,3.693,9.153,8.505,9.876V14.65H8.031v-2.629h2.474v-1.749 c0-2.896,1.411-4.167,3.818-4.167c1.153,0,1.762,0.085,2.051,0.124v2.294h-1.642c-1.022,0-1.379,0.969-1.379,2.061v1.437h2.995 l-0.406,2.629h-2.588v7.247C18.235,21.236,22,17.062,22,12C22,6.477,17.523,2,12,2z"/>
+                            </svg>
+                        </a>
                         <a href="https://twitter.com/share?url=https://{{ request.get_host }}{{ request.get_full_path }}&amp;text={{ article.title|urlencode }}&amp;hashtags={% for tag in tags %}{% if not forloop.last %}{{ tag.name }}%2C%20{% else %}{{ tag.name }}{% endif %}{% endfor %}"
-                            target="_blank" rel="noreferrer" aria-label="Twitter" class="button"><img
-                                src="{% static 'svg/twitter-share.svg' %}" alt="Twitter" /></a>
+                            target="_blank" rel="noreferrer" aria-label="Twitter" class="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50" fill="000000">
+                                <path d="M22,3.999c-0.78,0.463-2.345,1.094-3.265,1.276c-0.027,0.007-0.049,0.016-0.075,0.023c-0.813-0.802-1.927-1.299-3.16-1.299 c-2.485,0-4.5,2.015-4.5,4.5c0,0.131-0.011,0.372,0,0.5c-3.353,0-5.905-1.756-7.735-4c-0.199,0.5-0.286,1.29-0.286,2.032 c0,1.401,1.095,2.777,2.8,3.63c-0.314,0.081-0.66,0.139-1.02,0.139c-0.581,0-1.196-0.153-1.759-0.617c0,0.017,0,0.033,0,0.051 c0,1.958,2.078,3.291,3.926,3.662c-0.375,0.221-1.131,0.243-1.5,0.243c-0.26,0-1.18-0.119-1.426-0.165 c0.514,1.605,2.368,2.507,4.135,2.539c-1.382,1.084-2.341,1.486-5.171,1.486H2C3.788,19.145,6.065,20,8.347,20 C15.777,20,20,14.337,20,8.999c0-0.086-0.002-0.266-0.005-0.447C19.995,8.534,20,8.517,20,8.499c0-0.027-0.008-0.053-0.008-0.08 c-0.003-0.136-0.006-0.263-0.009-0.329c0.79-0.57,1.475-1.281,2.017-2.091c-0.725,0.322-1.503,0.538-2.32,0.636 C20.514,6.135,21.699,4.943,22,3.999z"/>
+                            </svg>
+                        </a>
                         <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://{{ request.get_host }}{{ request.get_full_path }}"
-                            target="_blank" rel="noreferrer" aria-label="LinkedIn" class="button"><img
-                                src="{% static 'svg/linkedin-share.svg' %}" alt="LinkedIn" /></a>
+                            target="_blank" rel="noreferrer" aria-label="LinkedIn" class="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50" fill="000000">
+                                <path d="M19,3H5C3.895,3,3,3.895,3,5v14c0,1.105,0.895,2,2,2h14c1.105,0,2-0.895,2-2V5C21,3.895,20.105,3,19,3z M9,17H6.477v-7H9 V17z M7.694,8.717c-0.771,0-1.286-0.514-1.286-1.2s0.514-1.2,1.371-1.2c0.771,0,1.286,0.514,1.286,1.2S8.551,8.717,7.694,8.717z M18,17h-2.442v-3.826c0-1.058-0.651-1.302-0.895-1.302s-1.058,0.163-1.058,1.302c0,0.163,0,3.826,0,3.826h-2.523v-7h2.523v0.977 C13.93,10.407,14.581,10,15.802,10C17.023,10,18,10.977,18,13.174V17z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>

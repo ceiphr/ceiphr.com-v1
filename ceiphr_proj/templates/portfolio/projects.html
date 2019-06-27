@@ -32,15 +32,42 @@
                         <div class="box on-hover feed__article">
                             <div class="feed__body">
                                 <div class="feed__info">
-                                    <p class="title is-4"><img class="icon repo" src="{% static "svg/repo.svg" %}" alt="repository"/>{{ project.name }}</p>
+                                    <p class="title is-4">
+                                    <svg class="icon repo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="96px" height="96px">
+                                        <path d="M 6 2 C 4.895 2 4 2.895 4 4 L 4 20 C 4 21.105 4.895 22 6 22 L 6 18 C 6 16.895 6.895 16 8 16 L 14 16 C 15.105 16 16 16.895 16 18 L 16 22 L 18 22 C 19.105 22 20 21.105 20 20 L 20 4 C 20 2.895 19.105 2 18 2 L 6 2 z M 7 4 L 9 4 L 9 6 L 7 6 L 7 4 z M 7 8 L 9 8 L 9 10 L 7 10 L 7 8 z M 7 12 L 9 12 L 9 14 L 7 14 L 7 12 z M 8 18 L 8 23 L 11 21.5 L 14 23 L 14 18 L 8 18 z"/>
+                                    </svg>
+                                    {{ project.name }}
+                                    </p>
                                     <p class="subtitle is-6">
                                         {{ project.description }}
                                     </p>
                                     <p class="stats">
-                                        <span><img class="icon is-small" src="{% static "svg/lang.svg" %}" alt="language"/>{{ project.language }}</span>
-                                        <span><img class="icon is-small" src="{% static "svg/star.svg" %}" alt="stars"/>{{ project.stargazers_count }}</span>
-                                        <span><img class="icon is-small" src="{% static "svg/fork.svg" %}" alt="language"/>{{ project.forks_count }}</span>
-                                        <span><img class="icon is-small" src="{% static "svg/license.svg" %}" alt="language"/>{{ project.license.spdx_id }}</span>
+                                        <span>
+                                        <svg class="icon is-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+                                            <path d="M14,2H6C4.9,2,4,2.9,4,4v16c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V8L14,2z M11.147,17.088L10,18.225l-3.207-3.207L10,11.811 l1.169,1.108L9,15L11.147,17.088z M14,18.225l-1.132-1.203L15,15l-2.132-2.081L14,11.811l3.207,3.207L14,18.225z M13,9V3.5L18.5,9 H13z"/>
+                                        </svg>
+                                        {{ project.language }}
+                                        </span>
+                                        <span>
+                                        <svg class="icon is-small" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Two_Tone" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" width="24px" height="24px">
+                                        <g id="Outlined_23_">
+                                            <path d="M23.04,9h-8.27L12,1L9.23,9L0.96,9.021l6.559,5.043L5.177,22L12,17.321L18.823,22l-2.342-7.935L23.04,9z"/>
+                                        </g>
+                                        </svg>
+                                        {{ project.stargazers_count }}
+                                        </span>
+                                        <span>
+                                        <svg class="icon is-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+                                            <path d="M 7 2 C 5.346 2 4 3.346 4 5 C 4 6.3016094 4.8387486 7.4021391 6 7.8164062 L 6 15 L 6 16.183594 C 4.8387486 16.597861 4 17.698391 4 19 C 4 20.654 5.346 22 7 22 C 8.654 22 10 20.654 10 19 C 10 17.698391 9.1612514 16.597861 8 16.183594 L 8 15 C 8 14.416667 8.2768974 14.089453 9.0664062 13.628906 C 9.8559151 13.168359 11.066064 12.760764 12.330078 12.318359 C 13.594092 11.875954 14.918941 11.398132 16.019531 10.609375 C 16.914759 9.9677956 17.655875 9.0256499 17.904297 7.8457031 C 19.114653 7.4592359 20 6.3367217 20 5 C 20 3.346 18.654 2 17 2 C 15.346 2 14 3.346 14 5 C 14 6.2519861 14.772996 7.3245811 15.865234 7.7734375 C 15.700131 8.2456929 15.377402 8.6103229 14.855469 8.984375 C 14.081059 9.5393685 12.905908 9.9990452 11.669922 10.431641 C 10.433936 10.864236 9.1440849 11.269141 8.0585938 11.902344 C 8.0382791 11.914194 8.0202303 11.931219 8 11.943359 L 8 7.8164062 C 9.1612514 7.4021391 10 6.3016094 10 5 C 10 3.346 8.654 2 7 2 z"/>
+                                        </svg>
+                                        {{ project.forks_count }}
+                                        </span>
+                                        <span>
+                                        <svg class="icon is-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+                                            <path d="M 12 4 A 2 2 0 0 0 10.269531 5 L 5 5 L 2 5 L 2 7 L 4 7 L 0 15 C 0 17.761 2.239 20 5 20 C 7.761 20 10 17.761 10 15 L 6 7 L 10.271484 7 A 2 2 0 0 0 12 8 A 2 2 0 0 0 13.730469 7 L 18 7 L 14 15 C 14 17.761 16.239 20 19 20 C 21.761 20 24 17.761 24 15 L 20 7 L 22 7 L 22 5 L 13.728516 5 A 2 2 0 0 0 12 4 z M 5 9.0214844 L 7.9882812 15 L 2.0117188 15 L 5 9.0214844 z M 19 9.0214844 L 21.988281 15 L 16.011719 15 L 19 9.0214844 z"/>
+                                        </svg>
+                                        {{ project.license.spdx_id }}
+                                        </span>
                                     </p>
                                 </div>
                             </div>

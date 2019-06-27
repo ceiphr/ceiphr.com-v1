@@ -85,6 +85,63 @@ body {
     }
 }
 
+@media (prefers-color-scheme: dark) {
+
+    body,
+    .title,
+    .subtitle,
+    .feed__info,
+    .referral__content,
+    article .article__body,
+    strong,
+    .button,
+    .tag,
+    .card,
+    .footer,
+    .footer a {
+        color: $white-bis !important;
+    }
+
+    svg {
+        fill: $white-bis !important;
+    }
+
+    body,
+    article .article__body .box,
+    code,
+    .button,
+    .tag,
+    .footer {
+        background-color: #282828 !important;
+    }
+
+    .tag:hover,
+    article .button:hover,
+    article .button:focus {
+        opacity: 0.75;
+    }
+
+    hr {
+        background-color: #282828;
+        opacity: 0.75;
+    }
+
+    article .article__body a:hover {
+        color: $link;
+        opacity: 0.5;
+    }
+
+    .button {
+        border-color: #1f1f1f !important;
+    }
+
+    .box,
+    article .article__body,
+    .card {
+        background-color: #1f1f1f !important;
+    }
+}
+
 /**********************************
 Animations
 **********************************/
@@ -110,7 +167,7 @@ Animations
     -webkit-filter: blur(5px);
     filter: blur(5px);
     transform: scale(1.1);
-    transition: transform 400ms 100ms;
+    transition: transform 400ms 150ms;
     transition-duration: 400ms;
 }
 
@@ -255,12 +312,13 @@ footer a {
     white-space: nowrap;
     color: $dark !important;
 
-    img {
+    svg {
         transition-duration: 200ms;
         padding: 0.25em;
 
         &:hover {
             transform: translateY(-1px);
+            opacity: 0.75;
         }
     }
 }

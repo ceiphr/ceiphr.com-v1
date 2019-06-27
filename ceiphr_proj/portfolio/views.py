@@ -18,11 +18,11 @@ def page_not_found_view(request, exception, template_name="prompt.html"):
         "resume_url": Profile.objects.first().resume_url,
         "favicon": Profile.objects.first().favicon,
     }
-    capture_message("Page not found.", level="error")
+    capture_message(exception, level="error")
     return render(request, "prompt.html", context, status=404)
 
 
-def error_view(request, exception, template_name="prompt.html"):
+def error_view(request, template_name="prompt.html"):
     context = {
         "title": "500",
         "desc": "500 — Internal Error",
@@ -42,7 +42,7 @@ def permission_denied_view(request, exception, template_name="prompt.html"):
         "resume_url": Profile.objects.first().resume_url,
         "favicon": Profile.objects.first().favicon,
     }
-    capture_message("Permission Denied.", level="error")
+    capture_message(exception, level="error")
     return render(request, "prompt.html", context, status=403)
 
 
@@ -54,7 +54,7 @@ def bad_request_view(request, exception, template_name="prompt.html"):
         "resume_url": Profile.objects.first().resume_url,
         "favicon": Profile.objects.first().favicon,
     }
-    capture_message("Bad Request.", level="error")
+    capture_message(exception, level="error")
     return render(request, "prompt.html", context, status=400)
 
 
