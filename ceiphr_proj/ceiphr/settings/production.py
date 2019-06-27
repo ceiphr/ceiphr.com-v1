@@ -29,7 +29,8 @@ AWS_ACCESS_KEY_ID = os.environ.get('SPACES_ACCESS_KEY', 'spaces-access-key')
 AWS_SECRET_ACCESS_KEY = os.environ.get('SPACES_SECRET_ACCESS_KEY', 'spaces-secret-access-key')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('STORAGE_BUCKET_NAME', 'storage-bucket-name')
 AWS_S3_ENDPOINT_URL = 'https://sfo2.digitaloceanspaces.com'
-AWS_S3_CUSTOM_DOMAIN = 'cdn.ceiphr.com'
+# AWS_S3_CUSTOM_DOMAIN = 'cdn.ceiphr.com'
+AWS_S3_CUSTOM_DOMAIN = 'cdn.digitaloceanspaces.com'
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=691200',
 }
