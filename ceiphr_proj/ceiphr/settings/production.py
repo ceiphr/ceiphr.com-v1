@@ -14,26 +14,8 @@ COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 
 COMPRESS_ENABLED = True
 
-COMPRESS_OFFLINE = True
-
 COMPRESS_CACHE_BACKEND = True
 
-COMPRESS_OFFLINE_MANIFEST = 'compressor_manifest.json'
-
-CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
-    }
-}
-
-MIDDLEWARE += [
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
-]
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
