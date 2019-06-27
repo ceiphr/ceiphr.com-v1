@@ -4,37 +4,6 @@ from sentry_sdk.integrations.django import DjangoIntegration
 
 from .base import *
 
-# Memcached
-
-COMPRESS_ROOT = STATIC_ROOT
-
-COMPRESS_URL = STATIC_URL
-
-COMPRESS_PARSER = 'compressor.parser.HtmlParser'
-
-COMPRESS_ENABLED = True
-
-COMPRESS_OFFLINE = True
-
-COMPRESS_OFFLINE_MANIFEST = 'manifest.json'
-
-COMPRESS_OFFLINE_CONTEXT = {'base.html': 'templates/base.html'}
-
-CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
-    }
-}
-
-MIDDLEWARE += [
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
-]
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 

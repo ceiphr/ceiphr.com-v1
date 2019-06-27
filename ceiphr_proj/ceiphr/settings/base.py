@@ -158,15 +158,62 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "assets"),)
 
-COMPRESS_PRECOMPILERS = (
-    ('text/x-sass', 'sass {infile} {outfile}'),
-    ('text/x-scss', 'sass --scss {infile} {outfile}'),
-)
+# Pipeline - process and compress assets for optimized use
 
-COMPRESS_FILTERS = {
-    'css': ['compressor.filters.css_default.CssAbsoluteFilter'], 
-    'js': ['compressor.filters.jsmin.JSMinFilter']
+PIPELINE = {
+    # Convert stylesheet assets into post-processed static content
+    "STYLESHEETS": {
+        "feed-mobile": {
+            "source_filenames": ("sass/feed-mobile.scss",),
+            "output_filename": "css/feed-mobile.css",
+            "extra_context": {"media": "screen and (max-width: 769px)"},
+        },
+        "feed-desktop": {
+            "source_filenames": ("sass/feed-desktop.scss",),
+            "output_filename": "css/feed-desktop.css",
+            "extra_context": {"media": "screen and (min-width: 769px)"},
+        },
+        "article-mobile": {
+            "source_filenames":
+            ("sass/article-mobile.scss", "sass/highlight.scss"),
+            "output_filename": "css/article-mobile.css",
+            "extra_context": {"media": "screen and (max-width: 1024px)"},
+        },
+        "article-desktop": {
+            "source_filenames":
+            ("sass/article-desktop.scss", "sass/highlight.scss"),
+            "output_filename": "css/article-desktop.css",
+            "extra_context": {"media": "screen and (min-width: 1024px)"},
+        },
+    },
+    # Compress javascript assets
+    "JAVASCRIPT": {
+        "onload": {
+            "source_filenames": (
+                "node_modules/lazysizes/lazysizes.js",
+                "node_modules/lazysizes/plugins/blur-up/ls.blur-up.js",
+                "js/nav.js",
+            ),
+            "output_filename": "js/onload.js",
+            "extra_context": {"defer": True},
+        },
+        "fluid": {
+            "source_filenames": ("js/WebGL-Fluid-Simulation/script.es6",),
+            "output_filename": "js/fluid.js",
+            "extra_context": {"defer": True},
+        },
+    },
 }
+
+PIPELINE['JS_COMPRESSOR'] = 'pipeline.compressors.NoopCompressor'
+PIPELINE['CSS_COMPRESSOR'] = 'pipeline.compressors.yuglify.YuglifyCompressor'
+
+# Sass compiler for coverting scss files to post-processed css
+
+PIPELINE["COMPILERS"] = (
+    "pipeline.compilers.sass.SASSCompiler",
+    "pipeline.compilers.es6.ES6Compiler",
+)
 
 # Media files
 

@@ -5,7 +5,7 @@ certifi==2019.6.16
 chardet==3.0.4
 Django==2.2.2
 django-csp==3.5
-django-compressor==2.3
+django-pipeline==1.6.14
 django-debug-toolbar==2.0
 django-htmlmin==0.11.0
 django-otp==0.6.0

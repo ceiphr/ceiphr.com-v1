@@ -4,7 +4,7 @@ sentry-sdk
 python-dotenv
 
 # Django Apps
-django-compressor
+django-pipeline
 django-debug-toolbar
 django-otp
 django-csp
