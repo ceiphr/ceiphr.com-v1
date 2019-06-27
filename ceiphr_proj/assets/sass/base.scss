@@ -98,7 +98,9 @@ body {
     .tag,
     .card,
     .footer,
-    .footer a {
+    .footer a,
+    .tag:not(body).is-delete::after,
+    .tag:not(body).is-delete::before {
         color: $white-bis !important;
     }
 
