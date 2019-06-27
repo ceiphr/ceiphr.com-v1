@@ -26,15 +26,20 @@ CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
 CSP_IMG_SRC = (
     "'self'",
     "https://*.ceiphr.com",
+    "https://sfo2.cdn.digitaloceanspaces.com/",
     "https://*.buysellads.net",
     "https://ad.doubleclick.net",
 )
 
-CSP_STYLE_SRC = "'self' 'unsafe-inline'"
+CSP_STYLE_SRC = (
+    "'self' 'unsafe-inline'",
+    "https://sfo2.cdn.digitaloceanspaces.com/",
+)
 
 CSP_SCRIPT_SRC = (
     "'self'",
     "https://*.ceiphr.com",
+    "https://sfo2.cdn.digitaloceanspaces.com/",
     "https://*.carbonads.com",
     "https://*.carbonads.net",
     "https://cdnjs.cloudflare.com",
