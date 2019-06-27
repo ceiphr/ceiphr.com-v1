@@ -21,6 +21,12 @@ COMPRESS_CACHE_BACKEND = True
 
 COMPRESS_OFFLINE = True
 
+MIDDLEWARE += [
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
+]
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 

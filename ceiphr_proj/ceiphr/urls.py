@@ -19,7 +19,6 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
 from django.contrib.sitemaps.views import sitemap
-from django_otp.admin import OTPAdminSite
 from django.views.generic import TemplateView
 
 from .settings.base import MEDIA_URL, MEDIA_ROOT
@@ -83,7 +82,6 @@ if int(os.environ.get('DEBUG', default=1)):
 
 else:
     urlpatterns += [path(os.environ.get('ADMIN_URL', default="cp") + "/admin/", admin.site.urls)]
-    admin.site.__class__ = OTPAdminSite
 
     # Admin site details
     admin.site.site_header = "Ceiphr Dashboard: Production"
