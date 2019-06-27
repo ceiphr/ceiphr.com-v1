@@ -1,6 +1,6 @@
 beautifulsoup4==4.7.1
 boto3==1.9.175
-botocore==1.12.175
+botocore==1.12.178
 certifi==2019.6.16
 chardet==3.0.4
 Django==2.2.2
