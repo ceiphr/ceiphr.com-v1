@@ -71,7 +71,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sitemaps",
     "sorl.thumbnail",
-    "compressor",
+    "pipeline",
     "portfolio",
     "blog",
 ]
