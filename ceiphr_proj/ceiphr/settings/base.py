@@ -21,7 +21,7 @@ OTP_TOTP_ISSUER = "Ceiphr"
 
 # Content Security Policy
 
-CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
+CSP_INCLUDE_NONCE_IN = ["script-src"]
 
 CSP_IMG_SRC = (
     "'self'",
