@@ -20,6 +20,7 @@ class CachedS3Boto3Storage(S3Boto3Storage):
         """
         We create a clone of the content file as when this is passed to boto3 it wrongly closes
         the file upon upload where as the storage backend expects it to still be open
+        https://github.com/jschneier/django-storages/issues/382#issuecomment-377174808
         """
         # Seek our content back to the start
         content.seek(0, os.SEEK_SET)

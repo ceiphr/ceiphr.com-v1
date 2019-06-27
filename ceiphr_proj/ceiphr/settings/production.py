@@ -31,15 +31,18 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get('STORAGE_BUCKET_NAME', 'storage-bucket-
 AWS_S3_ENDPOINT_URL = 'https://sfo2.digitaloceanspaces.com'
 # AWS_S3_CUSTOM_DOMAIN = 'cdn.ceiphr.com'
 AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
+    'CacheControl': 'max-age=691200',
 }
 AWS_LOCATION = 'static'
 AWS_DEFAULT_ACL = ''
+AWS_PRELOAD_METADATA = True
 
 STATIC_ROOT = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
 
 COMPRESS_URL = STATIC_URL = 'https://sfo2.digitaloceanspaces.com/cphr/%s/' % AWS_LOCATION
 COMPRESS_OUTPUT_DIR = ''
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
 
 AWS_PUBLIC_MEDIA_LOCATION = '%s/media/public' % AWS_LOCATION
 AWS_PRIVATE_MEDIA_LOCATION = '%s/media/private' % AWS_LOCATION
