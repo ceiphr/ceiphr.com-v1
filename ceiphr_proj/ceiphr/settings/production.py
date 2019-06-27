@@ -16,7 +16,7 @@ COMPRESS_ENABLED = True
 
 COMPRESS_OFFLINE = True
 
-# COMPRESS_CACHE_BACKEND = True
+COMPRESS_CACHE_BACKEND = 'django.core.cache.backends.memcached.MemcachedCache'
 
 COMPRESS_OFFLINE_MANIFEST = 'compressor_manifest.json'
 
