@@ -94,7 +94,7 @@ MIDDLEWARE = [
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    "compressor.finders.CompressorFinder",
+    "pipeline.finders.PipelineFinder",
 )
 
 ROOT_URLCONF = "ceiphr.urls"
@@ -159,6 +159,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "assets"),)
 
 # Pipeline - process and compress assets for optimized use
+
+STATICFILES_STORAGE = "pipeline.storage.PipelineCachedStorage"
 
 PIPELINE = {
     # Convert stylesheet assets into post-processed static content
