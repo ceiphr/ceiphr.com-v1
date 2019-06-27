@@ -3,13 +3,13 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
-SECRET_KEY = os.getenv('SECRET_KEY', default=os.urandom(32))
+SECRET_KEY = os.getenv("SECRET_KEY", default=os.urandom(32))
 
-DEBUG = int(os.getenv('DEBUG', default=1))
+DEBUG = int(os.getenv("DEBUG", default=1))
 
-ADMIN_ENABLED = int(os.getenv('ADMIN_ENABLED', default=1))
+ADMIN_ENABLED = int(os.getenv("ADMIN_ENABLED", default=1))
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='127.0.0.1,0.0.0.0').split(',')
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default="127.0.0.1,0.0.0.0").split(",")
 
 # Generic Settings
 
@@ -30,7 +30,11 @@ CSP_IMG_SRC = (
     "https://ad.doubleclick.net",
 )
 
-CSP_STYLE_SRC = ("'self' 'unsafe-inline'", "https://cdnjs.cloudflare.com",)
+CSP_STYLE_SRC = (
+    "'self' 'unsafe-inline'",
+    "https://cdnjs.cloudflare.com",
+    "https://*.carbonads.com",
+)
 
 CSP_SCRIPT_SRC = (
     "'self'",
@@ -116,17 +120,12 @@ WSGI_APPLICATION = "ceiphr.wsgi.application"
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {"NAME":
-     "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
-
-    {"NAME":
-     "django.contrib.auth.password_validation.MinimumLengthValidator"},
-
-    {"NAME":
-     "django.contrib.auth.password_validation.CommonPasswordValidator"},
-
-    {"NAME":
-     "django.contrib.auth.password_validation.NumericPasswordValidator"},
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+    },
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
 
@@ -171,14 +170,12 @@ PIPELINE = {
             "extra_context": {"media": "screen and (min-width: 769px)"},
         },
         "article-mobile": {
-            "source_filenames":
-            ("sass/article-mobile.scss", "sass/highlight.scss"),
+            "source_filenames": ("sass/article-mobile.scss", "sass/highlight.scss"),
             "output_filename": "css/article-mobile.css",
             "extra_context": {"media": "screen and (max-width: 1024px)"},
         },
         "article-desktop": {
-            "source_filenames":
-            ("sass/article-desktop.scss", "sass/highlight.scss"),
+            "source_filenames": ("sass/article-desktop.scss", "sass/highlight.scss"),
             "output_filename": "css/article-desktop.css",
             "extra_context": {"media": "screen and (min-width: 1024px)"},
         },
@@ -202,13 +199,11 @@ PIPELINE = {
     },
 }
 
-PIPELINE['CSS_COMPRESSOR'] = 'pipeline.compressors.yuglify.YuglifyCompressor'
+PIPELINE["CSS_COMPRESSOR"] = "pipeline.compressors.yuglify.YuglifyCompressor"
 
 # Sass compiler for coverting scss files to post-processed css
 
-PIPELINE["COMPILERS"] = (
-    "pipeline.compilers.sass.SASSCompiler",
-)
+PIPELINE["COMPILERS"] = ("pipeline.compilers.sass.SASSCompiler",)
 
 # Media files
 
