@@ -3,6 +3,7 @@
 {% load thumbnail %}
 {% load markdownify %}
 {% load static %}
+{% load cache %}
 <section class="feed__cover--medium">
 </section>
 <section class="hero is-medium is-dark is-bold">
@@ -19,36 +20,38 @@
 </section>
 <section class="section">
     <div class="container slide-on-load">
-        {% for project in projects %}
-        {% if forloop.first or not forloop.counter|divisibleby:2 %}
-        <div class="columns">
-            <div class="column is-offset-2-widescreen is-4-widescreen">
-        {% elif forloop.counter|divisibleby:2 %}
-            <div class="column is-4-widescreen">
-        {% endif %}
-                <a href="{{ project.html_url }}" target="_blank" rel="noreferrer" aria-label="{{ project.name }}">
-                    <div class="box on-hover feed__article">
-                        <div class="feed__body">
-                            <div class="feed__info">
-                                <p class="title is-4"><img class="icon repo" src="{% static "svg/repo.svg" %}" alt="repository"/>{{ project.name }}</p>
-                                <p class="subtitle is-6">
-                                    {{ project.description }}
-                                </p>
-                                <p class="stats">
-                                    <span><img class="icon is-small" src="{% static "svg/lang.svg" %}" alt="language"/>{{ project.language }}</span>
-                                    <span><img class="icon is-small" src="{% static "svg/star.svg" %}" alt="stars"/>{{ project.stargazers_count }}</span>
-                                    <span><img class="icon is-small" src="{% static "svg/fork.svg" %}" alt="language"/>{{ project.forks_count }}</span>
-                                    <span><img class="icon is-small" src="{% static "svg/license.svg" %}" alt="language"/>{{ project.license.spdx_id }}</span>
-                                </p>
+        {% cache 1800 repo_listing %}
+            {% for project in projects %}
+            {% if forloop.first or not forloop.counter|divisibleby:2 %}
+            <div class="columns">
+                <div class="column is-offset-2-widescreen is-4-widescreen">
+            {% elif forloop.counter|divisibleby:2 %}
+                <div class="column is-4-widescreen">
+            {% endif %}
+                    <a href="{{ project.html_url }}" target="_blank" rel="noreferrer" aria-label="{{ project.name }}">
+                        <div class="box on-hover feed__article">
+                            <div class="feed__body">
+                                <div class="feed__info">
+                                    <p class="title is-4"><img class="icon repo" src="{% static "svg/repo.svg" %}" alt="repository"/>{{ project.name }}</p>
+                                    <p class="subtitle is-6">
+                                        {{ project.description }}
+                                    </p>
+                                    <p class="stats">
+                                        <span><img class="icon is-small" src="{% static "svg/lang.svg" %}" alt="language"/>{{ project.language }}</span>
+                                        <span><img class="icon is-small" src="{% static "svg/star.svg" %}" alt="stars"/>{{ project.stargazers_count }}</span>
+                                        <span><img class="icon is-small" src="{% static "svg/fork.svg" %}" alt="language"/>{{ project.forks_count }}</span>
+                                        <span><img class="icon is-small" src="{% static "svg/license.svg" %}" alt="language"/>{{ project.license.spdx_id }}</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+            {% if forloop.last or forloop.counter|divisibleby:2 %}
             </div>
-        {% if forloop.last or forloop.counter|divisibleby:2 %}
-        </div>
-        {% endif %}
-        {% endfor %}
+            {% endif %}
+            {% endfor %}
+        {% endcache %}
     </div>
 </section>
 {% endblock content %}
