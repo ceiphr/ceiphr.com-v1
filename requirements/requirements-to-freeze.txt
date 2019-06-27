@@ -9,6 +9,7 @@ django-debug-toolbar
 django-otp
 django-csp
 django-htmlmin
+python-memcached
 boto
 boto3
 

@@ -167,7 +167,7 @@
         }
     </script>
     {% endif %}
-    {% compress js inline %}
+    {% compress js %}
     <script type="text/javascript" nonce="{{ request.csp_nonce }}" charset="utf-8" src="{% static 'js/nav.js' %}"></script>
     {% endcompress %}
 </head>
@@ -234,6 +234,7 @@
     {% compress js %}
     <script type="text/javascript" nonce="{{ request.csp_nonce }}" charset="utf-8" src="{% static 'node_modules/lazysizes/lazysizes.js' %}"></script>
     <script type="text/javascript" nonce="{{ request.csp_nonce }}" charset="utf-8" src="{% static 'node_modules/lazysizes/plugins/blur-up/ls.blur-up.js' %}"></script>
+    {% endcompress %}
     {% if not debug %}
     <script nonce="{{ request.csp_nonce }}">
         (function (f, a, t, h, o, m) {
@@ -251,7 +252,6 @@
         fathom('trackPageview');
     </script>
     {% endif %}
-    {% endcompress %}
 </body>
 
 </html>

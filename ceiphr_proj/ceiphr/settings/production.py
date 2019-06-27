@@ -16,6 +16,8 @@ COMPRESS_ENABLED = True
 
 COMPRESS_OFFLINE = True
 
+COMPRESS_OFFLINE_MANIFEST = 'manifest.json'
+
 COMPRESS_OFFLINE_MANIFEST = 'compressor_manifest.json'
 
 CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
