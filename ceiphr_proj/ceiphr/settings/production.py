@@ -4,7 +4,20 @@ from sentry_sdk.integrations.django import DjangoIntegration
 
 from .base import *
 
-INSTALLED_APPS += ['storages', ]
+# Memcached
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
+
+COMPRESS_ENABLED = True
+
+COMPRESS_CACHE_BACKEND = True
+
+COMPRESS_OFFLINE = True
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -19,38 +32,6 @@ DATABASES = {
         'PORT': os.environ.get('SQL_PORT', ''),
     }
 }
-
-# DigitalOcean spaces
-# https://www.digitalocean.com/community/tutorials/how-to-set-up-object-storage-with-django
-
-# STATIC_URL = "/static/"
-
-AWS_ACCESS_KEY_ID = os.environ.get('SPACES_ACCESS_KEY', 'spaces-access-key')
-AWS_SECRET_ACCESS_KEY = os.environ.get('SPACES_SECRET_ACCESS_KEY', 'spaces-secret-access-key')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('STORAGE_BUCKET_NAME', 'storage-bucket-name')
-AWS_S3_ENDPOINT_URL = 'https://sfo2.digitaloceanspaces.com'
-# AWS_S3_CUSTOM_DOMAIN = 'cdn.ceiphr.com'
-AWS_S3_CUSTOM_DOMAIN = 'cphr.sfo2.cdn.digitaloceanspaces.com'
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=691200',
-}
-AWS_LOCATION = 'static'
-AWS_DEFAULT_ACL = ''
-AWS_PRELOAD_METADATA = True
-
-# STATIC_ROOT = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
-
-# COMPRESS_URL = STATIC_URL = 'https://cdn.ceiphr.com/%s/' % AWS_LOCATION
-COMPRESS_URL = STATIC_URL = 'https://cphr.sfo2.cdn.digitaloceanspaces.com/%s/' % AWS_LOCATION
-COMPRESS_ROOT = STATIC_ROOT = os.path.join(BASE_DIR, "static")
-COMPRESS_OUTPUT_DIR = ''
-COMPRESS_ENABLED = True
-
-AWS_PUBLIC_MEDIA_LOCATION = '%s/media/public' % AWS_LOCATION
-AWS_PRIVATE_MEDIA_LOCATION = '%s/media/private' % AWS_LOCATION
-
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = COMPRESS_STORAGE = 'ceiphr.storage.CachedS3Boto3Storage'
 
 # Security for production server use.
 

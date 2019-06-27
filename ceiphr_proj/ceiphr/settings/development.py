@@ -4,10 +4,6 @@ from .base import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
-STATIC_URL = "/static/"
-
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
 INSTALLED_APPS += ['debug_toolbar', ]
 DEBUG_TOOLBAR_CONFIG = {

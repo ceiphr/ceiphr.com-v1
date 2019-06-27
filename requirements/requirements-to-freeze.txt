@@ -3,13 +3,8 @@ gunicorn
 sentry-sdk
 python-dotenv
 
-# CI/CD
-coverage
-codecov
-
 # Django Apps
 django-compressor
-django-cors-headers
 django-debug-toolbar
 django-otp
 django-csp

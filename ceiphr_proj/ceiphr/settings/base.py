@@ -74,8 +74,6 @@ INSTALLED_APPS = [
     "django_otp.plugins.otp_totp",
     "django_otp.plugins.otp_hotp",
     "django_otp.plugins.otp_static",
-    "corsheaders",
-    # "coverage",
     "sorl.thumbnail",
     "compressor",
     "portfolio",
@@ -85,7 +83,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "csp.middleware.CSPMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -102,26 +99,6 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     "compressor.finders.CompressorFinder",
-)
-
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = False
-
-CORS_ORIGIN_WHITELIST = (
-    "https://ceiphr.com",
-    "https://cdn.ceiphr.com",
-    "https://sfo2.digitaloceanspaces.com",
-    "https://cphr.sfo2.digitaloceanspaces.com"
-    "http://127.0.0.1:8000",
-)
-
-CORS_ALLOW_METHODS = (
-    'DELETE',
-    'GET',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
 )
 
 ROOT_URLCONF = "ceiphr.urls"
@@ -178,6 +155,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+STATIC_URL = "/static/"
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "assets"),)
 
