@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-import os
 from __future__ import unicode_literals
+import os
 from django.views.generic import TemplateView
 from django.http import Http404
 
