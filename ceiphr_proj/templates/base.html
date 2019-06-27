@@ -1,5 +1,5 @@
 {% load static %}
-{% load compress %}
+{% load pipeline %}
 {% load thumbnail %}
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
@@ -80,10 +80,8 @@
 
     
     {% if is_article %}
-    {% compress css %}
-    <link rel="stylesheet" href="{% static 'sass/article-desktop.scss' %}" type="text/x-sass" nonce="{{ request.csp_nonce }}" media="screen and (min-width: 1024px)" charset="utf-8">
-    <link rel="stylesheet" href="{% static 'sass/article-mobile.scss' %}" type="text/x-sass" nonce="{{ request.csp_nonce }}" media="screen and (max-width: 1024px)" charset="utf-8">
-    {% endcompress %}
+    {% stylesheet 'article-desktop' %}
+    {% stylesheet 'article-mobile' %}
     <meta name="description" content="{{ article.summary }}" />
     <meta itemprop="name" content="{{ title }} — Ceiphr">
     <meta itemprop="description" content="{{ article.summary }}" />
@@ -128,10 +126,8 @@
         }
     </script>
     {% else %}
-    {% compress css %}
-    <link rel="stylesheet" href="{% static 'sass/feed-desktop.scss' %}" nonce="{{ request.csp_nonce }}" type="text/x-sass" media="screen and (min-width: 1024px)" charset="utf-8">
-    <link rel="stylesheet" href="{% static 'sass/feed-mobile.scss' %}" nonce="{{ request.csp_nonce }}" type="text/x-sass" media="screen and (max-width: 1024px)" charset="utf-8">
-    {% endcompress %}
+    {% stylesheet 'feed-desktop' %}
+    {% stylesheet 'feed-mobile' %}
     <meta name="description" content="{{ desc }}" />
     <meta itemprop="name" content="{{ title }} — Ceiphr">
     <meta itemprop="description" content="{{ desc }}" />
@@ -167,9 +163,6 @@
         }
     </script>
     {% endif %}
-    {% compress js %}
-    <script type="text/javascript" nonce="{{ request.csp_nonce }}" charset="utf-8" src="{% static 'js/nav.js' %}"></script>
-    {% endcompress %}
 </head>
 
 <body>
@@ -231,10 +224,7 @@
         </div>
     </footer>
     {% endif %}
-    {% compress js %}
-    <script type="text/javascript" nonce="{{ request.csp_nonce }}" charset="utf-8" src="{% static 'node_modules/lazysizes/lazysizes.js' %}"></script>
-    <script type="text/javascript" nonce="{{ request.csp_nonce }}" charset="utf-8" src="{% static 'node_modules/lazysizes/plugins/blur-up/ls.blur-up.js' %}"></script>
-    {% endcompress %}
+    {% javascript 'onload' %}
     {% if not debug %}
     <script nonce="{{ request.csp_nonce }}">
         (function (f, a, t, h, o, m) {
