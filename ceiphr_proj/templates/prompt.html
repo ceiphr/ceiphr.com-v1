@@ -6,19 +6,11 @@
     <div class="hero-body prompt">
         <div class="container has-text-centered">
             <h1 class="title">
-                500 — Internal Error
+                {{ desc }}
             </h1>
             <h2 class="subtitle">
                 <a href="/" class="button">Return to safety</a>
             </h2>
-            <script>
-                Sentry.init({
-                    dsn: 'https://64705ba551e4407cb6cc1cf33e6336d8@sentry.io/1429770'
-                });
-                Sentry.showReportDialog({
-                    eventId: '{{ sentry_event_id }}'
-                })
-            </script>
         </div>
     </div>
 </section>

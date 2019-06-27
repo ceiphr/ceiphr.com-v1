@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
+import os
 from __future__ import unicode_literals
 from django.views.generic import TemplateView
 from django.http import Http404
 
 from .models import Article
-from django.conf import settings
 from portfolio.models import Profile
 
 
@@ -21,7 +21,7 @@ class GetLargeFeed(TemplateView):
             "avatar": Profile.objects.first().logo,
             "resume_url": Profile.objects.first().resume_url,
             "favicon": Profile.objects.first().favicon,
-            "debug": settings.DEBUG,
+            "debug": int(os.getenv('DEBUG', default=1)),
         }
         return context
 
@@ -46,7 +46,7 @@ class GetArticle(TemplateView):
                 "avatar": Profile.objects.first().logo,
                 "resume_url": Profile.objects.first().resume_url,
                 "favicon": Profile.objects.first().favicon,
-                "debug": settings.DEBUG,
+                "debug": int(os.getenv('DEBUG', default=1)),
             }
         else:
             raise Http404
@@ -67,7 +67,7 @@ class GetFeed(TemplateView):
             "avatar": Profile.objects.first().logo,
             "resume_url": Profile.objects.first().resume_url,
             "favicon": Profile.objects.first().favicon,
-            "debug": settings.DEBUG,
+            "debug": int(os.getenv('DEBUG', default=1)),
         }
 
         if tag:

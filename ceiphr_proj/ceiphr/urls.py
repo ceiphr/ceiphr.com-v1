@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
 from django.contrib.sitemaps.views import sitemap
 from django.views.generic import TemplateView
+from django_otp.admin import OTPAdminSite
 
 from .settings.base import MEDIA_URL, MEDIA_ROOT
 from .sitemaps import BlogSitemap, StaticViewSitemap
@@ -27,6 +28,12 @@ from .feeds import RssSiteNewsFeed, AtomSiteNewsFeed
 
 from blog.views import GetArticle, GetLargeFeed, GetFeed
 from portfolio.views import GetProjects
+
+# Error Pages
+handler404 = 'portfolio.views.page_not_found_view'
+handler500 = 'portfolio.views.error_view'
+handler403 = 'portfolio.views.permission_denied_view'
+handler400 = 'portfolio.views.bad_request_view'
 
 # Sitemaps
 sitemaps = {"static": StaticViewSitemap, "blog": BlogSitemap}
@@ -82,6 +89,7 @@ if int(os.environ.get('DEBUG', default=1)):
 
 else:
     urlpatterns += [path(os.environ.get('ADMIN_URL', default="cp") + "/admin/", admin.site.urls)]
+    admin.site.__class__ = OTPAdminSite
 
     # Admin site details
     admin.site.site_header = "Ceiphr Dashboard: Production"

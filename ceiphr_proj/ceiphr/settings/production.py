@@ -4,6 +4,15 @@ from sentry_sdk.integrations.django import DjangoIntegration
 
 from .base import *
 
+INSTALLED_APPS += [
+    'django_otp',
+    'django_otp.plugins.otp_totp',
+]
+
+MIDDLEWARE += [
+    'django_otp.middleware.OTPMiddleware',
+]
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -15,6 +24,15 @@ DATABASES = {
         'PASSWORD': os.environ.get('SQL_PASSWORD', 'password'),
         'HOST': os.environ.get('SQL_HOST', 'localhost'),
         'PORT': os.environ.get('SQL_PORT', ''),
+    }
+}
+
+# Cache framework
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
     }
 }
 
