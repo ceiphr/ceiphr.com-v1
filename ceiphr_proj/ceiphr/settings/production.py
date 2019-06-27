@@ -6,6 +6,20 @@ from .base import *
 
 # Memcached
 
+COMPRESS_ROOT = STATIC_ROOT
+
+COMPRESS_URL = STATIC_URL
+
+COMPRESS_PARSER = 'compressor.parser.HtmlParser'
+
+COMPRESS_ENABLED = True
+
+COMPRESS_OFFLINE = True
+
+COMPRESS_CACHE_BACKEND = True
+
+COMPRESS_OFFLINE_MANIFEST = 'compressor_manifest.json'
+
 CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 
 CACHES = {
@@ -14,12 +28,6 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
-
-COMPRESS_ENABLED = True
-
-COMPRESS_CACHE_BACKEND = True
-
-COMPRESS_OFFLINE = True
 
 MIDDLEWARE += [
     'django.middleware.cache.UpdateCacheMiddleware',
