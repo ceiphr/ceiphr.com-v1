@@ -166,6 +166,7 @@ Animations
 
 // On-load
 .blur-up {
+    background: #1f1f1f;
     -webkit-filter: blur(5px);
     filter: blur(5px);
     transform: scale(1.1);
