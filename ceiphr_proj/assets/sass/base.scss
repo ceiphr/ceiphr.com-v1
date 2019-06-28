@@ -169,13 +169,12 @@ Animations
     -webkit-filter: blur(5px);
     filter: blur(5px);
     transform: scale(1.1);
-    transition: transform 400ms 150ms, filter 400ms;
+    transition-duration: 400ms;
 }
 
 .blur-up.lazyloaded {
     -webkit-filter: blur(0);
     filter: blur(0);
-    transform: scale(1);
 }
 
 
