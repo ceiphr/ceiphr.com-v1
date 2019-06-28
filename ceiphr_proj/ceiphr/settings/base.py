@@ -32,7 +32,7 @@ CSP_IMG_SRC = (
 
 CSP_STYLE_SRC = (
     "'self' 'unsafe-inline'",
-    "https://cdnjs.cloudflare.com",
+    "https://*.cloudflare.com",
     "https://*.carbonads.com",
 )
 
@@ -41,11 +41,11 @@ CSP_SCRIPT_SRC = (
     "https://*.ceiphr.com",
     "https://*.carbonads.com",
     "https://*.carbonads.net",
-    "https://cdnjs.cloudflare.com",
+    "https://*.cloudflare.com",
     "https://sentry.io",
 )
 
-CSP_FONT_SRC = ("'self' data:", "https://cdnjs.cloudflare.com")
+CSP_FONT_SRC = ("'self' data:", "https://*.cloudflare.com")
 
 CSP_FRAME_SRC = ("'self'",)
 

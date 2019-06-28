@@ -52,7 +52,7 @@
                                 {% thumbnail article.image "600x300" format="JPEG" as jpeg %}
                                 <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
                                 {% endthumbnail %}
-                                {% thumbnail article.image "150x75" format="JPEG" as jpeg %}
+                                {% thumbnail article.image "100x50" format="JPEG" as jpeg %}
                                 <source srcset="{{ jpeg.url }}" type="image/jpeg">
                                 {% endthumbnail %}
                                 <img class="lazyload blur-up" alt="{{ article.title }}">
