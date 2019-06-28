@@ -91,7 +91,7 @@
     <meta property="og:title" content="{{ title }} — Ceiphr" />
     <meta property="og:description" content="{{ article.summary }}" />
     <meta name="twitter:card" content="summary_large_image">
-    <script nonce="{{ request.csp_nonce }}" type="application/ld+json">
+    <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Article",
@@ -137,7 +137,7 @@
     <meta property="og:title" content="{{ title }} — Ceiphr" />
     <meta property="og:description" content="{{ desc }}" />
     <meta name="twitter:card" content="summary">
-    <script nonce="{{ request.csp_nonce }}" type="application/ld+json">
+    <script type="application/ld+json">
         {
             "@context": "http://schema.org",
             "@type": "Organization",
@@ -233,7 +233,7 @@
     {% endif %}
     {% javascript 'onload' %}
     {% if not debug %}
-    <script nonce="{{ request.csp_nonce }}">
+    <script>
         (function (f, a, t, h, o, m) {
             a[h] = a[h] || function () {
                 (a[h].q = a[h].q || []).push(arguments)
