@@ -37,12 +37,11 @@ CSP_STYLE_SRC = (
 )
 
 CSP_SCRIPT_SRC = (
-    "'self'",
+    "'self' 'unsafe-eval' 'unsafe-inline'",
     "https://*.ceiphr.com",
     "https://*.carbonads.com",
     "https://*.carbonads.net",
     "https://*.cloudflare.com",
-    "https://sentry.io",
 )
 
 CSP_FONT_SRC = ("'self' data:", "https://*.cloudflare.com")
