@@ -27,7 +27,7 @@ from .sitemaps import BlogSitemap, StaticViewSitemap
 from .feeds import RssSiteNewsFeed, AtomSiteNewsFeed
 
 from blog.views import GetArticle, GetLargeFeed, GetFeed
-from portfolio.views import GetProjects
+from portfolio.views import *
 
 # Error Pages
 handler404 = 'portfolio.views.page_not_found_view'
@@ -69,6 +69,16 @@ urlpatterns = [
         "projects/",
         GetProjects.as_view(template_name="portfolio/projects.html"),
         name="Projects"),
+
+    # Cloudflare Error Pages
+    path("cf/banned-ip", banned_ip_view),
+    path("cf/waf", waf_view),
+    path("cf/500", error500_view),
+    path("cf/waf-challenge", waf_challenge_view),
+    path("cf/1000", error1000_view),
+    path("cf/security-challenge", security_challenge_view),
+    path("cf/attack-challenge", attack_challenge_view),
+    path("cf/rate-limit", rate_limit_view),
 
     # SEO Sitemap URL
     path(
