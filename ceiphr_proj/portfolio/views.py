@@ -126,11 +126,11 @@ def error1000_view(request, template_name="prompt.html"):
     return render(request, "prompt.html", context)
 
 
-def security_challenge_view(request, template_name="prompt.html"):
+def attack_challenge_view(request, template_name="prompt.html"):
     context = {
-        "title": "Attention Required!",
-        "desc": "Please complete the security check to access ceiphr.com.",
-        "message": "::CAPTCHA_BOX::",
+        "title": "Just a moment.",
+        "desc": "Checking your browser before accessing ceiphr.com.",
+        "message": "::IM_UNDER_ATTACK_BOX::",
         "avatar": Profile.objects.first().logo,
         "resume_url": Profile.objects.first().resume_url,
         "favicon": Profile.objects.first().favicon,
@@ -138,11 +138,11 @@ def security_challenge_view(request, template_name="prompt.html"):
     return render(request, "prompt.html", context)
 
 
-def attack_challenge_view(request, template_name="prompt.html"):
+def always_online_view(request, template_name="prompt.html"):
     context = {
-        "title": "Just a moment...",
-        "desc": "Checking your browser before accessing ceiphr.com.",
-        "message": "::IM_UNDER_ATTACK_BOX::",
+        "title": "Ceiphr.com is offline.",
+        "desc": "Connection timed out.",
+        "message": "::ALWAYS_ONLINE_NO_COPY_BOX::",
         "avatar": Profile.objects.first().logo,
         "resume_url": Profile.objects.first().resume_url,
         "favicon": Profile.objects.first().favicon,
@@ -154,7 +154,7 @@ def rate_limit_view(request, template_name="prompt.html"):
     context = {
         "title": "You are being rate limited.",
         "desc": "You are being rate limited.",
-        "message": "You have been banned temporarily from accessing ceiphr.com.",
+        "message": "Your IP address (::CLIENT_IP::) has been temporarily banned from accessing ceiphr.com.",
         "avatar": Profile.objects.first().logo,
         "resume_url": Profile.objects.first().resume_url,
         "favicon": Profile.objects.first().favicon,
