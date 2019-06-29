@@ -19,6 +19,7 @@ class Tag(models.Model):
 class Article(models.Model):
     title = models.CharField(default="", max_length=255)
     summary = models.CharField(default="", max_length=255)
+    short_url = models.CharField(default="", max_length=255)
 
     public = models.BooleanField(default=False)
     latex_support = models.BooleanField(default=False)

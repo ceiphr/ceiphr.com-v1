@@ -82,14 +82,14 @@ urlpatterns = [
 if int(os.environ.get('CF', default=1)):
     # Cloudflare Error Pages
     urlpatterns += [
-        path("cf/banned-ip", banned_ip_view),
-        path("cf/waf", waf_view),
-        path("cf/500", error500_view),
-        path("cf/waf-challenge", waf_challenge_view),
-        path("cf/1000", error1000_view),
-        path("cf/attack-challenge", attack_challenge_view),
-        path("cf/always-online", always_online_view),
-        path("cf/rate-limit", rate_limit_view),
+        path("cf/banned-ip/", banned_ip_view),
+        path("cf/rate-limit/", rate_limit_view),
+        path("cf/500/", error500_view),
+        path("cf/1000/", error1000_view),
+        path("cf/waf/", waf_view),
+        path("cf/waf-challenge/", waf_challenge_view),
+        path("cf/attack-challenge/", attack_challenge_view),
+        path("cf/always-online/", always_online_view),
     ]
 
 if int(os.environ.get('DEBUG', default=1)):
