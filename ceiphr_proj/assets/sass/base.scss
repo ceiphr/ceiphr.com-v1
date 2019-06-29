@@ -141,6 +141,13 @@ body {
     .card {
         background-color: #1f1f1f !important;
     }
+
+    .feed__cover--medium,
+    .feed__cover--large,
+    .feed__cover--full {
+        background: radial-gradient(circle, $gunmetal, $gunmetal 1px, $gunmetal-light 1px, $gunmetal-light) !important;
+        background-size: 32px 32px !important;
+    }
 }
 
 /**********************************

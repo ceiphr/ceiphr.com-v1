@@ -10,8 +10,6 @@ django-otp
 django-csp
 django-htmlmin
 python-memcached
-boto
-boto3
 
 # Image Processing
 sorl-thumbnail

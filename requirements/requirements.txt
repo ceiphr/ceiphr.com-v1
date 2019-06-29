@@ -1,6 +1,4 @@
 beautifulsoup4==4.7.1
-boto3==1.9.175
-botocore==1.12.175
 certifi==2019.6.16
 chardet==3.0.4
 Django==2.2.2
@@ -9,7 +7,6 @@ django-pipeline==1.6.14
 django-debug-toolbar==2.0
 django-htmlmin==0.11.0
 django-otp==0.6.0
-django-storages==1.7.1
 docutils==0.14
 entrypoints==0.3
 flake8==3.7.7
