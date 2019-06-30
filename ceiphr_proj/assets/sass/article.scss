@@ -146,6 +146,11 @@ article {
 
 .recs {
     .card {
+        .card-image {
+            border-top-right-radius: 6px;
+            border-top-left-radius: 6px;
+        }
+
         .image {
             height: 256px;
 

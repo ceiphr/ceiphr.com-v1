@@ -47,7 +47,7 @@ class Article(models.Model):
 
         if not self.id:
             self.slug = slugify(self.title)
-            self.short_url = "https://www.ceiphr.com/%s" % self.slug
+            self.short_url = "https://www.ceiphr.com/blog/%s" % self.slug
         super(Article, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
