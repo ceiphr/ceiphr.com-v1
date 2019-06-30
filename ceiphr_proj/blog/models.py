@@ -19,7 +19,7 @@ class Tag(models.Model):
 class Article(models.Model):
     title = models.CharField(default="", max_length=255)
     summary = models.CharField(default="", max_length=255)
-    short_url = models.CharField(default="", max_length=255)
+    short_url = models.CharField(blank=True, default="", max_length=255)
 
     public = models.BooleanField(default=False)
     latex_support = models.BooleanField(default=False)
@@ -47,6 +47,7 @@ class Article(models.Model):
 
         if not self.id:
             self.slug = slugify(self.title)
+            self.short_url = "https://www.ceiphr.com/%s" % self.slug
         super(Article, self).save(*args, **kwargs)
 
     def get_absolute_url(self):

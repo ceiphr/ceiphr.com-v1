@@ -33,8 +33,8 @@ Bulma/General Settings
 }
 
 // Brand color
-$gunmetal: #2b2d42;
-$gunmetal-light: #4f5274;
+$blue-light: #03a9f4;
+$blue-dark: #0288d1;
 
 // Bulma's global variables
 $family-sans-serif: "IBM Plex Sans",
@@ -145,7 +145,7 @@ body {
     .feed__cover--medium,
     .feed__cover--large,
     .feed__cover--full {
-        background: radial-gradient(circle, $gunmetal, $gunmetal 1px, $gunmetal-light 1px, $gunmetal-light) !important;
+        background: radial-gradient(circle, $blue-light, $blue-light 1px, $blue-dark 1px, $blue-dark) !important;
         background-size: 32px 32px !important;
     }
 }

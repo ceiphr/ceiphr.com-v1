@@ -70,7 +70,7 @@ def banned_ip_view(request, template_name="prompt.html"):
     context = {
         "title": "Access denied",
         "desc": "Sorry, you have been banned.",
-        "message": "You cannot access ceiphr.com using the IP address (::CLIENT_IP::).",
+        "message": "You cannot access ceiphr.com using your IP address (::CLIENT_IP::).",
         "avatar": Profile.objects.first().logo,
         "resume_url": Profile.objects.first().resume_url,
         "favicon": Profile.objects.first().favicon,
