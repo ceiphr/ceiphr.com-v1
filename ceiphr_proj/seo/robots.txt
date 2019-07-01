@@ -1,5 +1,6 @@
 # Rule 1
 User-agent: *
 Allow: /
+Disallow: /blog/?tag=
 
 Sitemap: https://www.ceiphr.com/sitemap.xml
