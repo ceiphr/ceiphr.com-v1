@@ -5,7 +5,11 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
 
 <head>
+{% if title == "Ari Birnbaum" %}
+    <title>{{ title }}, {{ slogan }} — Ceiphr</title>
+{% else %}
     <title>{{ title }} — Ceiphr</title>
+{% endif %}
 
     {% comment %} Generic {% endcomment %}
     <meta charset="utf-8" />
