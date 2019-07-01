@@ -14,7 +14,7 @@ class GetLargeFeed(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = {
             "articles": Article.objects.exclude(public=False),
-            "title": "Ari Birnbaum",
+            "title": "Ari Birnbaum, %s" % Profile.objects.first().slogan,
             "is_feed": True,
             "slogan": Profile.objects.first().slogan,
             "desc": Profile.objects.first().desc,
