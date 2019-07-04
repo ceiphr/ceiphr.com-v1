@@ -1,7 +1,7 @@
 beautifulsoup4==4.7.1
 certifi==2019.6.16
 chardet==3.0.4
-Django==2.2.2
+Django==2.2.3
 django-csp==3.5
 django-pipeline==1.6.14
 django-debug-toolbar==2.0
