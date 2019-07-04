@@ -51,7 +51,7 @@ class Article(models.Model):
         super(Article, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return "/blog/%s" % self.slug
+        return "/blog/%s/" % self.slug
 
     class Meta:
         ordering = ["-published"]
