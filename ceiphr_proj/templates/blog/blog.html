@@ -32,6 +32,7 @@
 <section class="section">
     <div class="container slide-on-load">
         {% for article in articles %}
+        {% if forloop.first %}
         <div class="columns">
             <div class="column is-offset-2-widescreen is-8-widescreen">
                 <a href="/blog/{{ article.slug }}/" aria-label="{{ article.title }}">
@@ -39,20 +40,21 @@
                         <div class="feed__body">
                             <div class="feed__info">
                                 <p class="title is-4">{{ article.title }}</p>
-                                <p class="subtitle is-6 article__detail">{{ article.published }} — {{ article.read_time }}
+                                <p class="subtitle is-6 article__detail">{{ article.published }} —
+                                    {{ article.read_time }}
                                     {% if article.read_time > 1 %}mins{% else %}min{% endif %}</p>
                                 <p class="summary">{{ article.summary }}</p>
                             </div>
                         </div>
                         <figure class="feed__image">
                             <picture>
-                                {% thumbnail article.image "600x300" format="WEBP" as webp %}
+                                {% thumbnail article.image "1024x512" format="WEBP" as webp %}
                                 <source data-srcset="{{ webp.url }}" type="image/webp">
                                 {% endthumbnail %}
-                                {% thumbnail article.image "600x300" format="JPEG" as jpeg %}
+                                {% thumbnail article.image "1024x512" format="JPEG" as jpeg %}
                                 <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
                                 {% endthumbnail %}
-                                {% thumbnail article.image "100x50" format="JPEG" as jpeg %}
+                                {% thumbnail article.image "128x64" format="JPEG" as jpeg %}
                                 <source srcset="{{ jpeg.url }}" type="image/jpeg">
                                 {% endthumbnail %}
                                 <img class="lazyload blur-up" alt="{{ article.title }}">
@@ -62,6 +64,75 @@
                 </a>
             </div>
         </div>
+        {% elif forloop.counter|divisibleby:2 %}
+        <div class="columns">
+            <div class="column is-offset-2-widescreen is-4-widescreen">
+                <a href="/blog/{{ article.slug }}/" aria-label="{{ article.title }}">
+                    <div class="card on-hover">
+                        <div class="card-image">
+                            <figure class="image">
+                                <picture>
+                                    {% thumbnail article.image "1024x512" format="WEBP" as webp %}
+                                    <source data-srcset="{{ webp.url }}" type="image/webp">
+                                    {% endthumbnail %}
+                                    {% thumbnail article.image "1024x512" format="JPEG" as jpeg %}
+                                    <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
+                                    {% endthumbnail %}
+                                    {% thumbnail article.image "128x64" format="JPEG" as jpeg %}
+                                    <source srcset="{{ jpeg.url }}" type="image/jpeg">
+                                    {% endthumbnail %}
+                                    <img class="lazyload blur-up" alt="{{ article.title }}">
+                                </picture>
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <p class="title is-4">{{ article.title }}</p>
+                                <p class="subtitle is-6 article__detail">{{ article.published }} —
+                                    {{ article.read_time }}
+                                    {% if article.read_time > 1 %}mins{% else %}min{% endif %}</p>
+                                <p class="summary">{{ article.summary }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% else %}
+            <div class="column is-4-widescreen">
+                <a href="/blog/{{ article.slug }}/" aria-label="{{ article.title }}">
+                    <div class="card on-hover">
+                        <div class="card-image">
+                            <figure class="image">
+                                <picture>
+                                    {% thumbnail article.image "1024x512" format="WEBP" as webp %}
+                                    <source data-srcset="{{ webp.url }}" type="image/webp">
+                                    {% endthumbnail %}
+                                    {% thumbnail article.image "1024x512" format="JPEG" as jpeg %}
+                                    <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
+                                    {% endthumbnail %}
+                                    {% thumbnail article.image "128x64" format="JPEG" as jpeg %}
+                                    <source srcset="{{ jpeg.url }}" type="image/jpeg">
+                                    {% endthumbnail %}
+                                    <img class="lazyload blur-up" alt="{{ article.title }}">
+                                </picture>
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <p class="title is-4">{{ article.title }}</p>
+                                <p class="subtitle is-6 article__detail">{{ article.published }} —
+                                    {{ article.read_time }}
+                                    {% if article.read_time > 1 %}mins{% else %}min{% endif %}</p>
+                                <p class="summary">{{ article.summary }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+            {% if not forloop.first and not forloop.counter|divisibleby:2 %}
+        </div>
+        {% endif %}
         {% endfor %}
     </div>
 </section>

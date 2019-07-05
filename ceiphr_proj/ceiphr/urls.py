@@ -70,6 +70,12 @@ urlpatterns = [
         GetProjects.as_view(template_name="portfolio/projects.html"),
         name="Projects"),
 
+    # Designs URLs
+    path(
+        "designs/",
+        GetDesigns.as_view(template_name="portfolio/designs.html"),
+        name="Designs"),
+
     # SEO Sitemap URL
     path(
         "sitemap.xml",

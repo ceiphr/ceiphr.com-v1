@@ -17,7 +17,7 @@
 </section>
 <section class="section">
     <div class="container slide-on-load">
-        {% for article in articles|slice:":10" %}
+        {% for article in articles|slice:":5" %}
         <div class="columns">
             <div class="column is-offset-2-widescreen is-8-widescreen">
                 <a href="/blog/{{ article.slug }}/" aria-label="{{ article.title }}">
@@ -32,13 +32,13 @@
                         </div>
                         <figure class="feed__image">
                             <picture>
-                                {% thumbnail article.image "600x300" format="WEBP" as webp %}
+                                {% thumbnail article.image "1024x512" format="WEBP" as webp %}
                                 <source data-srcset="{{ webp.url }}" type="image/webp">
                                 {% endthumbnail %}
-                                {% thumbnail article.image "600x300" format="JPEG" as jpeg %}
+                                {% thumbnail article.image "1024x512" format="JPEG" as jpeg %}
                                 <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
                                 {% endthumbnail %}
-                                {% thumbnail article.image "100x50" format="JPEG" as jpeg %}
+                                {% thumbnail article.image "128x64" format="JPEG" as jpeg %}
                                 <source srcset="{{ jpeg.url }}" type="image/jpeg">
                                 {% endthumbnail %}
                                 <img class="lazyload blur-up" alt="{{ article.title }}">

@@ -7,7 +7,7 @@ from django.template import RequestContext
 from sentry_sdk import capture_message, last_event_id
 
 from .models import Profile
-from .services import get_repos
+from .services import get_repos, get_shots
 
 
 def page_not_found_view(request, exception, template_name="error-prompt.html"):
@@ -162,19 +162,43 @@ def rate_limit_view(request, template_name="prompt.html"):
     return render(request, "prompt.html", context)
 
 
+class GetDesigns(TemplateView):
+    template_name = "portfolio/designs.html"
+
+    def get_context_data(self, *args, **kwargs):
+        cache_key = "design_shots"
+        cache_time = 1800  # time to live in seconds
+        dr_result = cache.get(cache_key)
+        if not dr_result:
+            dr_result = get_shots()
+            cache.set(cache_key, dr_result, cache_time)
+
+        context = {
+            "designs": dr_result,
+            "is_feed": True,
+            "title": "My Designs",
+            "desc": "Graphic designs, illustrations and branding from Ari Birnbaum.",
+            "avatar": Profile.objects.first().logo,
+            "resume_url": Profile.objects.first().resume_url,
+            "favicon": Profile.objects.first().favicon,
+            "debug": int(os.getenv("DEBUG", default=1)),
+        }
+        return context
+
+
 class GetProjects(TemplateView):
     template_name = "portfolio/projects.html"
 
     def get_context_data(self, *args, **kwargs):
         cache_key = "repo_stats"
         cache_time = 1800  # time to live in seconds
-        result = cache.get(cache_key)
-        if not result:
-            result = get_repos()
-            cache.set(cache_key, result, cache_time)
+        gh_result = cache.get(cache_key)
+        if not gh_result:
+            gh_result = get_repos()
+            cache.set(cache_key, gh_result, cache_time)
 
         context = {
-            "projects": result,
+            "projects": gh_result,
             "is_feed": True,
             "title": "My Projects",
             "desc": "Personal side projects pertaining to computer \

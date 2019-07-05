@@ -12,8 +12,8 @@ services:
       args:
         BUILD_DATE: date -u +'%Y-%m-%dT%H:%M:%SZ'
         VCS_REF : git rev-parse origin/master
-    command: python3 /usr/src/app/manage.py runserver 0.0.0.0:8000
+    command: python3 /usr/src/app/ceiphr_proj/manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./ceiphr_proj/:/usr/src/app/
+      - ./:/usr/src/app/
     ports:
       - "8000:8000"

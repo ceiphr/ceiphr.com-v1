@@ -344,7 +344,26 @@ footer a {
     font-family: $family-code;
 }
 
-.icon.repo {
+.card {
+    border-radius: 6px;
+    .card-image {
+        border-top-right-radius: 6px;
+        border-top-left-radius: 6px;
+        overflow: hidden;
+    }
+
+    .image {
+        height: 256px;
+
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+.icon.inline {
     height: 1.2rem;
     width: 1.2rem;
     margin-right: 4px;

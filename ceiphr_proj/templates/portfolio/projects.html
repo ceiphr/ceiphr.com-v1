@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-{% load thumbnail %}
-{% load markdownify %}
 {% load static %}
 {% load cache %}
 <section class="feed__cover--medium">
@@ -33,7 +31,7 @@
                             <div class="feed__body">
                                 <div class="feed__info">
                                     <p class="title is-4">
-                                    <svg class="icon repo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="96px" height="96px">
+                                    <svg class="icon inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="96px" height="96px">
                                         <path d="M 6 2 C 4.895 2 4 2.895 4 4 L 4 20 C 4 21.105 4.895 22 6 22 L 6 18 C 6 16.895 6.895 16 8 16 L 14 16 C 15.105 16 16 16.895 16 18 L 16 22 L 18 22 C 19.105 22 20 21.105 20 20 L 20 4 C 20 2.895 19.105 2 18 2 L 6 2 z M 7 4 L 9 4 L 9 6 L 7 6 L 7 4 z M 7 8 L 9 8 L 9 10 L 7 10 L 7 8 z M 7 12 L 9 12 L 9 14 L 7 14 L 7 12 z M 8 18 L 8 23 L 11 21.5 L 14 23 L 14 18 L 8 18 z"/>
                                     </svg>
                                     {{ project.name }}

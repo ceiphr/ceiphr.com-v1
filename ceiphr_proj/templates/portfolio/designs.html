@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+{% load thumbnail %}
+{% load static %}
+{% load cache %}
+<section class="feed__cover--medium">
+</section>
+<section class="hero is-medium is-dark is-bold">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">
+                {{ title }}
+            </h1>
+            <h2 class="subtitle">
+                Minimal & Purposeful
+            </h2>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container slide-on-load">
+        {% cache 1800 shot_listing %}
+        {% for design in designs %}
+        {% if forloop.first or not forloop.counter|divisibleby:2 %}
+        <div class="columns">
+            <div class="column is-offset-2-widescreen is-4-widescreen">
+                {% elif forloop.counter|divisibleby:2 %}
+                <div class="column is-4-widescreen">
+                    {% endif %}
+                    <a href="{{ design.html_url }}" aria-label="{{ design.title }}">
+                        <div class="card on-hover">
+                            <div class="card-image">
+                                <figure class="image">
+                                    <picture>
+                                        {% thumbnail design.images.normal "1024x512" format="WEBP" as webp %}
+                                        <source data-srcset="{{ webp.url }}" type="image/webp">
+                                        {% endthumbnail %}
+                                        {% thumbnail design.images.normal "1024x512" format="JPEG" as jpeg %}
+                                        <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
+                                        {% endthumbnail %}
+                                        {% thumbnail design.images.teaser "128x64" format="JPEG" as jpeg %}
+                                        <source srcset="{{ jpeg.url }}" type="image/jpeg">
+                                        {% endthumbnail %}
+                                        <img class="lazyload blur-up" alt="{{ design.title }}">
+                                    </picture>
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <p class="title is-4">
+                                        <svg class="icon inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            width="24px" height="24px">
+                                            <path
+                                                style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+                                                d="M 3 3 C 1.9069372 3 1 3.9069372 1 5 L 1 15 C 1 16.093063 1.9069372 17 3 17 L 16 17 C 17.093063 17 18 16.093063 18 15 L 18 5 C 18 3.9069372 17.093063 3 16 3 L 3 3 z M 3 5 L 16 5 L 16 12 L 13.5 9.5 L 9.34375 13.648438 L 7.9238281 12.240234 L 9.4804688 10.677734 L 7.4335938 8.5214844 L 3 12.992188 L 3 5 z M 11 6 A 1 1 0 0 0 10 7 A 1 1 0 0 0 11 8 A 1 1 0 0 0 12 7 A 1 1 0 0 0 11 6 z M 20 7 L 20 19 L 5 19 L 5 21 L 20 21 C 21.093063 21 22 20.093063 22 19 L 22 7 L 20 7 z"
+                                                font-weight="400" font-family="sans-serif" white-space="normal"
+                                                overflow="visible" />
+                                        </svg>
+                                        {{ design.title }}
+                                    </p>
+                                    <p class="subtitle is-6">{{ design.description|safe }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% if forloop.last or forloop.counter|divisibleby:2 %}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endcache %}
+        </div>
+</section>
+{% endblock content %}

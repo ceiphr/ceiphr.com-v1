@@ -6,19 +6,19 @@
 <article>
     <div class="article__cover-image">
         <picture>
-            {% thumbnail article.image "1800x900" format="WEBP" as webp %}
+            {% thumbnail article.image "1920x960" format="WEBP" as webp %}
             <source data-srcset="{{ webp.url }}" type="image/webp" media="(min-width: 1024px)">
             {% endthumbnail %}
-            {% thumbnail article.image "1800x900" format="JPEG" as jpeg %}
+            {% thumbnail article.image "1920x960" format="JPEG" as jpeg %}
             <source data-srcset="{{ jpeg.url }}" type="image/jpeg" media="(min-width: 1024px)">
             {% endthumbnail %}
-            {% thumbnail article.image "900x450" format="WEBP" as webp %}
+            {% thumbnail article.image "1024x512" format="WEBP" as webp %}
             <source data-srcset="{{ webp.url }}" type="image/webp" media="(max-width: 1024px)">
             {% endthumbnail %}
-            {% thumbnail article.image "900x450" format="JPEG" as jpeg %}
+            {% thumbnail article.image "1024x512" format="JPEG" as jpeg %}
             <source data-srcset="{{ jpeg.url }}" type="image/jpeg" media="(max-width: 1024px)">
             {% endthumbnail %}
-            {% thumbnail article.image "300x150" format="JPEG" as jpeg %}
+            {% thumbnail article.image "128x64" format="JPEG" as jpeg %}
             <source srcset="{{ jpeg.url }}" type="image/jpeg">
             {% endthumbnail %}
             <img class="lazyload blur-up--cover" alt="{{ title }}">
@@ -145,13 +145,13 @@
                         <div class="card-image">
                             <figure class="image">
                                 <picture>
-                                    {% thumbnail post.image "600x300" format="WEBP" as webp %}
+                                    {% thumbnail post.image "1024x512" format="WEBP" as webp %}
                                     <source data-srcset="{{ webp.url }}" type="image/webp">
                                     {% endthumbnail %}
-                                    {% thumbnail post.image "600x300" format="JPEG" as jpeg %}
+                                    {% thumbnail post.image "1024x512" format="JPEG" as jpeg %}
                                     <source data-srcset="{{ jpeg.url }}" type="image/jpeg">
                                     {% endthumbnail %}
-                                    {% thumbnail post.image "100x50" format="JPEG" as jpeg %}
+                                    {% thumbnail post.image "128x64" format="JPEG" as jpeg %}
                                     <source srcset="{{ jpeg.url }}" type="image/jpeg">
                                     {% endthumbnail %}
                                     <img class="lazyload blur-up" alt="{{ post.title }}">

@@ -88,7 +88,7 @@
     <meta name="description" content="{{ article.summary }}" />
     <meta itemprop="name" content="{{ title }} — Ceiphr">
     <meta itemprop="description" content="{{ article.summary }}" />
-    {% thumbnail article.image "1200x600" format="JPEG" as jpeg %}
+    {% thumbnail article.image "1920x960" format="JPEG" as jpeg %}
     <meta itemprop="image" content="{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}">
     <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}">
     {% endthumbnail %}
@@ -134,7 +134,7 @@
     <meta name="description" content="{{ desc }}" />
     <meta itemprop="name" content="{{ title }} — Ceiphr">
     <meta itemprop="description" content="{{ desc }}" />
-    {% thumbnail avatar "1200x1200" format="JPEG" as jpeg %}
+    {% thumbnail avatar "1920x1920" format="JPEG" as jpeg %}
     <meta itemprop="image" content="{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}">
     <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ jpeg.url }}">
     {% endthumbnail %}
@@ -159,7 +159,7 @@
             ],
             "logo": {
                 "@type": "ImageObject",
-                {% thumbnail avatar "1200x1200" format="JPEG" as jpeg %}
+                {% thumbnail avatar "1920x1920" format="JPEG" as jpeg %}
                 "url": "https://{{ request.get_host }}{{ jpeg.url }}" 
                 {% endthumbnail %}
             }
@@ -182,17 +182,20 @@
         </div>
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-end">
-                <a href="/blog/" class="navbar-item" aria-label="all articles">
-                    All Articles
+                <a href="/blog/" class="navbar-item" aria-label="Blog">
+                    Blog
                 </a>
-                <a href="/projects/" class="navbar-item" aria-label="my projects">
-                    My Projects
+                <a href="/projects/" class="navbar-item" aria-label="Projects">
+                    Projects
+                </a>
+                <a href="/designs/" class="navbar-item" aria-label="Designs">
+                    Designs
                 </a>
                 <a href="https://changelog.ceiphr.com/" target="_blank" rel="noreferrer" class="navbar-item"
-                    aria-label="changelog">
+                    aria-label="Changelog">
                     Changelog
                 </a>
-                <a href="{{ resume_url }}" target="_blank" rel="noreferrer" class="navbar-item" aria-label="resume"
+                <a href="{{ resume_url }}" target="_blank" rel="noreferrer" class="navbar-item" aria-label="Résumé"
                     aria-expanded="false">
                     <div class="button">
                         Résumé
