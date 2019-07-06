@@ -20,7 +20,7 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 
 script:
-  - docker-compose run --no-deps --rm web python3 manage.py test
+  - docker-compose run --no-deps --rm web python3 ceiphr_proj/manage.py test
 
 deploy:
   provider: script
