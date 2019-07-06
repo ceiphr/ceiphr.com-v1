@@ -62,6 +62,7 @@ class GetFeed(TemplateView):
 
         context = {
             "is_feed": True,
+            "slogan": "Free to Redistribute & Remix",
             "desc": "Articles about computer science \
                 and technology from Ari Birnbaum.",
             "avatar": Profile.objects.first().logo,

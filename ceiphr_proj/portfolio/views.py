@@ -177,6 +177,7 @@ class GetDesigns(TemplateView):
             "designs": dr_result,
             "is_feed": True,
             "title": "My Designs",
+            "slogan": "Minimal & Purposeful",
             "desc": "Graphic designs, illustrations and branding from Ari Birnbaum.",
             "avatar": Profile.objects.first().logo,
             "resume_url": Profile.objects.first().resume_url,
@@ -201,6 +202,7 @@ class GetProjects(TemplateView):
             "projects": gh_result,
             "is_feed": True,
             "title": "My Projects",
+            "slogan": "Open Source & Free to Use",
             "desc": "Personal side projects pertaining to computer \
                     science and technology from Ari Birnbaum.",
             "avatar": Profile.objects.first().logo,

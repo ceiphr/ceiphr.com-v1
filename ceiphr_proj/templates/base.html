@@ -5,8 +5,10 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
 
 <head>
-{% if title == "Ari Birnbaum" %}
+{% if is_feed %}
     <title>{{ title }}, {{ slogan }} — Ceiphr</title>
+{% elif is_article %}
+    <title>{{ title }}</title>
 {% else %}
     <title>{{ title }} — Ceiphr</title>
 {% endif %}
