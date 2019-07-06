@@ -195,7 +195,7 @@ class GetMedia(TemplateView):
             "photos": ig_result,
             "is_feed": True,
             "title": "Ari's Photography",
-            "slogan": "Nature, Landscapes & Architecture",
+            "slogan": "Vivid & Picturesque",
             "desc": "Minimalistic photography pertaining to nature, landscapes and architecture from Ari Birnbaum.",
             "avatar": Profile.objects.first().logo,
             "resume_url": Profile.objects.first().resume_url,
