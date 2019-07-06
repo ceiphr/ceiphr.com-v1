@@ -76,6 +76,12 @@ urlpatterns = [
         GetDesigns.as_view(template_name="portfolio/designs.html"),
         name="Designs"),
 
+    # Photography URLs
+    path(
+        "photography/",
+        GetMedia.as_view(template_name="portfolio/photography.html"),
+        name="Photography"),
+
     # SEO Sitemap URL
     path(
         "sitemap.xml",
@@ -85,7 +91,7 @@ urlpatterns = [
     ),
 ]
 
-if int(os.environ.get('CF', default=1)):
+if int(os.environ.get('CLOUD_FLARE_PAGES', default=1)):
     # Cloudflare Error Pages
     urlpatterns += [
         path("cf/banned-ip/", banned_ip_view),

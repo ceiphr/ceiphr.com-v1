@@ -7,7 +7,7 @@ from django.template import RequestContext
 from sentry_sdk import capture_message, last_event_id
 
 from .models import Profile
-from .services import get_repos, get_shots
+from .services import get_repos, get_shots, get_media
 
 """
 Standard Error Pages
@@ -177,6 +177,34 @@ from Dribbble and Github using their respective APIs.
 """
 
 
+class GetMedia(TemplateView):
+    # Creates context and renders the photography page
+    template_name = "portfolio/photography.html"
+
+    def get_context_data(self, *args, **kwargs):
+        # Caching system to prevent rate limiting
+        # when calling the Instagram API in services.py
+        cache_key = "photography_media"
+        cache_time = 1800  # time to live in seconds
+        ig_result = cache.get(cache_key)
+        if not ig_result:
+            ig_result = get_media()
+            cache.set(cache_key, ig_result, cache_time)
+
+        context = {
+            "photos": ig_result,
+            "is_feed": True,
+            "title": "Ari's Photography",
+            "slogan": "Nature, Landscapes & Architecture",
+            "desc": "Minimalistic photography pertaining to nature, landscapes and architecture from Ari Birnbaum.",
+            "avatar": Profile.objects.first().logo,
+            "resume_url": Profile.objects.first().resume_url,
+            "favicon": Profile.objects.first().favicon,
+            "debug": int(os.getenv("DEBUG", default=1)),
+        }
+        return context
+
+
 class GetDesigns(TemplateView):
     # Creates context and renders the design page
     template_name = "portfolio/designs.html"
@@ -194,7 +222,7 @@ class GetDesigns(TemplateView):
         context = {
             "designs": dr_result,
             "is_feed": True,
-            "title": "My Designs",
+            "title": "Ari's Designs",
             "slogan": "Minimal & Purposeful",
             "desc": "Graphic designs, illustrations and branding from Ari Birnbaum.",
             "avatar": Profile.objects.first().logo,
@@ -221,7 +249,7 @@ class GetProjects(TemplateView):
         context = {
             "projects": gh_result,
             "is_feed": True,
-            "title": "My Projects",
+            "title": "Ari's Projects",
             "slogan": "Open Source & Free to Use",
             "desc": "Personal side projects pertaining to computer \
                     science and technology from Ari Birnbaum.",

@@ -26,6 +26,7 @@ CSP_IMG_SRC = (
     "https://*.ceiphr.com",
     "https://*.buysellads.net",
     "https://ad.doubleclick.net",
+    "https://scontent.cdninstagram.com",
 )
 
 CSP_STYLE_SRC = (

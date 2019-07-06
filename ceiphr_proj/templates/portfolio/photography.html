@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+{% load thumbnail %}
+{% load static %}
+{% load cache %}
+<section class="feed__cover--medium">
+</section>
+<section class="hero is-medium is-dark is-bold">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">
+                {{ title }}
+            </h1>
+            <h2 class="subtitle">
+                {{ slogan }}
+            </h2>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container slide-on-load">
+        {% cache 1800 media_listing %}
+        {% for photo in photos %}
+        {% if forloop.first or not forloop.counter|divisibleby:2 %}
+        <div class="columns">
+            <div class="column is-offset-2-widescreen is-4-widescreen">
+                {% elif forloop.counter|divisibleby:2 %}
+                <div class="column is-4-widescreen">
+                    {% endif %}
+                    <a href="{{ photo.link }}" aria-label="{{ photo.caption.text }}">
+                        <div class="card on-hover">
+                            <div class="card-image">
+                                <figure class="image">
+                                    <picture>
+                                        <source data-srcset="{{ photo.images.standard_resolution.url }}" type="image/jpeg">
+                                        <source srcset="{{ photo.images.thumbnail.url }}" type="image/jpeg">
+                                        <img class="lazyload blur-up" alt="{{ photo.caption.text }}">
+                                    </picture>
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <p class="subtitle is-6">{{ photo.caption.text }}</p>
+                                    <p class="stats">
+                                        <span>
+                                            <svg class="icon is-small" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24" width="24px" height="24px">
+                                                <path
+                                                    d="M16.5,3C13.605,3,12,5.09,12,5.09S10.395,3,7.5,3C4.462,3,2,5.462,2,8.5c0,4.171,4.912,8.213,6.281,9.49 C9.858,19.46,12,21.35,12,21.35s2.142-1.89,3.719-3.36C17.088,16.713,22,12.671,22,8.5C22,5.462,19.538,3,16.5,3z" />
+                                            </svg>
+                                            {{ photo.likes.count }}
+                                        </span>
+                                        <span>
+                                            <svg class="icon is-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px"
+                                                height="24px">
+                                                <path
+                                                    d="M2,5v12c0,1.1,0.9,2,2,2h14l4,4L21.99,5c0-1.1-0.89-2-1.99-2H4C2.9,3,2,3.9,2,5z M7,6h10v2H7V6z M7,10h10v2H7V10z M7,14h7 v2H7V14z" />
+                                            </svg>
+                                            {{ photo.comments.count }}
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% if forloop.last or forloop.counter|divisibleby:2 %}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endcache %}
+        </div>
+</section>
+{% endblock content %}
