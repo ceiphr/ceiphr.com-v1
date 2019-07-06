@@ -85,7 +85,7 @@ class GetFeed(TemplateView):
                     .filter(tags__name=tag).exclude(public=False):
                 raise Http404
         else:
-            context["title"] = "All Articles"
+            context["title"] = "Ari's Articles"
             context["articles"] = Article.objects.exclude(public=False)
 
         return context
