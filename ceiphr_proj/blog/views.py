@@ -8,25 +8,8 @@ from .models import Article
 from portfolio.models import Profile
 
 
-class GetLargeFeed(TemplateView):
-    template_name = "index.html"
-
-    def get_context_data(self, *args, **kwargs):
-        context = {
-            "articles": Article.objects.exclude(public=False),
-            "title": "Ari Birnbaum",
-            "is_feed": True,
-            "slogan": Profile.objects.first().slogan,
-            "desc": Profile.objects.first().desc,
-            "avatar": Profile.objects.first().logo,
-            "resume_url": Profile.objects.first().resume_url,
-            "favicon": Profile.objects.first().favicon,
-            "debug": int(os.getenv('DEBUG', default=1)),
-        }
-        return context
-
-
 class GetArticle(TemplateView):
+    # Article page render
     template_name = "blog/article.html"
 
     def get_context_data(self, slug, *args, **kwargs):
@@ -54,7 +37,27 @@ class GetArticle(TemplateView):
         return context
 
 
+class GetLargeFeed(TemplateView):
+    # Front page render
+    template_name = "index.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = {
+            "articles": Article.objects.exclude(public=False),
+            "title": "Ari Birnbaum",
+            "is_feed": True,
+            "slogan": Profile.objects.first().slogan,
+            "desc": Profile.objects.first().desc,
+            "avatar": Profile.objects.first().logo,
+            "resume_url": Profile.objects.first().resume_url,
+            "favicon": Profile.objects.first().favicon,
+            "debug": int(os.getenv('DEBUG', default=1)),
+        }
+        return context
+
+
 class GetFeed(TemplateView):
+    # Blog page render
     template_name = "blog/blog.html"
 
     def get_context_data(self, *args, **kwargs):

@@ -9,6 +9,13 @@ from sentry_sdk import capture_message, last_event_id
 from .models import Profile
 from .services import get_repos, get_shots
 
+"""
+Standard Error Pages
+
+These functions are used to render custom error pages. Errors are
+logged to Sentry.io.
+"""
+
 
 def page_not_found_view(request, exception, template_name="error-prompt.html"):
     context = {
@@ -61,7 +68,7 @@ def bad_request_view(request, exception, template_name="error-prompt.html"):
 """
 Cloudflare Error Pages
 
-These pages are used for Cloudflare's custom error pages. These will be
+These functions are used for Cloudflare's custom error pages. These will be
 disabled once the pages are published on Cloudflare.
 """
 
@@ -162,10 +169,21 @@ def rate_limit_view(request, template_name="prompt.html"):
     return render(request, "prompt.html", context)
 
 
+"""
+Portfolio Pages
+
+These classes are used for rendering portfolio feeds
+from Dribbble and Github using their respective APIs.
+"""
+
+
 class GetDesigns(TemplateView):
+    # Creates context and renders the design page
     template_name = "portfolio/designs.html"
 
     def get_context_data(self, *args, **kwargs):
+        # Caching system to prevent rate limiting
+        # when calling the Dribbble API in services.py
         cache_key = "design_shots"
         cache_time = 1800  # time to live in seconds
         dr_result = cache.get(cache_key)
@@ -191,6 +209,8 @@ class GetProjects(TemplateView):
     template_name = "portfolio/projects.html"
 
     def get_context_data(self, *args, **kwargs):
+        # Caching system to prevent rate limiting
+        # when calling the GitHub API in services.py
         cache_key = "repo_stats"
         cache_time = 1800  # time to live in seconds
         gh_result = cache.get(cache_key)
