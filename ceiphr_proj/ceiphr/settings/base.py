@@ -24,6 +24,7 @@ OTP_TOTP_ISSUER = "Ceiphr"
 CSP_IMG_SRC = (
     "'self'",
     "https://*.ceiphr.com",
+    "https://*.ceiphr.io",
     "https://*.buysellads.net",
     "https://ad.doubleclick.net",
     "https://scontent.cdninstagram.com",
