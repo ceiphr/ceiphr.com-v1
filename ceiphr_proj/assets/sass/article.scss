@@ -49,9 +49,15 @@ Article Body
 
 .article__contents {
 
-    .hero .subtitle.article__detail {
-        font-weight: 400 !important;
-        font-size: 20px !important;
+    .hero {
+        .title {
+            margin-top: 0 !important;
+        }
+
+        .subtitle.article__detail {
+            font-weight: 400 !important;
+            font-size: 20px !important;
+        }
     }
 
     overflow-wrap: break-word;
@@ -127,7 +133,7 @@ Article Body
         padding: 1em;
         margin: 1em 0 1em 0;
         border-radius: 6px;
-        
+
         p {
             margin-bottom: 0;
         }
