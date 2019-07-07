@@ -48,6 +48,11 @@ Article Body
 }
 
 .article__contents {
+
+    .subtitle.article__detail {
+        font-weight: 400 !important;
+    }
+
     overflow-wrap: break-word;
 
     -ms-word-break: break-word;
