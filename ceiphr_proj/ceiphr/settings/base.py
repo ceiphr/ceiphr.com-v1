@@ -61,11 +61,11 @@ CSP_OBJECT_SRC = ("'none'",)
 
 CSP_BASE_URI = ("'none'",)
 
-CSP_CHILD_SRC = ("'none'",)
+CSP_WORKER_SRC = ("'none'",)
 
 CSP_FORM_ACTION = "'self'"
 
-CSP_OBJECT_SRC = ("'none'", "https://disqus.com", "https://*.disquscdn.com",)
+CSP_DEFAULT_SRC = ("'none'", "https://disqus.com", "https://*.disquscdn.com",)
 
 
 # Application definition
