@@ -23,6 +23,7 @@ class Article(models.Model):
 
     public = models.BooleanField(default=False)
     latex_support = models.BooleanField(default=False)
+    disqus_support = models.BooleanField(default=False)
 
     slug = models.SlugField(blank=True)
     body = models.TextField(default="", max_length=20000)

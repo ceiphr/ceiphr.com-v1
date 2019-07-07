@@ -43,12 +43,6 @@ Article Body
 **********************************/
 
 // Article Text Formatting
-article {
-    a {
-        transition-duration: 200ms;
-    }
-}
-
 .window {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14);
 }
@@ -64,6 +58,10 @@ article {
     hyphens: auto;
 
     font-size: 16px;
+
+    a {
+        transition-duration: 200ms;
+    }
 
     h1 {
         font-size: 1.8rem !important;
@@ -116,10 +114,6 @@ article {
     ul,
     ol {
         margin-bottom: 1em;
-    }
-
-    img {
-        margin: 1em 0 1em 0;
     }
 
     blockquote {

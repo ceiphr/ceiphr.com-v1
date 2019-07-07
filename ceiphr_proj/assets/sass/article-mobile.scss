@@ -35,7 +35,7 @@ Article Body
 .recs {
     margin-top: 2em;
     padding: 0 1.25rem 0 1.25rem;
-    padding-bottom: 48px;
+    margin-bottom: 2em;
 
     .card {
         a {
@@ -92,6 +92,15 @@ Article Body
         height: 32px;
     }
 }
+
+.article__comments_wrapper {
+    padding: 0 2rem 0 2rem;
+    .article__comments {
+        margin: 1em 0 1em 0;
+    }
+}
+
+
 
 .referral {
     margin-bottom: 1.5rem !important;

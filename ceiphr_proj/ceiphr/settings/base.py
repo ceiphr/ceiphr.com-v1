@@ -28,12 +28,16 @@ CSP_IMG_SRC = (
     "https://*.buysellads.net",
     "https://ad.doubleclick.net",
     "https://scontent.cdninstagram.com",
+    "https://disqus.com",
+    "https://*.disqus.com",
+    "https://*.disquscdn.com",
 )
 
 CSP_STYLE_SRC = (
     "'self' 'unsafe-inline'",
     "https://*.cloudflare.com",
     "https://*.carbonads.com",
+    "https://*.disquscdn.com",
 )
 
 CSP_SCRIPT_SRC = (
@@ -42,13 +46,16 @@ CSP_SCRIPT_SRC = (
     "https://*.carbonads.com",
     "https://*.carbonads.net",
     "https://*.cloudflare.com",
+    "https://disqus.com",
+    "https://*.disquscdn.com",
+    "https://ceiphr.disqus.com",
 )
 
 CSP_FONT_SRC = ("'self' data:", "https://*.cloudflare.com")
 
-CSP_FRAME_SRC = ("'self'",)
+CSP_FRAME_SRC = ("'self'", "https://disqus.com",)
 
-CSP_CONNECT_SRC = ("'self'",)
+CSP_CONNECT_SRC = ("'self'", "https://disqus.com",)
 
 CSP_OBJECT_SRC = ("'none'",)
 

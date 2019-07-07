@@ -96,7 +96,7 @@ body {
     .subtitle,
     .feed__info,
     .referral__content,
-    article .article__body,
+    .article__contents .article__body,
     strong,
     .button,
     .tag,
@@ -114,7 +114,7 @@ body {
 
     html,
     body,
-    article .article__body .box,
+    .article__contents .article__body .box,
     code,
     .button,
     .tag,
@@ -122,8 +122,8 @@ body {
         background-color: #282828 !important;
     }
 
-    article .button:hover,
-    article .button:focus {
+    .article__contents .button:hover,
+    .article__contents .button:focus {
         opacity: 0.75;
     }
 
@@ -132,7 +132,7 @@ body {
         opacity: 0.75;
     }
 
-    article .article__body .is-8-desktop a:hover {
+    .article__contents .article__body .is-8-desktop a:hover {
         color: $link;
         opacity: 0.5;
     }
@@ -142,7 +142,7 @@ body {
     }
 
     .box,
-    article .article__body,
+    .article__contents .article__body,
     .card {
         background-color: #1f1f1f !important;
     }
