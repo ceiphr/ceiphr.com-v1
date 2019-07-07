@@ -127,7 +127,7 @@
                                     overflow="visible" />
                             </svg>
                         </a>
-                        <a href="https://twitter.com/share?url={{ article.short_url }}&amp;text={{ article.title|urlencode }}&amp;hashtags={% for tag in tags %}{% if not forloop.last %}{{ tag.name }}%2C%20{% else %}{{ tag.name }}{% endif %}{% endfor %}&via=ceiphr"
+                        <a href="https://twitter.com/share?url={{ article.short_url }}&amp;text={{ article.title|urlencode }}&amp;hashtags={% for tag in tags %}{% if not forloop.last %}{{ tag.name }}%2C{% else %}{{ tag.name }}{% endif %}{% endfor %}&via=ceiphr"
                             target="_blank" rel="noreferrer" aria-label="Twitter" class="button">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50"
                                 fill="000000">
