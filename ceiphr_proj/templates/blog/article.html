@@ -111,8 +111,9 @@
                             </a>
                         </div>
                         {% if not debug %}
-                        <script async type="text/javascript"
-                            src="//cdn.carbonads.com/carbon.js?serve=CK7I62QM&placement=ceiphrcom" id="_carbonads_js">
+                        <script async type="text/javascript" class="lazyload"
+                            data-script="//cdn.carbonads.com/carbon.js?serve=CK7I62QM&placement=ceiphrcom"
+                            id="_carbonads_js">
                         </script>
                         {% endif %}
                     </div>
@@ -184,27 +185,60 @@
         </div>
     </section>
     {% if article.disqus_support %}
-    <section class="container slide-on-load article__comments_wrapper">
-        <div class="columns is-centered article__comments is-desktop box">
-            <div class="column is-10-desktop is-medium">
-                <div id="disqus_thread"></div>
-                <script>
-                    var disqus_config = function () {
-                        this.page.url = 'https://{{ request.get_host }}{{ request.get_full_path }}';
-                        this.page.identifier = '{{ request.get_full_path }}';
-                    };
+    <button id="disqus_button" class="button">
+        Load Comments
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px"
+            height="24px">
+            <path
+                d="M2,5v12c0,1.1,0.9,2,2,2h14l4,4L21.99,5c0-1.1-0.89-2-1.99-2H4C2.9,3,2,3.9,2,5z M7,6h10v2H7V6z M7,10h10v2H7V10z M7,14h7 v2H7V14z" />
+        </svg>
+    </button>
+    <section id="disqus_container" class="container article__comments_wrapper disabled_comments">
+        <div class="article__comments box">
+            <div class="columns is-centered is-desktop">
+                <div class="column is-10-desktop is-medium">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://{{ request.get_host }}{{ request.get_full_path }}';
+                            this.page.identifier = '{{ request.get_full_path }}';
+                        };
 
-                    (function () {
-                        var d = document,
-                            s = d.createElement('script');
-                        s.src = 'https://ceiphr.disqus.com/embed.js';
-                        s.setAttribute('data-timestamp', +new Date());
-                        (d.head || d.body).appendChild(s);
-                    })();
-                </script>
-                <noscript>Please enable JavaScript to view the
-                    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-                </noscript>
+                        (function (document, window, undefined) {
+
+                            'use strict';
+
+                            var commentsButton = document.getElementById('disqus_button');
+
+                            commentsButton.addEventListener('click', function () {
+
+                                var disqusContainer = document.createElement('div'),
+                                    disqus_shortname = 'ceiphr',
+                                    dsq = document.createElement('script');
+
+                                disqusContainer.setAttribute('id', 'disqus_thread');
+
+                                dsq.type = 'text/javascript';
+                                dsq.async = true;
+                                dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+
+                                (document.getElementsByTagName('head')[0] || document.getElementsByTagName(
+                                    'body')[0]).appendChild(dsq);
+
+                                document.body.appendChild(disqusContainer);
+
+                                this.parentNode.removeChild(this);
+                                var comment_box = document.getElementById('disqus_container');
+                                comment_box.classList.remove('disabled_comments');
+
+                            }, false);
+
+                        })(document, window);
+                    </script>
+                    <noscript>Please enable JavaScript to view the
+                        <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+                    </noscript>
+                </div>
             </div>
         </div>
     </section>

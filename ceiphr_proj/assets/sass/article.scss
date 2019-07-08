@@ -179,6 +179,26 @@ code {
     }
 }
 
+#disqus_button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    transition-duration: 200ms;
+
+    svg {
+        margin-left: 0.5em;
+    }
+
+    &:hover {
+        background-color: $white-bis;
+        transform: translate(-50%, -1px);
+    }
+}
+
+.disabled_comments {
+    display: none;
+}
+
 #MathJax_Message,
 #MathJax_MSIE_Frame {
     display: none;

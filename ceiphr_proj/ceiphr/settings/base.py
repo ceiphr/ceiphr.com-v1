@@ -200,11 +200,6 @@ PIPELINE = {
             "output_filename": "js/onload.js",
             "extra_context": {"defer": True},
         },
-        "fluid": {
-            "source_filenames": ("js/WebGL-Fluid-Simulation/script.es6",),
-            "output_filename": "js/fluid.js",
-            "extra_context": {"defer": True},
-        },
     },
 }
 
