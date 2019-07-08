@@ -173,7 +173,7 @@
 <body>
     <nav class="navbar container" id="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="/">
+            <a class="navbar-item" href="{{ request.scheme }}://{{ request.get_host }}">
                 <img src="{% static 'svg/logo.svg' %}" alt="Ceiphr" width="112" height="28">
             </a>
             <a role="button" class="navbar-burger" id="navbar-burger" data-target="navMenu" aria-label="menu"
@@ -184,16 +184,16 @@
         </div>
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-end">
-                <a href="/blog/" class="navbar-item" aria-label="Blog">
+                <a href="{{ request.scheme }}://{{ request.get_host }}/blog/" class="navbar-item" aria-label="Blog">
                     Blog
                 </a>
-                <a href="/projects/" class="navbar-item" aria-label="Projects">
+                <a href="{{ request.scheme }}://{{ request.get_host }}/projects/" class="navbar-item" aria-label="Projects">
                     Projects
                 </a>
-                <a href="/designs/" class="navbar-item" aria-label="Designs">
+                <a href="{{ request.scheme }}://{{ request.get_host }}/designs/" class="navbar-item" aria-label="Designs">
                     Designs
                 </a>
-                <a href="/photography/" class="navbar-item" aria-label="Photography">
+                <a href="{{ request.scheme }}://{{ request.get_host }}/photography/" class="navbar-item" aria-label="Photography">
                     Photography
                 </a>
                 <a href="https://changelog.ceiphr.com/" target="_blank" rel="noreferrer" class="navbar-item"
