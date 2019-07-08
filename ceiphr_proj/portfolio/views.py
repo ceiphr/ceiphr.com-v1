@@ -75,8 +75,8 @@ disabled once the pages are published on Cloudflare.
 def banned_ip_view(request, template_name="prompt.html"):
     context = {
         "title": "Access denied",
-        "desc": "Sorry, you have been banned.",
-        "message": "You cannot access ceiphr.com using your IP address (::CLIENT_IP::).",
+        "desc": "Sorry, you do not have access to this page.",
+        "message": "You cannot access this page using your IP address (::CLIENT_IP::).",
         "avatar": Profile.objects.first().logo,
         "resume_url": Profile.objects.first().resume_url,
         "favicon": Profile.objects.first().favicon,
