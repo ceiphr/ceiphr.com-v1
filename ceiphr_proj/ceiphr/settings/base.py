@@ -205,7 +205,7 @@ PIPELINE = {
 
 PIPELINE["CSS_COMPRESSOR"] = "pipeline.compressors.yuglify.YuglifyCompressor"
 
-# Sass compiler for coverting scss files to post-processed css
+# Sass compiler for converting scss files to post-processed css
 
 PIPELINE["COMPILERS"] = ("pipeline.compilers.sass.SASSCompiler",)
 

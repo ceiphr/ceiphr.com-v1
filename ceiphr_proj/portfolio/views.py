@@ -2,9 +2,8 @@ import os
 from django.views.generic import TemplateView
 from django.core.cache import cache
 from django.shortcuts import render
-from django.template import RequestContext
 
-from sentry_sdk import capture_message, last_event_id
+from sentry_sdk import capture_message
 
 from .models import Profile
 from .services import get_repos, get_shots, get_media
@@ -25,7 +24,7 @@ def page_not_found_view(request, exception, template_name="error-prompt.html"):
         "resume_url": Profile.objects.first().resume_url,
         "favicon": Profile.objects.first().favicon,
     }
-    capture_message(exception, level="error")
+    capture_message("Page not found.", level="error")
     return render(request, "error-prompt.html", context, status=404)
 
 
@@ -49,7 +48,7 @@ def permission_denied_view(request, exception, template_name="error-prompt.html"
         "resume_url": Profile.objects.first().resume_url,
         "favicon": Profile.objects.first().favicon,
     }
-    capture_message(exception, level="error")
+    capture_message("Permission denied.", level="error")
     return render(request, "error-prompt.html", context, status=403)
 
 
@@ -61,7 +60,7 @@ def bad_request_view(request, exception, template_name="error-prompt.html"):
         "resume_url": Profile.objects.first().resume_url,
         "favicon": Profile.objects.first().favicon,
     }
-    capture_message(exception, level="error")
+    capture_message("Bad request.", level="error")
     return render(request, "error-prompt.html", context, status=400)
 
 

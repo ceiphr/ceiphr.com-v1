@@ -17,9 +17,7 @@ import os
 from django.urls import path
 from django.contrib import admin
 from django.conf.urls.static import static
-from django.views.generic.base import RedirectView
 from django.contrib.sitemaps.views import sitemap
-from django.views.generic import TemplateView
 from django_otp.admin import OTPAdminSite
 
 from .settings.base import MEDIA_URL, MEDIA_ROOT

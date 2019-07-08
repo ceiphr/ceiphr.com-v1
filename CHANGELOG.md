@@ -7,7 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.3] - 2019-06-29
+
+### Added
+
+- Dribbble integration for a design page in the portfolio app
+- Instagram integration for the photography page in the portfolio app
+- Disqus integration for articles (click to load comments 
+improved page performance)
+
+### Security
+
+- Replaced `frame-src` with `worker-src`
+- Updated CSP to properly handle integration with Instagram and Disqus
+
 ## [0.2.2] - 2019-05-01
+
+### Added
+
+- Added darkmode Sass using `@media (prefers-color-scheme: dark)`
+- DNS now handled by Cloudflare
+- Added custom error pages for Cloudflare
 
 ### Changed
 
@@ -25,6 +45,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed "Contact" page
 - Removed jQuery
 - Removed SendGrid
+
+### Security
+- Added `'unsafe-eval'` and  `'unsafe-inline'` to `CSP_SCRIPT_SRC` so 
+Cloudflare scripts can run in the browser
 
 ## [0.2.1] - 2019-03-30
 
