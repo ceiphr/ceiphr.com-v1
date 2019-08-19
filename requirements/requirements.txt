@@ -32,7 +32,7 @@ s3transfer==0.2.1
 sentry-sdk==0.9.5
 six==1.12.0
 sorl-thumbnail==12.5.0
-soupsieve==1.9.2
+soupsieve==1.9.3
 sqlparse==0.3.0
 urllib3==1.25.3
 webencodings==0.5.1
