@@ -6,7 +6,7 @@ django-csp==3.5
 django-pipeline==1.6.14
 django-debug-toolbar==2.0
 django-htmlmin==0.11.0
-django-otp==0.6.0
+django-otp==0.7.1
 docutils==0.14
 entrypoints==0.3
 flake8==3.7.7
