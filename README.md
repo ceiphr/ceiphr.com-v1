@@ -1,6 +1,7 @@
 # Ceiphr.com
 
 [![Build Status](https://travis-ci.com/ceiphr/ceiphr.com.svg?branch=master)](https://travis-ci.com/ceiphr/ceiphr.com)
+[![Known Vulnerabilities](https://snyk.io//test/github/ceiphr/ceiphr.com/badge.svg?targetFile=ceiphr_proj/assets/package.json)](https://snyk.io//test/github/ceiphr/ceiphr.com?targetFile=ceiphr_proj/assets/package.json)
 [![Microbadger](https://images.microbadger.com/badges/image/ceiphr/ceiphr.com.svg)](https://microbadger.com/images/ceiphr/ceiphr.com "Get your own image badge on microbadger.com")
 
 This project is the source code for my personal website. This website displays all my projects, skills, events I've attended and acts as a blog platform.
