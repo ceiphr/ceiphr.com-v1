@@ -16,40 +16,29 @@ LABEL org.label-schema.vcs-ref=$VCS_REF
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Install alpine packages
-RUN apk add --update \
-  python3 \
-  python3-dev \
-  build-base \
-  nodejs \
-  nodejs-npm \
-  py-pip \
-  postgresql-dev \
-  jpeg-dev \
-  zlib-dev \
-  && python3 -m pip install virtualenv \
-  && python3 -m pip install --upgrade pip setuptools \
-  && rm -rf /var/cache/apk/*
-
 ENV LIBRARY_PATH=/lib:/usr/lib
+
+# Install node modules
+RUN apk add --no-cache --update \
+    nodejs \
+    nodejs-npm \
+  && npm config set user 0 \
+  && npm config set unsafe-perm true \
+  && npm install -g sass yuglify babel-cli \
+  && apk del nodejs-npm
 
 # Create project directory and copy requirements
 WORKDIR /usr/src/app
 COPY requirements/requirements.txt /usr/src/app/requirements.txt
 
-# Install node modules
-RUN npm config set user 0
-RUN npm config set unsafe-perm true
-RUN npm install -g sass yuglify babel-cli
-
-# Creating a virtual environment for project dependencies
-ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-
-# Install python3 packages
-RUN python3 -m pip install -U pip
-RUN python3 -m pip install -r requirements.txt
+# Install project dependencies
+RUN apk add --no-cache --update build-base \
+    postgresql-dev \
+    jpeg-dev \
+    zlib-dev\
+  && python3 -m pip install --no-cache --upgrade pip setuptools \
+  && python3 -m pip install --no-cache -r requirements.txt \
+  && apk del build-base
 
 # Collect static files
 COPY ceiphr_proj/ /usr/src/app/
