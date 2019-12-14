@@ -9,7 +9,7 @@ django-htmlmin==0.11.0
 django-otp==0.7.4
 docutils==0.15.2
 entrypoints==0.3
-flake8==3.7.8
+flake8==3.7.9
 gunicorn==19.9.0
 html5lib==1.0.1
 idna==2.8
