@@ -6,7 +6,7 @@
   "dependencies": {
     "@ibm/plex": "^4.0.2",
     "bulma": "^0.8.0",
-    "lazysizes": "^5.1.2"
+    "lazysizes": "^5.2.0"
   },
   "devDependencies": {},
   "scripts": {
