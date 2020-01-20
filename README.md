@@ -5,7 +5,7 @@
 
 This Django project was originally my portfolio website. This site is well optimized. Images are converted to WebP and used if the browser supports it. Assets are lazy loaded with the blur-up method to improve load times. All stylesheets are condensed into two master files based on the media size of the device using the site. This site is able to perfectly score on Google Pagespeed, even with an adequate amount of content rendered.
 
-![Front Page Example](https://www.dropbox.com/s/6hvmkrupzgn52xe/Screenshot_2020-01-20%20Ari%20Birnbaum%20%E2%80%94%20Ceiphr.png?dl=1)
+![Front Page Example](https://i.imgur.com/WgCdIG8.png)
 
 ## Tech/Frameworks used
 
