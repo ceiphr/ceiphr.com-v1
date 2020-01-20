@@ -1,14 +1,11 @@
 # Ceiphr.com
 
 [![Build Status](https://travis-ci.com/ceiphr/ceiphr.com.svg?branch=master)](https://travis-ci.com/ceiphr/ceiphr.com)
-[![Known Vulnerabilities](https://snyk.io//test/github/ceiphr/ceiphr.com/badge.svg?targetFile=ceiphr_proj/assets/package.json)](https://snyk.io//test/github/ceiphr/ceiphr.com?targetFile=ceiphr_proj/assets/package.json)
 [![Microbadger](https://images.microbadger.com/badges/image/ceiphr/ceiphr.com.svg)](https://microbadger.com/images/ceiphr/ceiphr.com "Get your own image badge on microbadger.com")
 
-This project is the source code for my personal website. This website displays all my projects, skills, events I've attended and acts as a blog platform.
+This Django project was originally my portfolio website. This site is well optimized. Images are converted to WebP and used if the browser supports it. Assets are lazy loaded with the blur-up method to improve load times. All stylesheets are condensed into two master files based on the media size of the device using the site. This site is able to perfectly score on Google Pagespeed, even with an adequate amount of content rendered.
 
-## Motivation
-
-I'm a high school student. I really wanted some way to display my achievements, projects and ideas. This is what I came up with.
+![Front Page Example](https://www.dropbox.com/s/6hvmkrupzgn52xe/Screenshot_2020-01-20%20Ari%20Birnbaum%20%E2%80%94%20Ceiphr.png?dl=1)
 
 ## Tech/Frameworks used
 

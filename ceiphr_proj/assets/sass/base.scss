@@ -219,6 +219,10 @@ Navigaton
 .navbar-item {
     transition-duration: 200ms;
 
+    .img {
+        max-height: 2rem !important;
+    }
+
     .button {
         transition-duration: 200ms;
         border: none;
@@ -269,8 +273,8 @@ Navigaton
         }
 
         img {
-            max-width: 1.75rem;
-            height: 1.75rem;
+            max-width: 2rem;
+            height: 2rem;
             padding-left: 2px;
         }
     }
